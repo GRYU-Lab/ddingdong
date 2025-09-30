@@ -1,56 +1,105 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tiny Signals · todayparent</title>
-<meta name="description" content="발달 신호를 게임처럼 익히는 초간단 라운드형 학습.">
-<link rel="icon" href="/assets/favicon.ico">
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tiny Signals · todayparent</title>
+  <meta name="description" content="발달 신호를 게임처럼 익히는 초간단 라운드형 학습. 상황별 배경 × 나이대 표정 아트 조합으로 부모 메시지를 자연스럽게 익혀요.">
+  <link rel="canonical" href="https://www.todayparent.com/tiny/">
+
+  <!-- Icons (assets 폴더에 실제 파일을 두세요) -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+
+  <!-- Styles -->
+  <link rel="preload" as="image" href="/assets/logo.svg" imagesrcset="/assets/logo.svg">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#128A7F">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tiny Signals · todayparent">
+  <meta property="og:description" content="부모가 금방 이해하고 바로 써먹는 ‘작은 신호’ 라운드형 학습.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.todayparent.com/tiny/">
+  <meta property="og:image" content="/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 구조화 데이터(웹앱/게임 성격) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Tiny Signals",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "url": "https://www.todayparent.com/tiny/",
+    "publisher": { "@type": "Organization", "name": "ddingdong" }
+  }
+  </script>
 </head>
 <body>
+<a href="/" class="sr-only" aria-label="홈으로">홈으로</a>
+
 <div class="container">
-  <nav>
-    <a class="logo" href="/"><img src="/assets/logo.svg" width="140" height="28" alt=""></a>
-    <div class="links">
-      <a href="/parents/">오늘도부모입니다</a>
-      <a href="/tiny/">Tiny Signals</a>
+  <nav aria-label="주요">
+    <a class="logo" href="/" aria-label="todayparent 홈">
+      <img src="/assets/logo.svg" width="140" height="28" alt="" decoding="async">
+    </a>
+    <div class="links" role="menubar" aria-label="상단 메뉴">
+      <a role="menuitem" href="/parents/">오늘도부모입니다</a>
+      <a role="menuitem" href="/tiny/" aria-current="page">Tiny Signals</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <div>
-      <div class="kicker">Micro Learning Game</div>
-      <h1>부모가 금방 이해하고 바로 써먹는 ‘작은 신호’</h1>
-      <p>상황별 배경 × 나이대 표정 아트 조합. 라운드마다 짧은 피드백과 부모용 메시지를 제공해요.</p>
-      <div class="cta">
-        <!-- TODO: 게임 데모 링크로 교체 -->
-        <a class="btn primary" href="https://YOUR-GAME-LINK" target="_blank" rel="noopener">데모 실행</a>
-        <a class="btn" href="/#contact">제휴/이벤트 문의</a>
-      </div>
+  <header class="hero" id="main">
+    <p class="kicker">Micro Learning Game</p>
+    <h1>부모가 금방 이해하고 바로 써먹는 ‘작은 신호’</h1>
+    <p>
+      상황별 배경 × 나이대 표정 아트 조합. 라운드마다 짧은 피드백과
+      <b>부모용 메시지</b>를 제공해요.
+    </p>
+    <div class="cta">
+      <!-- TODO: 실제 데모 링크로 교체 -->
+      <a class="btn primary" href="https://YOUR-GAME-LINK" target="_blank" rel="noopener">데모 실행</a>
+      <a class="btn" href="/#contact">제휴/이벤트 문의</a>
     </div>
   </header>
 
-  <section>
+  <section aria-labelledby="loop">
     <div class="grid">
       <article class="card">
-        <h3>코어 루프</h3>
+        <h2 id="loop">코어 루프</h2>
         <ul class="clean">
           <li>① 상황 제시 → ② 아이 표정/행동 선택 → ③ 올바른 부모 메시지 확인</li>
-          <li>짧은 라운드(60–90초)로 반복</li>
+          <li>짧은 라운드(60–90초) 반복으로 학습 피로도 최소화</li>
         </ul>
       </article>
+
       <article class="card">
-        <h3>확장</h3>
+        <h2>확장</h2>
         <ul class="clean">
           <li>나이대(36·42·48·60개월) 아트팩</li>
           <li>상황팩(외출/양치/식사/수면/감정)</li>
-          <li>앱인토스/스토어 이벤트 연동</li>
+          <li>웹/앱 임베드 및 이벤트 연동</li>
         </ul>
       </article>
     </div>
   </section>
 </div>
-<footer class="footer"><div class="container"><small>© todayparent</small></div></footer>
+
+<footer class="footer">
+  <div class="container">
+    <small>© todayparent</small>
+  </div>
+</footer>
+
+<!-- CSS 미로드 대비 최소 스타일 -->
+<noscript><style>
+  body{font-family:system-ui,Arial,sans-serif;margin:0}
+  .container{max-width:1040px;margin:0 auto;padding:24px}
+</style></noscript>
 </body>
 </html>
