@@ -1,7 +1,14 @@
 :root{
-  --ink:#0b0b0c; --muted:#646a73; --line:#e6e8eb;
-  --brand:#0ea5e9; /* 민트-블루 계열 */
-  --bg:#ffffff; --bg-soft:#f8fafc;
+  /* === Brand (A안) === */
+  --brand: #2EC5B6;            /* 기본 포인트 */
+  --brand-ink: #128A7F;        /* 진한 버튼/헤더 */
+  --accent: #2F80ED;           /* 링크/강조 */
+
+  --ink:#0B0B0C;               /* 본문 글자 */
+  --muted:#64707D;             /* 보조글 */
+  --line:#E6E8EB;              /* 구분선 */
+  --bg:#FFFFFF;
+  --bg-soft:#F6FAF9;           /* 카드/섹션 배경 */
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -15,15 +22,17 @@ nav .links a:hover{color:var(--brand)}
 .hero h1{font-size:clamp(28px,5vw,44px);margin:0}
 .hero p{color:var(--muted);margin:0 0 6px}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.btn{display:inline-block;padding:.9rem 1.1rem;border:1px solid var(--ink);border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600}
-.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn{ border-color: var(--ink); color: var(--ink); }
+.btn.primary{ background: var(--brand-ink); border-color: var(--brand-ink); color:#fff; }
+a{ color: var(--accent); }
+a:hover{ color: var(--brand-ink); }
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+.card{ background: linear-gradient(180deg, rgba(46,197,182,.06), transparent 40%) , #fff; }
 .card h3{margin:0 0 6px}
-.kicker{color:var(--brand);font-weight:700;letter-spacing:.02em}
+.kicker{ color: var(--brand); }
 section{padding:40px 0}
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.badge{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted)}
-.footer{border-top:1px solid var(--line);background:var(--bg-soft);margin-top:32px}
+.badge{ border-color: var(--line); color: var(--muted); }
+.footer{ background: var(--bg-soft); }
 small, .muted{color:var(--muted)}
 ul.clean{margin:0;padding-left:18px}
