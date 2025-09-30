@@ -1,38 +1,94 @@
 :root{
   /* === Brand (A안) === */
-  --brand: #2EC5B6;            /* 기본 포인트 */
-  --brand-ink: #128A7F;        /* 진한 버튼/헤더 */
-  --accent: #2F80ED;           /* 링크/강조 */
+  --brand:#2EC5B6;          /* 기본 포인트 */
+  --brand-ink:#128A7F;      /* 진한 버튼/헤더 */
+  --accent:#2F80ED;         /* 링크/강조 */
 
-  --ink:#0B0B0C;               /* 본문 글자 */
-  --muted:#64707D;             /* 보조글 */
-  --line:#E6E8EB;              /* 구분선 */
+  --ink:#0B0B0C;            /* 본문 글자 */
+  --muted:#64707D;          /* 보조글 */
+  --line:#E6E8EB;           /* 구분선 */
   --bg:#FFFFFF;
-  --bg-soft:#F6FAF9;           /* 카드/섹션 배경 */
+  --bg-soft:#F6FAF9;        /* 카드/섹션 배경 */
+
+  --radius:16px;
+  --shadow:0 6px 18px rgba(0,0,0,.06);
+  --space:24px;
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-.container{max-width:1040px;margin:0 auto;padding:24px}
+img{max-width:100%;height:auto;display:block}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.6;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+
+/* 레이아웃 */
+.container{max-width:1040px;margin:0 auto;padding:var(--space)}
+section{padding:40px 0}
+.footer{border-top:1px solid var(--line);background:var(--bg-soft);margin-top:32px}
+
+/* 네비 */
 nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 nav a.logo{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);font-weight:700}
 nav .links a{margin-left:16px;text-decoration:none;color:var(--ink)}
-nav .links a:hover{color:var(--brand)}
+nav .links a:hover{color:var(--brand-ink)}
+nav .links a[aria-current="page"]{font-weight:700}
+
+/* 히어로 */
 .hero{padding:64px 0;display:grid;gap:16px}
-.hero h1{font-size:clamp(28px,5vw,44px);margin:0}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.2;margin:0}
 .hero p{color:var(--muted);margin:0 0 6px}
+.kicker{color:var(--brand);font-weight:700;letter-spacing:.02em}
+
+/* 버튼 */
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.btn{ border-color: var(--ink); color: var(--ink); }
-.btn.primary{ background: var(--brand-ink); border-color: var(--brand-ink); color:#fff; }
-a{ color: var(--accent); }
-a:hover{ color: var(--brand-ink); }
+.btn{
+  display:inline-block;
+  padding:.9rem 1.1rem;
+  border:1px solid var(--ink);
+  border-radius:12px;
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:600;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease, border-color .12s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{
+  background:var(--brand-ink);
+  border-color:var(--brand-ink);
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.btn.primary:hover{filter:brightness(0.96)}
+
+/* 카드/그리드 */
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.card{ background: linear-gradient(180deg, rgba(46,197,182,.06), transparent 40%) , #fff; }
-.card h3{margin:0 0 6px}
-.kicker{ color: var(--brand); }
-section{padding:40px 0}
+.card{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px;
+  background:linear-gradient(180deg,rgba(46,197,182,.06),transparent 40%),#fff;
+}
+
+/* 뱃지 */
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.badge{ border-color: var(--line); color: var(--muted); }
-.footer{ background: var(--bg-soft); }
-small, .muted{color:var(--muted)}
+.badge{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted)}
+
+/* 링크 */
+a{color:var(--accent)}
+a:hover{color:var(--brand-ink)}
+small,.muted{color:var(--muted)}
 ul.clean{margin:0;padding-left:18px}
+
+/* 접근성: 스킵 링크/포커스 */
+.sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.sr-only:focus{position:static;width:auto;height:auto;padding:8px;border:1px dashed var(--brand);background:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* 모션 민감도 */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important}
+}
