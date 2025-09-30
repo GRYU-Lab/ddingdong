@@ -1,50 +1,86 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>오늘도부모입니다 · todayparent</title>
-<meta name="description" content="개월수·서술형 기반 발달 평가, 낮은 영역 중심 맞춤 미션·놀이 추천.">
-<link rel="icon" href="/assets/favicon.ico">
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>오늘도부모입니다 · todayparent</title>
+  <meta name="description" content="개월수·서술형 기반 발달 평가, 낮은 영역 중심 맞춤 미션·놀이 추천.">
+  <link rel="canonical" href="https://www.todayparent.com/parents/">
+
+  <!-- Icons (assets 폴더에 실제 파일을 두세요) -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+
+  <!-- Styles -->
+  <link rel="preload" as="image" href="/assets/logo.svg" imagesrcset="/assets/logo.svg">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#128A7F">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="오늘도부모입니다 · todayparent">
+  <meta property="og:description" content="발달 평가와 맞춤 미션·놀이로 오늘 바로 실천하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.todayparent.com/parents/">
+  <meta property="og:image" content="/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"오늘도부모입니다",
+    "url":"https://www.todayparent.com/parents/",
+    "about":{"@type":"Thing","name":"영유아 발달 평가 및 맞춤 미션"}
+  }
+  </script>
 </head>
 <body>
+<a href="#main" class="sr-only">본문 바로가기</a>
+
 <div class="container">
-  <nav>
-    <a class="logo" href="/"><img src="/assets/logo.svg" width="140" height="28" alt=""></a>
-    <div class="links">
-      <a href="/parents/">오늘도부모입니다</a>
-      <a href="/tiny/">Tiny Signals</a>
+  <nav aria-label="주요">
+    <a class="logo" href="/" aria-label="todayparent 홈">
+      <img src="/assets/logo.svg" width="140" height="28" alt="" decoding="async">
+    </a>
+    <div class="links" role="menubar" aria-label="상단 메뉴">
+      <a role="menuitem" href="/parents/" aria-current="page">오늘도부모입니다</a>
+      <a role="menuitem" href="/tiny/">Tiny Signals</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <div>
-      <div class="kicker">발달 평가 & 맞춤 미션</div>
-      <h1>비교가 아닌 이해, 그리고 실천</h1>
-      <p>아이의 지금을 정확히 파악하고, 오늘 바로 해볼 수 있는 미션·놀이를 제공합니다.</p>
-      <div class="cta">
-        <!-- TODO: 실제 앱 링크로 교체 -->
-        <a class="btn primary" href="https://todayparents.vercel.app/" target="_blank" rel="noopener">앱 실행</a>
-        <a class="btn" href="/#contact">기관 제휴 문의</a>
-      </div>
+  <header class="hero" id="main">
+    <p class="kicker">발달 평가 & 맞춤 미션</p>
+    <h1>비교가 아닌 이해, 그리고 실천</h1>
+    <p>
+      아이의 지금을 정확히 파악하고, 오늘 바로 해볼 수 있는
+      <b>미션·놀이</b>를 제공합니다.
+    </p>
+    <div class="cta">
+      <!-- 실제 앱 링크 사용 -->
+      <a class="btn primary" href="https://todayparents.vercel.app/" target="_blank" rel="noopener">앱 실행</a>
+      <a class="btn" href="/#contact">기관 제휴 문의</a>
     </div>
   </header>
 
-  <section>
+  <section aria-labelledby="how">
     <div class="grid">
       <article class="card">
-        <h3>어떻게 평가하나요?</h3>
+        <h2 id="how">어떻게 평가하나요?</h2>
         <ul class="clean">
           <li>개월수별 핵심 질문 + 서술형(잘하는 점/어려운 점)</li>
-          <li>7개 영역 스코어링(대/소근육, 언어이해, 사회·정서, 감각·돌발, 인지, 생활습관/자조)</li>
+          <li>7개 영역 스코어링(대·소근육, 언어이해, 사회·정서, 감각·돌발, 인지, 생활습관/자조)</li>
           <li>낮은 영역 중심 개인화 요약</li>
         </ul>
       </article>
+
       <article class="card">
-        <h3>무엇을 받게 되나요?</h3>
+        <h2>무엇을 받게 되나요?</h2>
         <ul class="clean">
-          <li>한 눈에 보는 스파이더·바 그래프</li>
+          <li>한눈에 보는 스파이더·바 그래프</li>
           <li>‘오늘의 3가지 미션’ + 놀이/외부활동 제안</li>
           <li>기관용 관리 리포트(선택)</li>
         </ul>
@@ -52,6 +88,17 @@
     </div>
   </section>
 </div>
-<footer class="footer"><div class="container"><small>© todayparent</small></div></footer>
+
+<footer class="footer">
+  <div class="container">
+    <small>© todayparent</small>
+  </div>
+</footer>
+
+<!-- CSS 미로드 대비 최소 스타일 -->
+<noscript><style>
+  body{font-family:system-ui,Arial,sans-serif;margin:0}
+  .container{max-width:1040px;margin:0 auto;padding:24px}
+</style></noscript>
 </body>
 </html>
