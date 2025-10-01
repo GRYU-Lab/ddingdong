@@ -7,8 +7,9 @@
   --ink:#0B0B0C;            /* 본문 글자 */
   --muted:#64707D;          /* 보조글 */
   --line:#E6E8EB;           /* 구분선 */
-  --bg:#FFFFFF;
-  --bg-soft:#F6FAF9;        /* 카드/섹션 배경 */
+  --bg:#F8FCFA;        /* ★ 페이지 전체 기본 배경(아주 옅은 민트) */
+  --bg-soft:#F3F8F6;   /* 카드/섹션 배경 */
+  --hero-glow: linear-gradient(180deg, rgba(46,197,182,.10), rgba(46,197,182,0) 65%);
 
   --radius:16px;
   --shadow:0 6px 18px rgba(0,0,0,.06);
@@ -27,7 +28,7 @@ body{
 
 /* 레이아웃 */
 .container{max-width:1040px;margin:0 auto;padding:var(--space)}
-section{padding:40px 0}
+section:nth-of-type(2){ background:#FFFFFF; border:1px solid var(--line); border-radius:20px; padding:32px; }
 .footer{border-top:1px solid var(--line);background:var(--bg-soft);margin-top:32px}
 
 /* 네비 */
@@ -38,7 +39,13 @@ nav .links a:hover{color:var(--brand-ink)}
 nav .links a[aria-current="page"]{font-weight:700}
 
 /* 히어로 */
-.hero{padding:64px 0;display:grid;gap:16px}
+.hero{
+  padding:64px 20px;
+  display:grid; gap:16px;
+  background: var(--hero-glow);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
 .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.2;margin:0}
 .hero p{color:var(--muted);margin:0 0 6px}
 .kicker{color:var(--brand);font-weight:700;letter-spacing:.02em}
@@ -68,9 +75,12 @@ nav .links a[aria-current="page"]{font-weight:700}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .card{
   border:1px solid var(--line);
-  border-radius:var(--radius);
+  border-radius:16px;
   padding:18px;
-  background:linear-gradient(180deg,rgba(46,197,182,.06),transparent 40%),#fff;
+  background:
+    linear-gradient(180deg, rgba(46,197,182,.06), transparent 40%),
+    #FFFFFF;
+  box-shadow: 0 6px 18px rgba(0,0,0,.04);
 }
 
 /* 뱃지 */
