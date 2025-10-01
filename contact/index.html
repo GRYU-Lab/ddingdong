@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>제휴 문의 · todayparent</title>
+  <meta name="description" content="기관/센터 제휴 및 데모 요청을 위한 문의 양식.">
+  <link rel="icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* 폼 보조 스타일 */
+    form{display:grid;gap:14px;max-width:760px}
+    .field{display:grid;gap:6px}
+    .row{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    input,select,textarea{
+      font:inherit;padding:.8rem .9rem;border:1px solid var(--line);border-radius:12px;background:#fff
+    }
+    textarea{min-height:160px;resize:vertical}
+    .hint{font-size:.9rem;color:var(--muted)}
+    .card.form{background:#fff}
+    .hidden{position:absolute;left:-9999px}
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <a class="logo" href="/"><img src="/assets/logo.svg" width="140" height="28" alt=""></a>
+    <div class="links">
+      <a href="/parents/">오늘도부모입니다</a>
+      <a href="/tiny/">Tiny Signals</a>
+      <a href="/contact/" aria-current="page">문의</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <p class="kicker">Partnership</p>
+    <h1>기관/센터 제휴 문의</h1>
+    <p class="muted">아래 항목을 작성하면 메일이 자동작성됩니다. 내용은 자유롭게 추가/수정하세요.</p>
+  </header>
+
+  <section>
+    <div class="card form">
+      <form id="contactForm">
+        <!-- 스팸 방지(봇용) -->
+        <input class="hidden" type="text" name="website" autocomplete="off">
+
+        <div class="row">
+          <div class="field">
+            <label for="org">기관명*</label>
+            <input id="org" name="기관명" required placeholder="예) 딩동어린이집">
+          </div>
+          <div class="field">
+            <label for="person">담당자명*</label>
+            <input id="person" name="담당자" required placeholder="예) 홍길동">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">이메일*</label>
+            <input id="email" name="이메일" type="email" required placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="phone">연락처</label>
+            <input id="phone" name="연락처" placeholder="010-1234-5678">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="interest">관심 서비스*</label>
+            <select id="interest" name="관심 서비스" required>
+              <option value="">선택하세요</option>
+              <option>오늘도부모입니다</option>
+              <option>Tiny Signals</option>
+              <option>둘 다</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="age">주 이용 연령대</label>
+            <select id="age" name="연령대">
+              <option value="">선택 없음</option>
+              <option>12–24개월</option>
+              <option>24–36개월</option>
+              <option>36–48개월</option>
+              <option>48–60개월</option>
+              <option>60개월+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="scale">예상 이용 규모</label>
+            <select id="scale" name="규모">
+              <option value="">선택 없음</option>
+              <option>10명 이내</option>
+              <option>11–30명</option>
+              <option>31–100명</option>
+              <option>100명+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="when">희망 일정</label>
+            <input id="when" name="희망 일정" type="text" placeholder="예) 10월 2주차 데모 희망">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">문의 내용*</label>
+          <textarea id="message" name="문의 내용" required placeholder="필요/배경, 현재 프로그램, 목표, 도입 시기 등을 알려주세요."></textarea>
+          <p class="hint">예: 3세 반 2개, 4세 반 2개 운영 / 분기별 부모상담과 연계 / Tiny Signals 행사 제안 등</p>
+        </div>
+
+        <label style="display:flex;gap:8px;align-items:center">
+          <input type="checkbox" id="agree" required>
+          개인정보 제공(연락 및 제휴 응답 목적) 동의
+        </label>
+
+        <div class="cta">
+          <button class="btn primary" type="submit">메일로 보내기</button>
+          <a class="btn" href="mailto:ddingdong.parent@gmail.com">이메일 앱만 열기</a>
+        </div>
+        <p class="hint">수신: ddingdong.parent@gmail.com</p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer class="footer"><div class="container"><small>© todayparent</small></div></footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // 봇 필드(숨김)에 값이 있으면 중단
+    if (form.website && form.website.value) return;
+
+    const entries = new FormData(form);
+    const get = (k) => (entries.get(k) || '').toString().trim();
+
+    const subject = `[제휴문의] ${get('기관명')} · ${get('관심 서비스')}`;
+    const lines = [];
+    for (const [key, val] of entries.entries()) {
+      if (key === 'website') continue;
+      lines.push(`${key}: ${val}`);
+    }
+    const body = encodeURIComponent(lines.join('\n'));
+
+    // 메일to로 열기
+    const mailto = `mailto:ddingdong.parent@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = mailto;
+  });
+</script>
+</body>
+</html>
