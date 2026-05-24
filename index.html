@@ -7,96 +7,190 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <title>오늘도부모입니다 · todayparent (띵동)</title>
-  <meta name="description" content="K-TPI 기반 발달 평가와 맞춤 미션, 그리고 Tiny Signals 미니 러닝. 아이의 ‘지금’을 이해하고 오늘 바로 실천하세요.">
+  <title>걸음마 · todayparent (띵동)</title>
+  <meta name="description" content="0~60개월 영유아 발달 평가 앱 걸음마. K-TPI 기반 맞춤 리포트, AI 상담, TinySignal 게임까지. 아이의 지금을 이해하고 오늘 바로 실천하세요.">
   <link rel="canonical" href="https://www.todayparent.com/">
 
-  <!-- Icons -->
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
-
-  <!-- Styles -->
   <link rel="preload" as="image" href="/assets/logo.svg" imagesrcset="/assets/logo.svg">
-  <link rel="stylesheet" href="/css/style.css?v=6">
-
-  <!-- Theming -->
+  <link rel="stylesheet" href="/css/style.css?v=8">
   <meta name="theme-color" content="#128A7F">
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="todayparent · 띵동(ddingdong)">
-  <meta property="og:description" content="K-TPI 기반 발달 평가와 맞춤 미션, Tiny Signals 미니 러닝.">
+  <meta property="og:title" content="걸음마 · todayparent (띵동)">
+  <meta property="og:description" content="0~60개월 영유아 발달 평가 앱. K-TPI 기반 맞춤 리포트, AI 상담, TinySignal 게임.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.todayparent.com/">
-  <meta property="og:site_name" content="오늘도부모입니다 · todayparent">
+  <meta property="og:site_name" content="걸음마 · todayparent">
   <meta property="og:image" content="/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- 구조화 데이터(간단) -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"todayparent",
-    "alternateName": ["오늘도부모입니다", "띵동", "ddingdong", "Tiny Signals"],
-    "url":"https://www.todayparent.com/",
-    "publisher":{"@type":"Organization","name":"ddingdong"}
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "걸음마",
+    "alternateName": ["todayparent", "오늘도부모입니다", "띵동", "ddingdong"],
+    "url": "https://www.todayparent.com/",
+    "description": "0~60개월 영유아 발달 평가 앱. K-TPI 기반 맞춤 리포트와 AI 상담.",
+    "operatingSystem": "Android, iOS",
+    "applicationCategory": "HealthApplication",
+    "publisher": { "@type": "Organization", "name": "ddingdong" }
   }
   </script>
+
+  <style>
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    }
+    .store-buttons {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.2rem;
+      border-radius: 10px;
+      background: #0f172a;
+      color: #fff !important;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .store-btn:hover { opacity: .85; }
+    .store-btn.soon {
+      background: var(--bg-soft, #f6faf9);
+      color: var(--muted, rgba(0,0,0,.4)) !important;
+      border: 1px dashed rgba(0,0,0,.15);
+      cursor: default;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .feature-item {
+      background: var(--bg-soft, #f6faf9);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+    }
+    .feature-item .emoji {
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+    }
+    .feature-item h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      margin: 0 0 .25rem;
+      color: var(--ink, #0f172a);
+    }
+    .feature-item p {
+      font-size: .85rem;
+      color: var(--muted, rgba(0,0,0,.55));
+      margin: 0;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
 <div class="container">
   <nav aria-label="주요">
     <a class="logo" href="/" aria-label="todayparent 홈">
-      <img src="/assets/logo.svg" alt="오늘도부모입니다 todayparent 로고" width="140" height="28" decoding="async">
+      <img src="/assets/logo.svg" alt="todayparent 로고" width="140" height="28" decoding="async">
     </a>
     <div class="links" role="menubar" aria-label="상단 메뉴">
-      <a role="menuitem" href="/parents/index.html">오늘도부모입니다</a>
-      <a role="menuitem" href="/tiny/index.html">Tiny Signals</a>
-      <a role="menuitem" href="/about/index.html">about</a>
-      <a role="menuitem" href="/contact/index.html">문의</a>
+      <a role="menuitem" href="/parents/" aria-current="page">걸음마</a>
+      <a role="menuitem" href="/tiny/">TinySignal</a>
+      <a role="menuitem" href="/about/">about</a>
+      <a role="menuitem" href="/contact/">문의</a>
     </div>
   </nav>
 
   <header class="hero" id="main">
-    <p class="kicker">부모를 위한 실전 도구</p>
-    <h1>아이의 ‘지금’을 이해하고<br>오늘 바로 실천해요</h1>
+    <img src="/assets/app-icon.png" alt="걸음마 앱 아이콘" class="app-icon">
+    <p class="kicker">0~60개월 영유아 발달 앱</p>
+    <h1>아이의 첫걸음,<br>함께 읽어드립니다</h1>
     <p>
-      한국 아이들을 위한 <b>K-TPI</b> 기반 <b>발달 평가</b>와 낮은 영역 중심 <b>맞춤 미션·놀이</b>,<br>
-      그리고 짧게 배우는 <b>Tiny Signals</b> 미니 러닝.
+      <b>K-TPI</b> 기반 발달 평가부터 AI 맞춤 상담, <b>TinySignal</b> 게임까지.<br>
+      오늘 아이에게 필요한 것을 바로 실천할 수 있도록 도와드립니다.
     </p>
-    <div class="cta">
-      <a class="btn primary" href="/parents/index.html">오늘도부모입니다 보기</a>
-      <a class="btn" href="/tiny/index.html">Tiny Signals 티저</a>
+    <div class="store-buttons">
+      <a class="store-btn" href="#" aria-label="구글 플레이에서 다운로드">
+        ▶ 구글 플레이 (출시 예정)
+      </a>
+      <a class="store-btn soon" href="#" aria-label="앱스토어 출시 예정">
+        🍎 앱스토어 (출시 예정)
+      </a>
     </div>
     <div class="badges" aria-label="특징">
-      <span class="badge">전문가 설계</span>
-      <span class="badge">가볍고 빠른 웹</span>
-      <span class="badge">K-TPI · 특허 출원 중: 10-2025-0061591</span>
+      <span class="badge">K-TPI 근거 기반</span>
+      <span class="badge">특허 출원 중: 10-2025-0061591</span>
+      <span class="badge">AI 맞춤 상담</span>
     </div>
   </header>
 
-  <section aria-labelledby="s-parents">
+  <!-- 주요 기능 -->
+  <section aria-labelledby="s-features">
+    <div class="card">
+      <h2 id="s-features">걸음마가 하는 일</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="emoji">📋</div>
+          <h3>발달 평가 리포트</h3>
+          <p>월령(2개월 단위)에 맞는 K-TPI 기반 평가로 7개 발달 영역을 한눈에 확인합니다.</p>
+        </div>
+        <div class="feature-item">
+          <div class="emoji">🤖</div>
+          <h3>AI 맞춤 상담</h3>
+          <p>아이의 성향과 발달 점수를 바탕으로 오늘의 미션·놀이·외부활동을 AI가 재설명합니다.</p>
+        </div>
+        <div class="feature-item">
+          <div class="emoji">👶</div>
+          <h3>TinySignal 게임</h3>
+          <p>아이의 작은 신호를 읽는 연습을 게임으로. 주간 랭킹과 보상으로 꾸준히 플레이합니다.</p>
+        </div>
+        <div class="feature-item">
+          <div class="emoji">🌟</div>
+          <h3>일일 발달 미션</h3>
+          <p>생후 6개월 이하 아기를 위한 주차별 맞춤 미션. 스탬프를 모으면 보상이 주어집니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TinySignal 소개 -->
+  <section aria-labelledby="s-tiny">
     <div class="grid">
       <article class="card">
-        <h2 id="s-parents">오늘도부모입니다</h2>
-        <p class="muted">K-TPI(2개월 단위) 기반 평가 → 결과 요약 → 낮은 영역 중심 미션/놀이 추천까지.</p>
+        <h2 id="s-tiny">TinySignal</h2>
+        <p class="muted">아이의 작은 신호를 읽는 능력을 게임으로 키웁니다.</p>
         <ul class="clean">
-          <li>7개 영역 스코어링 & 요약 리포트</li>
-          <li>발달 지연 확인 항목과 다음 행동 가이드</li>
-          <li class="muted">기관 리포트(준비중)</li>
+          <li>상황 카드 → 순간 판단 → 즉각 피드백</li>
+          <li>주간 로테이션 시즌 & 랭킹</li>
+          <li>걸음마 앱 안에서 바로 플레이</li>
         </ul>
-        <p><a class="btn" href="/parents/index.html">자세히</a></p>
+        <p><a class="btn" href="/tiny/">자세히 보기</a></p>
       </article>
 
       <article class="card">
-        <h2>Tiny Signals</h2>
-        <p class="muted">아이의 ‘작은 신호’를 <b>1–2분</b> 라운드로 배우는 부모용 미니 러닝.</p>
+        <h2>개인정보 & 법적 고지</h2>
+        <p class="muted">걸음마는 아이 데이터 보호를 최우선으로 합니다.</p>
         <ul class="clean">
-          <li>상황 중심 학습 & 라운드별 부모 코칭</li>
-          <li class="muted">상세 메커닉은 베타 파트너에게 제공</li>
+          <li><a href="/privacy/">개인정보처리방침</a></li>
+          <li>이용약관 · 환불규정 (앱 내 설정에서 확인)</li>
+          <li>회원 탈퇴 시 모든 데이터 즉시 삭제</li>
         </ul>
-        <p><a class="btn" href="/tiny/index.html">티저 보기</a></p>
+        <p><a class="btn" href="/privacy/">개인정보처리방침 보기</a></p>
       </article>
     </div>
   </section>
@@ -106,14 +200,19 @@
       <h2 id="s-contact">문의 및 제휴</h2>
       <p class="muted">유치원·어린이집·발달센터 제휴 및 데모 요청을 환영합니다.</p>
       <p>이메일: <a href="mailto:ddingdong.parent@gmail.com" rel="noopener">ddingdong.parent@gmail.com</a></p>
-      <p><a class="btn" href="/contact/index.html">문의 페이지로 이동</a></p>
+      <p><a class="btn" href="/contact/">문의 페이지로 이동</a></p>
     </div>
   </section>
 </div>
 
 <footer class="footer">
   <div class="container">
-    <small>© 띵동(ddingdong). todayparent.com · K-TPI 및 리포트 생성 로직 <b>특허 출원 중</b> (10-2025-0061591)</small>
+    <small>
+      © 띵동(ddingdong) · todayparent.com<br>
+      K-TPI 및 리포트 생성 로직 <b>특허 출원 중</b> (10-2025-0061591) &nbsp;|&nbsp;
+      사업자등록번호: 447-56-00943 &nbsp;|&nbsp;
+      통신판매업: 제2025-화성동탄-2249호
+    </small>
   </div>
 </footer>
 
