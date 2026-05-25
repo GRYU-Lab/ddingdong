@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>about · todayparent</title>
-  <meta name="description" content="todayparent는 0~60개월, 가장 가파르게 발달하는 시기를 월령 단위로 평가하고 맞춤 미션을 제안합니다.">
+  <meta name="description" content="걸음마(todayparent)는 0~60개월, 가장 가파르게 발달하는 시기를 월령 단위로 평가하고 맞춤 미션을 제안합니다.">
   <link rel="canonical" href="https://www.todayparent.com/about/">
 
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -13,14 +13,12 @@
   <link rel="stylesheet" href="/css/style.css?v=8">
   <meta name="theme-color" content="#128A7F">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="about · todayparent">
   <meta property="og:description" content="0~60개월, 결정적 시기에 부모가 바로 실천하도록 돕는 서비스.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.todayparent.com/about/">
   <meta property="og:image" content="/assets/og.jpg">
 
-  <!-- 구조화 데이터 -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -32,55 +30,84 @@
   }
   </script>
 
-  <!-- about 전용 스타일 -->
   <style>
+    /* 기존 스타일 */
     .chart-shell{
       border:1px dashed rgba(0,0,0,.12);
       border-radius:16px;
       padding:16px;
-      background:var(--bg-soft, #f6faf9);
+      background:var(--bg-soft,#f6faf9);
       margin-bottom:1.25rem;
     }
     .chart-shell small{
       display:block;
       margin-top:6px;
-      color:var(--muted, rgba(0,0,0,.5));
+      color:var(--muted,rgba(0,0,0,.5));
     }
     table.dev-table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:1rem;
-      background:#fff;
-      border-radius:12px;
-      overflow:hidden;
+      width:100%;border-collapse:collapse;
+      margin-top:1rem;background:#fff;
+      border-radius:12px;overflow:hidden;
     }
-    table.dev-table th,
-    table.dev-table td{
+    table.dev-table th,table.dev-table td{
       border-bottom:1px solid rgba(0,0,0,.04);
-      padding:.55rem .4rem;
-      vertical-align:top;
-      text-align:left;
-      font-size:.9rem;
-      line-height:1.5;
+      padding:.55rem .4rem;vertical-align:top;
+      text-align:left;font-size:.9rem;line-height:1.5;
     }
     table.dev-table th{
-      white-space:nowrap;
-      font-weight:700;
-      color:var(--ink, #0f172a);
-      width:120px;
+      white-space:nowrap;font-weight:700;
+      color:var(--ink,#0f172a);width:120px;
     }
-    @media (max-width:720px){
-      table.dev-table th,
-      table.dev-table td{
-        display:block;
-        width:100%;
-      }
-      table.dev-table tr{
-        margin-bottom:10px;
-        display:block;
-        border-bottom:1px solid rgba(0,0,0,.03);
-      }
+    @media(max-width:720px){
+      table.dev-table th,table.dev-table td{display:block;width:100%}
+      table.dev-table tr{margin-bottom:10px;display:block;border-bottom:1px solid rgba(0,0,0,.03)}
     }
+
+    /* 신규: 근거 카드 */
+    .evidence-card{
+      background:var(--bg-soft,#f6faf9);
+      border-radius:14px;
+      padding:1.1rem 1.25rem;
+      margin-bottom:.875rem;
+    }
+    .evidence-card h4{
+      font-size:.95rem;font-weight:700;
+      color:var(--ink,#0f172a);margin:0 0 .35rem;
+    }
+    .evidence-card p{
+      font-size:.875rem;color:var(--muted,rgba(0,0,0,.6));
+      margin:0;line-height:1.65;
+    }
+    .evidence-source{
+      display:block;margin-top:.5rem;
+      font-size:.78rem;color:rgba(0,0,0,.35);
+      font-style:italic;
+    }
+
+    /* 신규: 막대 그래프 범례 */
+    .bar-legend{
+      display:flex;gap:1rem;flex-wrap:wrap;
+      margin-bottom:.625rem;font-size:.82rem;
+    }
+    .bar-legend span{display:flex;align-items:center;gap:.3rem;}
+    .legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+    /* 신규: 평가도구 그리드 */
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:.75rem;margin-top:.875rem;
+    }
+    .tool-item{
+      background:#fff;border-radius:12px;
+      padding:1rem 1.1rem;
+      border:1px solid rgba(0,0,0,.07);
+    }
+    .tool-item h4{font-size:.9rem;font-weight:700;margin:0 0 .3rem;color:#128A7F;}
+    .tool-item p{font-size:.82rem;color:var(--muted,rgba(0,0,0,.55));margin:0;line-height:1.6;}
+
+    .divider{border:none;border-top:1px solid rgba(0,0,0,.06);margin:1.25rem 0;}
+    .cite{font-size:.78rem;color:rgba(0,0,0,.35);line-height:1.6;margin-top:1rem;}
   </style>
 </head>
 <body>
@@ -92,8 +119,8 @@
       <img src="/assets/logo.svg" width="140" height="28" alt="" decoding="async">
     </a>
     <div class="links" role="menubar" aria-label="상단 메뉴">
-      <a role="menuitem" href="/parents/">오늘도부모입니다</a>
-      <a role="menuitem" href="/tiny/">Tiny Signals</a>
+      <a role="menuitem" href="/parents/">걸음마</a>
+      <a role="menuitem" href="/tiny/">TinySignal</a>
       <a role="menuitem" href="/about/" aria-current="page">about</a>
       <a role="menuitem" href="/contact/">문의</a>
     </div>
@@ -104,7 +131,7 @@
     <h1>우리가 만드는 이유</h1>
     <p>
       아이의 발달은 <b>태어날 때부터 만 5세(60개월)</b>까지 가장 가파르게 진행됩니다.<br>
-      하지만 부모는 “지금 이 아이에게 맞는 게 뭔지”를 찾기 어렵습니다.<br>
+      하지만 부모는 "지금 이 아이에게 맞는 게 뭔지"를 찾기 어렵습니다.<br>
       todayparent는 이 <b>결정적 시기</b>에 부모가 바로 실천할 수 있도록
       <b>발달 평가 → 맞춤 미션 → 놀이/외부활동</b>을 한 흐름으로 제공합니다.
     </p>
@@ -114,18 +141,17 @@
     </div>
   </header>
 
-  <!-- 미션/취지 -->
+  <!-- 취지 -->
   <section aria-labelledby="purpose">
     <div class="card">
-      <h2 id="purpose">왜 ‘오늘도부모입니다’인가</h2>
+      <h2 id="purpose">왜 '걸음마'인가</h2>
       <ul class="clean">
         <li><b>핵심 창(Window)</b> — 생후 0–60개월은 감각·운동·언어·정서의 토대가 형성되는 시기입니다. 하루의 상호작용이 곧 학습입니다.</li>
-        <li><b>정보는 많은데 행동은 어렵다</b> — 부모는 모순된 정보에 압도됩니다. “오늘 무엇을 하면 될지”가 가장 중요합니다.</li>
-        <li><b>평가→실천 연결</b> — 월령(0~60개월) 단위로 현재를 읽고, 낮은 영역을 중심으로 <b>‘오늘의 미션’</b>과 놀이/외부활동을 제안합니다.</li>
+        <li><b>정보는 많은데 행동은 어렵다</b> — 부모는 모순된 정보에 압도됩니다. "오늘 무엇을 하면 될지"가 가장 중요합니다.</li>
+        <li><b>평가→실천 연결</b> — 월령(0~60개월) 단위로 현재를 읽고, 낮은 영역을 중심으로 <b>'오늘의 미션'</b>과 놀이/외부활동을 제안합니다.</li>
         <li><b>쉽고 빠른 도구</b> — 모바일에 최적화된 간단한 문항, 한눈에 보는 그래프, 1분 내 실천 가이드.</li>
-        <li><b>가정과 기관을 함께</b> — 부모와 어린이집/센터가 같은 언어로 아이를 보도록 리포트를 정렬했습니다.</li>
       </ul>
-      <p class="muted">우리의 목표는 “비교가 아니라 이해, 그리고 오늘의 행동”입니다.</p>
+      <p class="muted">우리의 목표는 "비교가 아니라 이해, 그리고 오늘의 행동"입니다.</p>
     </div>
   </section>
 
@@ -134,13 +160,13 @@
     <div class="card">
       <h2 id="dev-basis">0~60개월을 기준으로 삼는 근거</h2>
       <p>
-        todayparent의 발달 평가는 <b>생후 0개월부터 60개월까지</b>를 세밀하게 나누어,
+        걸음마의 발달 평가는 <b>생후 0개월부터 60개월까지</b>를 세밀하게 나누어,
         국내외 영유아 발달 연구와 한국 보육·유아교육 환경을 함께 반영해 설계했습니다.
         이 시기는 <b>신경가소성</b>이 높아 경험의 효과가 크게 나타나는 시기이기 때문입니다.
       </p>
 
-      <div class="chart-shell" aria-label="0~96개월 발달 속도 개념 그래프 자리">
-        <strong>발달 변화량(개념)</strong>
+      <div class="chart-shell" aria-label="0~96개월 발달 속도 개념 그래프">
+        <strong>발달 변화량 (개념)</strong>
         <p class="muted">0~24개월 가장 가파르고, 36~60개월에 정교화, 이후엔 완만히 이어집니다.</p>
         <canvas id="dev-chart" aria-label="0~96개월 발달 속도 선그래프" role="img"></canvas>
         <small>그래프는 개념적 시각화이며 실제 발달 시점은 아이마다 다릅니다.</small>
@@ -155,62 +181,136 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><b>0~2개월</b></td>
-            <td>생리적 안정, 시각·청각 자극 반응, 부모 목소리 인식</td>
-            <td>Papousek &amp; Papousek (1995)</td>
-          </tr>
-          <tr>
-            <td><b>3~4개월</b></td>
-            <td>머리 지지, 시선 맞추기, 미소로 상호작용 시작</td>
-            <td>Trevarthen (1998)</td>
-          </tr>
-          <tr>
-            <td><b>5~6개월</b></td>
-            <td>손-눈 협응, 옹알이, 낯가림 출현</td>
-            <td>Kuhl (2004)</td>
-          </tr>
-          <tr>
-            <td><b>7~9개월</b></td>
-            <td>기기/이동 시작, 탐색 행동, 정서 표현 확장</td>
-            <td>Campos et al. (2000)</td>
-          </tr>
-          <tr>
-            <td><b>10~12개월</b></td>
-            <td>첫걸음, 첫 단어, 사회적 모방 증가</td>
-            <td>Tomasello (2003)</td>
-          </tr>
-          <tr>
-            <td><b>13~18개월</b></td>
-            <td>자율성 발현, 간단한 지시 이해</td>
-            <td>Erikson (1959)</td>
-          </tr>
-          <tr>
-            <td><b>19~24개월</b></td>
-            <td>상징놀이, 감정 표현, 자기인식</td>
-            <td>Meltzoff (2007)</td>
-          </tr>
-          <tr>
-            <td><b>25~36개월</b></td>
-            <td>언어 폭발기, 규칙 이해, 또래 관심 증가</td>
-            <td>Vygotsky (1978)</td>
-          </tr>
-          <tr>
-            <td><b>37~48개월</b></td>
-            <td>협동놀이, 감정조절, 인과 개념</td>
-            <td>Denham et al. (2012)</td>
-          </tr>
-          <tr>
-            <td><b>49~60개월</b></td>
-            <td>자기조절, 문제해결, 문해기 초입</td>
-            <td>Diamond (2013)</td>
-          </tr>
+          <tr><td><b>0~2개월</b></td><td>생리적 안정, 시각·청각 자극 반응, 부모 목소리 인식</td><td>Papousek &amp; Papousek (1995)</td></tr>
+          <tr><td><b>3~4개월</b></td><td>머리 지지, 시선 맞추기, 미소로 상호작용 시작</td><td>Trevarthen (1998)</td></tr>
+          <tr><td><b>5~6개월</b></td><td>손-눈 협응, 옹알이, 낯가림 출현</td><td>Kuhl (2004)</td></tr>
+          <tr><td><b>7~9개월</b></td><td>기기/이동 시작, 탐색 행동, 정서 표현 확장</td><td>Campos et al. (2000)</td></tr>
+          <tr><td><b>10~12개월</b></td><td>첫걸음, 첫 단어, 사회적 모방 증가</td><td>Tomasello (2003)</td></tr>
+          <tr><td><b>13~18개월</b></td><td>자율성 발현, 간단한 지시 이해</td><td>Erikson (1959)</td></tr>
+          <tr><td><b>19~24개월</b></td><td>상징놀이, 감정 표현, 자기인식</td><td>Meltzoff (2007)</td></tr>
+          <tr><td><b>25~36개월</b></td><td>언어 폭발기, 규칙 이해, 또래 관심 증가</td><td>Vygotsky (1978)</td></tr>
+          <tr><td><b>37~48개월</b></td><td>협동놀이, 감정조절, 인과 개념</td><td>Denham et al. (2012)</td></tr>
+          <tr><td><b>49~60개월</b></td><td>자기조절, 문제해결, 문해기 초입</td><td>Diamond (2013)</td></tr>
         </tbody>
       </table>
-
       <p class="muted" style="margin-top:1rem">
-        ※ 위 연구들은 오늘도부모입니다의 월령별 문항·리포트 설계 시 참고한 대표 자료이며,
+        ※ 위 연구들은 걸음마의 월령별 문항·리포트 설계 시 참고한 대표 자료이며,
         실제 서비스에서는 한국 영유아 표본 데이터와 현장 피드백으로 지속 보정됩니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 신규: 부모 개입 언어 효과 -->
+  <section aria-labelledby="s-lang">
+    <div class="card">
+      <h2 id="s-lang">부모 주도 언어 개입의 효과</h2>
+      <p>
+        부모가 아이와 자주, 따뜻하게 대화할수록 언어 이해력·표현력이 함께 자랍니다.
+        단어 수 뿐 아니라 <b>사고력과 공감 능력</b>까지 확장됩니다.
+      </p>
+
+      <div class="chart-shell">
+        <strong>부모 개입 그룹 vs 일반 그룹 비교 (백분위)</strong>
+        <div class="bar-legend">
+          <span><span class="legend-dot" style="background:#6B8F71"></span>일반 그룹 (50백분위)</span>
+          <span><span class="legend-dot" style="background:#128A7F"></span>부모 개입 그룹</span>
+        </div>
+        <canvas id="lang-chart" role="img" aria-label="부모 주도 언어 개입 효과 막대 그래프"></canvas>
+        <small>Ramírez et al. (2020) PNAS 117(38) / Roberts &amp; Kaiser (2011) Am. J. Speech-Language Pathology 20(3)</small>
+      </div>
+
+      <div class="evidence-card">
+        <h4>💬 핵심 인사이트</h4>
+        <p>
+          부모의 대화는 아이의 뇌 속 언어 회로를 직접 단련시킵니다.
+          <b>"자주, 따뜻하게, 반복적으로"</b>가 가장 강력한 발달 개입입니다.
+        </p>
+        <span class="evidence-source">
+          Roberts, M. Y., &amp; Kaiser, A. P. (2011). Am. J. Speech-Language Pathology, 20(3), 180–199.<br>
+          Ramírez, N. F., Lytle, S. R., &amp; Kuhl, P. K. (2020). PNAS, 117(38), 23202–23211.
+        </span>
+      </div>
+
+      <p class="muted" style="font-size:.85rem">
+        걸음마의 <b>AI 채팅 상담</b>과 <b>일일 미션</b>은 이 원리를 기반으로 설계됐습니다.
+        부모가 오늘 아이에게 어떻게 말 걸면 좋을지 구체적인 방법을 제안합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 신규: 부모 놀이 참여 효과 -->
+  <section aria-labelledby="s-play">
+    <div class="card">
+      <h2 id="s-play">부모와 함께한 놀이의 힘</h2>
+      <p>
+        놀이에 참여하는 부모는 단순히 시간을 보내는 게 아니라,
+        아이의 세상을 함께 여는 <b>동반자</b>입니다.
+        부모의 놀이 참여는 인지적 자극, 언어 확장, 정서 안정까지
+        아이의 <b>전인적 발달</b>을 이끕니다.
+      </p>
+
+      <div class="chart-shell">
+        <strong>부모 놀이 참여 효과 (스파이더 차트 개념)</strong>
+        <canvas id="play-chart" role="img" aria-label="부모 놀이 참여 효과 레이더 차트"></canvas>
+        <small>Yogman et al. (2018). Pediatrics, 142(3), e20182058.</small>
+      </div>
+
+      <div class="evidence-card">
+        <h4>🎯 3가지 발달 영역에서 동시 효과</h4>
+        <p>
+          부모 개입 그룹은 일반 그룹 대비<br>
+          • <b>인지/문제해결력</b>: 약 25~30% 향상<br>
+          • <b>어휘·언어 확장</b>: 약 20~25% 향상<br>
+          • <b>사회·정서·자기조절</b>: 약 15~20% 향상
+        </p>
+        <span class="evidence-source">
+          Yogman, M., Garner, A., Hutchinson, J., Hirsh-Pasek, K., &amp; Golinkoff, R. (2018).
+          The Power of Play. Pediatrics, 142(3), e20182058.
+        </span>
+      </div>
+
+      <p class="muted" style="font-size:.85rem">
+        걸음마의 <b>추천 놀이</b>와 <b>외부활동</b>은 발달 점수가 낮은 영역을 중심으로
+        AI가 아이 성향에 맞게 재설명합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 신규: 평가 도구 근거 -->
+  <section aria-labelledby="s-tools">
+    <div class="card">
+      <h2 id="s-tools">검증된 평가 도구를 기반으로</h2>
+      <p>
+        걸음마의 발달 질문지는 국제 표준 검사 구조를 기본으로 하고,
+        한국 아동의 실제 생활 맥락을 반영한 독자적 평가 체계 <b>K-TPI</b>로 완성했습니다.
+      </p>
+
+      <div class="tool-grid">
+        <div class="tool-item">
+          <h4>ASQ-3</h4>
+          <p>Ages &amp; Stages Questionnaires<br>
+          부모 보고식 · 2개월 단위 평가 구조<br>
+          가정에서도 활용 가능한 스크리닝 도구</p>
+        </div>
+        <div class="tool-item">
+          <h4>Denver II</h4>
+          <p>Developmental Screening Test<br>
+          발달 창(window) 개념 도입<br>
+          "보통 몇 개월에 나타나는 행동" 반영</p>
+        </div>
+        <div class="tool-item">
+          <h4>K-CDI</h4>
+          <p>한국 아동 발달 검사<br>
+          보건복지부·육아정책연구소 자료 기반<br>
+          한국 문화·생활습관(젓가락질, 신발 정리 등) 반영</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <p class="muted" style="font-size:.85rem">
+        ※ K-TPI 및 리포트 생성 로직은 <b>특허 출원 중</b> (출원번호: 10-2025-0061591)<br>
+        ※ 본 평가는 스크리닝 목적이며, 정밀 진단은 소아과 전문의 또는 발달심리 전문가 상담을 권장합니다.
       </p>
     </div>
   </section>
@@ -230,112 +330,170 @@
 
 <footer class="footer">
   <div class="container">
-    <small>© todayparent · 띵동(ddingdong)</small>
+    <small>© todayparent · 띵동(ddingdong) &nbsp;|&nbsp; 특허 출원 중 (10-2025-0061591)</small>
   </div>
 </footer>
 
-<!-- 그래프용 데이터 (0~96m) -->
+<!-- 데이터 -->
 <script>
-  window.__TP_DEV_DATA__ = [
-    { "month": 0,  "plasticity": 30 },
-    { "month": 6,  "plasticity": 75 },
-    { "month": 12, "plasticity": 90 },
-    { "month": 24, "plasticity": 95 },
-    { "month": 36, "plasticity": 85 },
-    { "month": 48, "plasticity": 70 },
-    { "month": 60, "plasticity": 60 },
-    { "month": 72, "plasticity": 55 },
-    { "month": 96, "plasticity": 50 }
-  ];
+window.__TP_DEV_DATA__ = [
+  {"month":0,"plasticity":30},{"month":6,"plasticity":75},
+  {"month":12,"plasticity":90},{"month":24,"plasticity":95},
+  {"month":36,"plasticity":85},{"month":48,"plasticity":70},
+  {"month":60,"plasticity":60},{"month":72,"plasticity":55},
+  {"month":96,"plasticity":50}
+];
 </script>
 
-<!-- 순수 JS 차트 렌더러 (0~96 전체 표시 + 0~60 하이라이트) -->
 <script>
-(function () {
-  const data = window.__TP_DEV_DATA__ || [];
-  const canvas = document.getElementById('dev-chart');
-  if (!canvas || !data.length) return;
-
-  const ctx = canvas.getContext('2d');
-
-  function draw() {
-    const parent = canvas.parentElement;
-    const w = parent.clientWidth;
-    const h = 180;
-    canvas.width = w * window.devicePixelRatio;
-    canvas.height = h * window.devicePixelRatio;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-
-    const padding = { top: 10, right: 12, bottom: 20, left: 32 };
-    const innerW = w - padding.left - padding.right;
-    const innerH = h - padding.top - padding.bottom;
-
-    // 전체 스케일은 0~96m
-    const maxMonth = 96;
-    const maxVal   = Math.max.apply(null, data.map(d => d.plasticity));
-
-    ctx.clearRect(0, 0, w, h);
-
-    // 1) 0~60m 하이라이트
-    const highlightRatio = 60 / maxMonth;
-    const highlightW = innerW * highlightRatio;
-    ctx.fillStyle = 'rgba(18,138,127,0.07)';
-    ctx.fillRect(padding.left, padding.top, highlightW, innerH);
-
-    // 2) 배경 그리드
-    ctx.strokeStyle = 'rgba(0,0,0,0.05)';
-    ctx.lineWidth = 1;
-    const steps = 3;
-    for (let i = 0; i <= steps; i++) {
-      const y = padding.top + (innerH / steps) * i;
-      ctx.beginPath();
-      ctx.moveTo(padding.left, y);
-      ctx.lineTo(w - padding.right, y);
-      ctx.stroke();
-    }
-
-    // 3) 라인
+/* ── 1. 발달 속도 라인 차트 ── */
+(function(){
+  const data=window.__TP_DEV_DATA__||[];
+  const canvas=document.getElementById('dev-chart');
+  if(!canvas||!data.length)return;
+  const ctx=canvas.getContext('2d');
+  function draw(){
+    const p=canvas.parentElement,w=p.clientWidth,h=180;
+    canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
+    canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    const pad={top:10,right:12,bottom:20,left:32};
+    const iW=w-pad.left-pad.right,iH=h-pad.top-pad.bottom;
+    const maxM=96,maxV=Math.max(...data.map(d=>d.plasticity));
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle='rgba(18,138,127,0.07)';
+    ctx.fillRect(pad.left,pad.top,iW*(60/maxM),iH);
+    ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){const y=pad.top+(iH/3)*i;ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();}
     ctx.beginPath();
-    data.forEach((d, idx) => {
-      const x = padding.left + (d.month / maxMonth) * innerW;
-      const y = padding.top + innerH - (d.plasticity / maxVal) * innerH;
-      if (idx === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+    data.forEach((d,i)=>{
+      const x=pad.left+(d.month/maxM)*iW,y=pad.top+iH-(d.plasticity/maxV)*iH;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
     });
-    ctx.strokeStyle = '#128A7F';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // 4) 점
-    data.forEach(d => {
-      const x = padding.left + (d.month / maxMonth) * innerW;
-      const y = padding.top + innerH - (d.plasticity / maxVal) * innerH;
-      ctx.beginPath();
-      ctx.arc(x, y, 3, 0, Math.PI * 2);
-      ctx.fillStyle = '#128A7F';
-      ctx.fill();
+    ctx.strokeStyle='#128A7F';ctx.lineWidth=2;ctx.stroke();
+    data.forEach(d=>{
+      const x=pad.left+(d.month/maxM)*iW,y=pad.top+iH-(d.plasticity/maxV)*iH;
+      ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle='#128A7F';ctx.fill();
     });
-
-    // 5) x축 레이블
-    const marks = [0, 24, 48, 60, 72, 96];
-    ctx.fillStyle = 'rgba(0,0,0,0.35)';
-    ctx.font = '11px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-    marks.forEach(m => {
-      const x = padding.left + (m / maxMonth) * innerW;
-      const y = h - 4;
-      ctx.fillText(m + 'm', x - 10, y);
-    });
-
-    // 6) y축 레이블
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.fillText('높음', 4, padding.top + 4);
-    ctx.fillText('낮음', 4, h - padding.bottom);
+    const marks=[0,24,48,60,72,96];
+    ctx.fillStyle='rgba(0,0,0,0.35)';
+    ctx.font='11px system-ui,sans-serif';
+    marks.forEach(m=>{ctx.fillText(m+'m',pad.left+(m/maxM)*iW-10,h-4);});
+    ctx.fillStyle='rgba(0,0,0,0.3)';
+    ctx.fillText('높음',4,pad.top+4);ctx.fillText('낮음',4,h-pad.bottom);
   }
+  draw();window.addEventListener('resize',draw);
+})();
 
-  draw();
-  window.addEventListener('resize', draw);
+/* ── 2. 언어 개입 막대 차트 ── */
+(function(){
+  const canvas=document.getElementById('lang-chart');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const labels=['표현언어','이해언어','대화 턴수','어휘 점수'];
+  const base=[50,50,50,50];
+  const inter=[79,64,67,66];
+  function draw(){
+    const p=canvas.parentElement,w=p.clientWidth,h=200;
+    canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
+    canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    const pad={top:16,right:16,bottom:32,left:36};
+    const iW=w-pad.left-pad.right,iH=h-pad.top-pad.bottom;
+    const maxV=100,n=labels.length;
+    const groupW=iW/n,barW=groupW*0.32,gap=groupW*0.06;
+    ctx.clearRect(0,0,w,h);
+    // 그리드
+    ctx.strokeStyle='rgba(0,0,0,0.06)';ctx.lineWidth=1;
+    [25,50,75,100].forEach(v=>{
+      const y=pad.top+iH-(v/maxV)*iH;
+      ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();
+      ctx.fillStyle='rgba(0,0,0,0.3)';ctx.font='10px system-ui,sans-serif';
+      ctx.fillText(v,2,y+4);
+    });
+    labels.forEach((lbl,i)=>{
+      const cx=pad.left+groupW*i+groupW/2;
+      // 일반 그룹
+      const bh0=(base[i]/maxV)*iH;
+      ctx.fillStyle='#6B8F71';
+      ctx.fillRect(cx-barW-gap/2,pad.top+iH-bh0,barW,bh0);
+      // 개입 그룹
+      const bh1=(inter[i]/maxV)*iH;
+      ctx.fillStyle='#128A7F';
+      ctx.fillRect(cx+gap/2,pad.top+iH-bh1,barW,bh1);
+      // 값 표시
+      ctx.fillStyle='rgba(0,0,0,0.5)';ctx.font='11px system-ui,sans-serif';ctx.textAlign='center';
+      ctx.fillText(inter[i],cx+gap/2+barW/2,pad.top+iH-bh1-4);
+      // 라벨
+      ctx.fillStyle='rgba(0,0,0,0.5)';ctx.font='11px system-ui,sans-serif';ctx.textAlign='center';
+      ctx.fillText(lbl,cx,h-6);
+    });
+    ctx.textAlign='left';
+  }
+  draw();window.addEventListener('resize',draw);
+})();
+
+/* ── 3. 놀이 효과 레이더 차트 ── */
+(function(){
+  const canvas=document.getElementById('play-chart');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const labels=['인지/문제해결','어휘·언어 확장','사회·정서·자기조절'];
+  const base=[50,50,50];
+  const inter=[75,70,65];
+  function draw(){
+    const p=canvas.parentElement,w=Math.min(p.clientWidth,360),h=220;
+    canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
+    canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    const cx=w/2,cy=h/2+10,r=Math.min(w,h)*0.35;
+    const n=labels.length;
+    const angles=labels.map((_,i)=>(-Math.PI/2)+(2*Math.PI/n)*i);
+    ctx.clearRect(0,0,w,h);
+    // 배경 망 (3단계)
+    [0.33,0.67,1].forEach(ratio=>{
+      ctx.beginPath();
+      angles.forEach((a,i)=>{
+        const x=cx+Math.cos(a)*r*ratio,y=cy+Math.sin(a)*r*ratio;
+        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      });
+      ctx.closePath();
+      ctx.strokeStyle='rgba(0,0,0,0.08)';ctx.lineWidth=1;ctx.stroke();
+    });
+    // 축선
+    angles.forEach(a=>{
+      ctx.beginPath();ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);
+      ctx.strokeStyle='rgba(0,0,0,0.08)';ctx.lineWidth=1;ctx.stroke();
+    });
+    // 일반 그룹
+    ctx.beginPath();
+    angles.forEach((a,i)=>{
+      const ratio=base[i]/100;
+      const x=cx+Math.cos(a)*r*ratio,y=cy+Math.sin(a)*r*ratio;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.closePath();ctx.fillStyle='rgba(107,143,113,0.2)';ctx.fill();
+    ctx.strokeStyle='#6B8F71';ctx.lineWidth=1.5;ctx.stroke();
+    // 개입 그룹
+    ctx.beginPath();
+    angles.forEach((a,i)=>{
+      const ratio=inter[i]/100;
+      const x=cx+Math.cos(a)*r*ratio,y=cy+Math.sin(a)*r*ratio;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.closePath();ctx.fillStyle='rgba(18,138,127,0.18)';ctx.fill();
+    ctx.strokeStyle='#128A7F';ctx.lineWidth=2;ctx.stroke();
+    // 라벨
+    ctx.fillStyle='rgba(0,0,0,0.55)';ctx.font='12px system-ui,sans-serif';ctx.textAlign='center';
+    angles.forEach((a,i)=>{
+      const offset=r+18;
+      const x=cx+Math.cos(a)*offset,y=cy+Math.sin(a)*offset+4;
+      ctx.fillText(labels[i],x,y);
+    });
+    ctx.textAlign='left';
+  }
+  draw();window.addEventListener('resize',draw);
 })();
 </script>
 
