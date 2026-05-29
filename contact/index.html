@@ -4,273 +4,500 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>문의 · todayparent</title>
-  <meta name="description" content="부모/기관 누구나 문의할 수 있는 통합 문의 양식.">
-  <link rel="icon" href="/assets/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
+  <meta name="description" content="부모/기관 누구나 문의할 수 있는 통합 문의 양식. 걸음마 앱 사용, 기관 제휴 및 데모 요청.">
+  <link rel="canonical" href="https://www.todayparent.com/contact/">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/css/style.css?v=9">
+  <meta name="theme-color" content="#128A7F">
+
   <style>
-    /* 폼 보조 스타일 */
-    form{display:grid;gap:14px;max-width:760px}
-    .field{display:grid;gap:6px}
-    .row{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    input,select,textarea{
-      font:inherit;padding:.8rem .9rem;border:1px solid var(--line);border-radius:12px;background:#fff
+    /* ── 문의 페이지 전용 ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 1.5rem;
+      align-items: start;
     }
-    textarea{min-height:160px;resize:vertical}
-    .hint{font-size:.9rem;color:var(--muted)}
-    .card.form{background:#fff}
-    .hidden{display:none !important}
-    .visually-hidden{position:absolute;left:-9999px}
-    @media (max-width: 560px){
-      form{ gap:12px; }
-      .row{ grid-template-columns:1fr; gap:10px; }
-      input,select,textarea{ font-size:16px; } /* iOS 확대 방지 */
+
+    /* 사이드 정보 카드 */
+    .contact-info-card {
+      background: linear-gradient(160deg, var(--teal) 0%, var(--teal-dark) 100%);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.75rem;
+      color: #fff;
+      position: sticky;
+      top: 80px;
+    }
+    .contact-info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .contact-info-item {
+      display: flex;
+      gap: .6rem;
+      margin-bottom: .85rem;
+      font-size: .88rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.6;
+    }
+    .contact-info-item .ci-icon {
+      font-size: 1rem;
+      margin-top: .1rem;
+      flex-shrink: 0;
+    }
+    .contact-info-item a { color: rgba(255,255,255,.9); text-decoration: underline; }
+    .contact-info-card hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.18);
+      margin: 1.1rem 0;
+    }
+    .contact-info-card .ci-label {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: .6rem;
+    }
+
+    /* 폼 카드 */
+    .form-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line-soft);
+    }
+
+    /* 탭 형태 문의 유형 선택 */
+    .type-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      padding: .3rem;
+    }
+    .type-tab {
+      flex: 1;
+      text-align: center;
+      padding: .6rem .5rem;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 800;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: background .15s, color .15s, box-shadow .15s;
+    }
+    .type-tab.active {
+      background: var(--bg-card);
+      color: var(--teal-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 폼 구분 */
+    .form-section-title {
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 1.25rem 0 .75rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    /* 동의 체크박스 */
+    .agree-row {
+      display: flex;
+      gap: .6rem;
+      align-items: flex-start;
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: .25rem;
+    }
+    .agree-row input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--teal);
+      flex-shrink: 0;
+      margin-top: .2rem;
+      cursor: pointer;
+    }
+
+    /* 제출 영역 */
+    .form-submit {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    .form-submit .hint {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    .hidden { display: none !important; }
+    .visually-hidden {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 760px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-info-card { position: static; }
+      .form-submit .hint { margin-left: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .form-card { padding: 1.4rem 1.2rem; }
+      .field input,
+      .field select,
+      .field textarea { font-size: 16px; }
     }
   </style>
 </head>
 <body>
+<a href="#main" class="sr-only">본문 바로가기</a>
+
 <div class="container">
-  <nav>
-    <a class="logo" href="/"><img src="/assets/logo.svg" width="140" height="28" alt=""></a>
-    <div class="links">
-      <a href="/parents/">오늘도부모입니다</a>
-      <a href="/tiny/">Tiny Signals</a>
-      <a href="/about/">about</a>
-      <a href="/contact/" aria-current="page">문의</a>
+  <nav aria-label="주요 메뉴">
+    <a class="logo" href="/" aria-label="todayparent 홈">
+      <img src="/assets/logo.svg" width="140" height="28" alt="todayparent 로고" decoding="async">
+    </a>
+    <div class="nav-links" role="menubar">
+      <a role="menuitem" href="/parents/">걸음마</a>
+      <a role="menuitem" href="/tiny/">TinySignal</a>
+      <a role="menuitem" href="/about/">about</a>
+      <a role="menuitem" href="/contact/" aria-current="page">문의</a>
     </div>
   </nav>
 
-  <header class="hero">
+  <header class="hero" id="main" style="padding-bottom:32px">
     <p class="kicker">Contact</p>
-    <h1>문의하기 (부모/기관)</h1>
-    <p class="muted">간단히 적어 보내 주세요. 내용은 자유롭게 추가/수정하셔도 좋아요.</p>
+    <h1>문의하기</h1>
+    <p class="muted">부모든 기관이든 간단히 적어 보내 주세요.<br>내용은 자유롭게 추가·수정하셔도 좋아요.</p>
   </header>
 
-  <section>
-    <div class="card form">
-      <form id="contactForm">
-        <!-- 스팸 방지(봇용) -->
-        <input class="visually-hidden" type="text" name="website" autocomplete="off">
+  <section aria-labelledby="s-form">
+    <div class="contact-layout">
 
-        <!-- 0) 공통: 문의 유형 -->
-        <div class="field">
-          <label for="type">문의 유형*</label>
-          <select id="type" name="문의 유형" required>
-            <option value="parent">부모(개인)</option>
-            <option value="org">기관/센터 제휴</option>
-          </select>
-          <p class="hint">부모는 사용/구매/상담 문의, 기관은 제휴/도입 문의</p>
+      <!-- 폼 -->
+      <div class="form-card" role="main">
+        <h2 id="s-form" style="margin-bottom:1.25rem">문의 양식</h2>
+
+        <!-- 탭: 문의 유형 -->
+        <div class="type-tabs" role="tablist" aria-label="문의 유형 선택">
+          <button class="type-tab active" role="tab" aria-selected="true"
+                  id="tab-parent" aria-controls="panel-parent" type="button"
+                  onclick="switchType('parent')">
+            👪 부모(개인)
+          </button>
+          <button class="type-tab" role="tab" aria-selected="false"
+                  id="tab-org" aria-controls="panel-org" type="button"
+                  onclick="switchType('org')">
+            🏫 기관 / 센터 제휴
+          </button>
         </div>
 
-        <!-- A) 부모 전용 필드 -->
-        <div id="parentFields" data-role="parent">
-          <div class="row">
-            <div class="field">
-              <label for="p_name">보호자명*</label>
-              <input id="p_name" name="보호자명" placeholder="예) 홍길동">
+        <form id="contactForm" novalidate>
+          <!-- 스팸 방지 -->
+          <input class="visually-hidden" type="text" name="website" autocomplete="off" tabindex="-1">
+
+          <!-- ── 부모 패널 ── -->
+          <div id="panel-parent" role="tabpanel" aria-labelledby="tab-parent">
+
+            <div class="form-section-title">기본 정보</div>
+            <div class="row-2">
+              <div class="field">
+                <label for="p_name">보호자명 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <input id="p_name" name="보호자명" placeholder="예) 홍길동" autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="p_email">이메일 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <input id="p_email" name="이메일" type="email" placeholder="you@example.com" autocomplete="email">
+              </div>
             </div>
+
+            <div class="row-2" style="margin-top:1rem">
+              <div class="field">
+                <label for="p_phone">연락처</label>
+                <input id="p_phone" name="연락처" placeholder="010-1234-5678" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="p_childage">아이 월령/나이</label>
+                <input id="p_childage" name="아이 정보" placeholder="예) 41개월 / 4세반">
+              </div>
+            </div>
+
+            <div class="form-section-title" style="margin-top:1.5rem">관심 서비스</div>
+            <div class="row-2">
+              <div class="field">
+                <label for="p_interest">관심 서비스 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <select id="p_interest" name="관심 서비스">
+                  <option value="">선택하세요</option>
+                  <option>걸음마</option>
+                  <option>TinySignal</option>
+                  <option>둘 다</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="p_pref">선호 연락 방법</label>
+                <select id="p_pref" name="선호 연락">
+                  <option value="">선택 없음</option>
+                  <option>이메일</option>
+                  <option>전화/문자</option>
+                  <option>카카오톡</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section-title" style="margin-top:1.5rem">문의 내용</div>
             <div class="field">
-              <label for="p_email">이메일*</label>
-              <input id="p_email" name="이메일" type="email" placeholder="you@example.com">
+              <label for="p_message">문의 내용 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+              <textarea id="p_message" name="문의 내용"
+                placeholder="궁금한 점 / 사용 중 불편 / 구매 문의 / 상담 요청 등을 자유롭게 적어 주세요."></textarea>
+              <p class="hint">예: 41개월 아이 평가 리포트 관련 질문 / 결제 전 데모 희망 등</p>
             </div>
           </div>
 
-          <div class="row">
-            <div class="field">
-              <label for="p_phone">연락처</label>
-              <input id="p_phone" name="연락처" placeholder="010-1234-5678">
+          <!-- ── 기관 패널 ── -->
+          <div id="panel-org" role="tabpanel" aria-labelledby="tab-org" class="hidden">
+
+            <div class="form-section-title">기관 정보</div>
+            <div class="row-2">
+              <div class="field">
+                <label for="org">기관명 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <input id="org" name="기관명" placeholder="예) 딩동어린이집">
+              </div>
+              <div class="field">
+                <label for="person">담당자명 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <input id="person" name="담당자" placeholder="예) 홍길동">
+              </div>
             </div>
+
+            <div class="row-2" style="margin-top:1rem">
+              <div class="field">
+                <label for="email">이메일 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <input id="email" name="이메일" type="email" placeholder="you@example.com" autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="phone">연락처</label>
+                <input id="phone" name="연락처" placeholder="010-1234-5678" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="form-section-title" style="margin-top:1.5rem">도입 정보</div>
+            <div class="row-2">
+              <div class="field">
+                <label for="interest">관심 서비스 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+                <select id="interest" name="관심 서비스">
+                  <option value="">선택하세요</option>
+                  <option>걸음마</option>
+                  <option>TinySignal</option>
+                  <option>둘 다</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="age">주 이용 연령대</label>
+                <select id="age" name="연령대">
+                  <option value="">선택 없음</option>
+                  <option>12–24개월</option>
+                  <option>24–36개월</option>
+                  <option>36–48개월</option>
+                  <option>48–60개월</option>
+                  <option>60개월+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row-2" style="margin-top:1rem">
+              <div class="field">
+                <label for="scale">예상 이용 규모</label>
+                <select id="scale" name="규모">
+                  <option value="">선택 없음</option>
+                  <option>10명 이내</option>
+                  <option>11–30명</option>
+                  <option>31–100명</option>
+                  <option>100명+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="when">희망 일정</label>
+                <input id="when" name="희망 일정" type="text" placeholder="예) 11월 2주차 데모 희망">
+              </div>
+            </div>
+
+            <div class="form-section-title" style="margin-top:1.5rem">문의 내용</div>
             <div class="field">
-              <label for="p_childage">아이 월령/나이(선택)</label>
-              <input id="p_childage" name="아이 정보" placeholder="예) 41개월 / 4세반">
+              <label for="message">문의 내용 <span aria-hidden="true" style="color:var(--coral)">*</span></label>
+              <textarea id="message" name="문의 내용"
+                placeholder="필요/배경, 현재 프로그램, 목표, 도입 시기 등을 알려주세요."></textarea>
+              <p class="hint">예: 3세 반 2개, 4세 반 2개 운영 / 분기별 부모상담과 연계 / TinySignal 행사 제안 등</p>
             </div>
           </div>
 
-          <div class="row">
-            <div class="field">
-              <label for="p_interest">관심 서비스*</label>
-              <select id="p_interest" name="관심 서비스">
-                <option value="">선택하세요</option>
-                <option>오늘도부모입니다</option>
-                <option>Tiny Signals</option>
-                <option>둘 다</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="p_pref">선호 연락 방법</label>
-              <select id="p_pref" name="선호 연락">
-                <option value="">선택 없음</option>
-                <option>이메일</option>
-                <option>전화/문자</option>
-                <option>카카오톡</option>
-              </select>
-            </div>
+          <!-- 공통 하단 -->
+          <div style="margin-top:1.5rem">
+            <label class="agree-row">
+              <input type="checkbox" id="agree" required>
+              <span>개인정보 제공(연락 및 응답 목적) 동의 — <a href="/privacy/" target="_blank">방침 보기</a></span>
+            </label>
           </div>
 
-          <div class="field">
-            <label for="p_message">문의 내용*</label>
-            <textarea id="p_message" name="문의 내용" placeholder="궁금한 점/사용 중 불편/구매 문의/상담 요청 등을 적어 주세요."></textarea>
-            <p class="hint">예: 41개월 아이 평가 리포트 관련 질문 / 결제 전 데모 희망 등</p>
+          <div class="form-submit">
+            <button class="btn primary" type="submit">✉️&nbsp; 메일 보내기</button>
+            <a class="btn" href="mailto:ddingdong.parent@gmail.com">이메일 앱 열기</a>
+            <span class="hint">수신: ddingdong.parent@gmail.com</span>
           </div>
+        </form>
+      </div>
+
+      <!-- 사이드 정보 -->
+      <aside class="contact-info-card" aria-label="연락처 정보">
+        <h3>연락처 &amp; 안내</h3>
+
+        <div class="ci-label">이메일</div>
+        <div class="contact-info-item">
+          <span class="ci-icon">📧</span>
+          <span><a href="mailto:ddingdong.parent@gmail.com">ddingdong.parent@gmail.com</a></span>
         </div>
 
-        <!-- B) 기관 전용 필드 (기존 유지) -->
-        <div id="orgFields" data-role="org" class="hidden">
-          <div class="row">
-            <div class="field">
-              <label for="org">기관명*</label>
-              <input id="org" name="기관명" placeholder="예) 딩동어린이집">
-            </div>
-            <div class="field">
-              <label for="person">담당자명*</label>
-              <input id="person" name="담당자" placeholder="예) 홍길동">
-            </div>
-          </div>
+        <hr>
 
-          <div class="row">
-            <div class="field">
-              <label for="email">이메일*</label>
-              <input id="email" name="이메일" type="email" placeholder="you@example.com">
-            </div>
-            <div class="field">
-              <label for="phone">연락처</label>
-              <input id="phone" name="연락처" placeholder="010-1234-5678">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="field">
-              <label for="interest">관심 서비스*</label>
-              <select id="interest" name="관심 서비스">
-                <option value="">선택하세요</option>
-                <option>오늘도부모입니다</option>
-                <option>Tiny Signals</option>
-                <option>둘 다</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="age">주 이용 연령대</label>
-              <select id="age" name="연령대">
-                <option value="">선택 없음</option>
-                <option>12–24개월</option>
-                <option>24–36개월</option>
-                <option>36–48개월</option>
-                <option>48–60개월</option>
-                <option>60개월+</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="field">
-              <label for="scale">예상 이용 규모</label>
-              <select id="scale" name="규모">
-                <option value="">선택 없음</option>
-                <option>10명 이내</option>
-                <option>11–30명</option>
-                <option>31–100명</option>
-                <option>100명+</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="when">희망 일정</label>
-              <input id="when" name="희망 일정" type="text" placeholder="예) 11월 2주차 데모 희망">
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="message">문의 내용*</label>
-            <textarea id="message" name="문의 내용" placeholder="필요/배경, 현재 프로그램, 목표, 도입 시기 등을 알려주세요."></textarea>
-            <p class="hint">예: 3세 반 2개, 4세 반 2개 운영 / 분기별 부모상담과 연계 / Tiny Signals 행사 제안 등</p>
-          </div>
+        <div class="ci-label">부모 문의</div>
+        <div class="contact-info-item">
+          <span class="ci-icon">👪</span>
+          <span>앱 사용, 구매, AI 상담, 발달 평가 관련 질문</span>
         </div>
 
-        <label style="display:flex;gap:8px;align-items:center">
-          <input type="checkbox" id="agree" required>
-          개인정보 제공(연락 및 응답 목적) 동의
-        </label>
-
-        <div class="cta">
-          <button class="btn primary" type="submit">메일 보내기</button>
-          <a class="btn" href="mailto:ddingdong.parent@gmail.com">이메일 앱 열기</a>
+        <div class="ci-label" style="margin-top:.75rem">기관 제휴</div>
+        <div class="contact-info-item">
+          <span class="ci-icon">🏫</span>
+          <span>유치원, 어린이집, 발달센터 제휴 및 데모 요청 환영</span>
         </div>
-        <p class="hint">수신: ddingdong.parent@gmail.com</p>
-      </form>
+
+        <hr>
+
+        <div class="ci-label">응답 시간</div>
+        <div class="contact-info-item">
+          <span class="ci-icon">⏰</span>
+          <span>영업일 기준 1~2일 내 회신드립니다</span>
+        </div>
+
+        <hr>
+
+        <div class="ci-label">운영사</div>
+        <div class="contact-info-item" style="flex-direction:column;gap:.2rem">
+          <span>띵동 (ddingdong)</span>
+          <span style="font-size:.8rem;opacity:.7">사업자: 447-56-00943</span>
+          <span style="font-size:.8rem;opacity:.7">화성특례시 동탄신리천로1길 74</span>
+        </div>
+      </aside>
+
     </div>
   </section>
 </div>
 
-<footer class="footer"><div class="container"><small>© todayparent</small></div></footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/logo.svg" alt="todayparent 로고" width="120" height="24">
+        <p>© 띵동(ddingdong) · todayparent.com</p>
+        <p>특허 출원 중 (10-2025-0061591) | 사업자등록번호: 447-56-00943</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">홈</a>
+        <a href="/parents/">걸음마</a>
+        <a href="/tiny/">TinySignal</a>
+        <a href="/about/">about</a>
+        <a href="/privacy/">개인정보처리방침</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
-  const form = document.getElementById('contactForm');
-  const typeSel = document.getElementById('type');
-  const parentBox = document.getElementById('parentFields');
-  const orgBox = document.getElementById('orgFields');
+  var currentType = 'parent';
 
-  // 부모/기관 전환 시 보이기/필수 토글
-  function syncFields() {
-    const isParent = typeSel.value === 'parent';
+  function switchType(type) {
+    currentType = type;
 
-    parentBox.classList.toggle('hidden', !isParent);
-    orgBox.classList.toggle('hidden', isParent);
+    document.getElementById('panel-parent').classList.toggle('hidden', type !== 'parent');
+    document.getElementById('panel-org').classList.toggle('hidden', type !== 'org');
 
-    // 부모 필수: 보호자명, 이메일, 관심 서비스, 문의 내용
-    toggleRequired('#p_name, #p_email, #p_interest, #p_message', isParent);
-    // 기관 필수: 기관명, 담당자, 이메일, 관심 서비스, 문의 내용
-    toggleRequired('#org, #person, #email, #interest, #message', !isParent);
-  }
+    document.getElementById('tab-parent').classList.toggle('active', type === 'parent');
+    document.getElementById('tab-parent').setAttribute('aria-selected', type === 'parent');
+    document.getElementById('tab-org').classList.toggle('active', type === 'org');
+    document.getElementById('tab-org').setAttribute('aria-selected', type === 'org');
 
-  function toggleRequired(selector, on) {
-    form.querySelectorAll(selector).forEach(el => {
-      if (!el) return;
-      if (on) el.setAttribute('required','required');
-      else el.removeAttribute('required');
+    // required 토글
+    var parentRequired = ['p_name', 'p_email', 'p_interest', 'p_message'];
+    var orgRequired    = ['org', 'person', 'email', 'interest', 'message'];
+
+    parentRequired.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.required = (type === 'parent');
+    });
+    orgRequired.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.required = (type === 'org');
     });
   }
 
-  typeSel.addEventListener('change', syncFields);
-  syncFields(); // 초기 적용
+  // 초기 적용
+  switchType('parent');
 
-  form.addEventListener('submit', (e) => {
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // 봇 필드(숨김)에 값이 있으면 중단
-    if (form.website && form.website.value) return;
+    // 봇 필터
+    var botField = this.elements['website'];
+    if (botField && botField.value) return;
 
-    const isParent = typeSel.value === 'parent';
+    var isParent = currentType === 'parent';
+    var form     = this;
 
-    // 화면에 보이는(숨김 아님) 입력만 수집
-    const inputs = Array.from(form.elements).filter(el => {
+    var inputs = Array.from(form.elements).filter(function(el) {
       if (!el.name) return false;
-      // 숨겨진 섹션 내부는 제외
-      if (el.closest('.hidden')) return false;
-      // 버튼 제외
+      if (el.closest && el.closest('.hidden')) return false;
       if (el.type === 'submit' || el.tagName === 'BUTTON') return false;
-      // 스팸필드 제외
       if (el.name === 'website') return false;
+      if (el.type === 'checkbox') return false;
       return true;
     });
 
-    const lines = [];
-    inputs.forEach(el => {
-      const label = el.name;
-      const value = (el.value || '').toString().trim();
-      if (!label) return;
-      if (value) lines.push(`${label}: ${value}`);
+    var lines = [];
+    inputs.forEach(function(el) {
+      var val = (el.value || '').trim();
+      if (val) lines.push(el.name + ': ' + val);
     });
 
-    const subject = isParent
-      ? `[부모문의] ${getVal('보호자명')} · ${getVal('관심 서비스')}`
-      : `[제휴문의] ${getVal('기관명')} · ${getVal('관심 서비스')}`;
-
-    const body = encodeURIComponent(lines.join('\n'));
-    const mailto = `mailto:ddingdong.parent@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-    window.location.href = mailto;
-
     function getVal(name) {
-      const el = inputs.find(i => i.name === name);
+      var el = inputs.find(function(i) { return i.name === name; });
       return el ? el.value.trim() : '';
     }
+
+    var subject = isParent
+      ? '[부모문의] ' + getVal('보호자명') + ' · ' + getVal('관심 서비스')
+      : '[제휴문의] ' + getVal('기관명') + ' · ' + getVal('관심 서비스');
+
+    var body    = encodeURIComponent(lines.join('\n'));
+    var mailto  = 'mailto:ddingdong.parent@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
+    window.location.href = mailto;
   });
 </script>
 </body>

@@ -3,24 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>걸음마 · 영유아 발달 앱 · todayparent</title>
   <meta name="description" content="0~60개월 영유아 발달 평가 앱 걸음마. K-TPI 기반 맞춤 리포트, AI 발달 상담, TinySignal 게임, 일일 미션 스탬프까지. 아이의 지금을 이해하고 오늘 바로 실천하세요.">
   <link rel="canonical" href="https://www.todayparent.com/parents/">
-
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
-  <link rel="preload" as="image" href="/assets/logo.svg" imagesrcset="/assets/logo.svg">
-  <link rel="stylesheet" href="/css/style.css?v=8">
+  <link rel="preload" as="image" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/css/style.css?v=9">
   <meta name="theme-color" content="#128A7F">
-
   <meta property="og:title" content="걸음마 · 영유아 발달 앱">
   <meta property="og:description" content="K-TPI 기반 맞춤 리포트, AI 상담, TinySignal 게임. 아이의 지금을 이해하고 오늘 바로 실천하세요.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.todayparent.com/parents/">
   <meta property="og:image" content="/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,128 +31,85 @@
   </script>
 
   <style>
-    /* 앱 아이콘 */
-    .app-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.12);
-      margin-bottom: .75rem;
-    }
-
-    /* 스토어 버튼 */
-    .store-buttons {
-      display: flex;
-      gap: .625rem;
-      flex-wrap: wrap;
-      margin-top: 1.25rem;
-    }
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .65rem 1.25rem;
-      border-radius: 10px;
-      background: #0f172a;
-      color: #fff !important;
-      font-size: .875rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity .15s;
-    }
-    .store-btn:hover { opacity: .82; }
-    .store-btn.soon {
-      background: transparent;
-      color: var(--muted, rgba(0,0,0,.4)) !important;
-      border: 1px dashed rgba(0,0,0,.18);
-      cursor: default;
-    }
-
-    /* 기능 그리드 */
-    .feature-grid {
+    /* ── 히어로 레이아웃 ── */
+    .hero-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: .875rem;
-      margin-top: 1rem;
-    }
-    .feature-item {
-      background: var(--bg-soft, #f6faf9);
-      border-radius: 14px;
-      padding: 1.1rem 1.25rem;
-    }
-    .feature-item .fi-emoji {
-      font-size: 1.6rem;
-      margin-bottom: .4rem;
-      display: block;
-    }
-    .feature-item h3 {
-      font-size: .95rem;
-      font-weight: 700;
-      margin: 0 0 .3rem;
-      color: var(--ink, #0f172a);
-    }
-    .feature-item p {
-      font-size: .85rem;
-      color: var(--muted, rgba(0,0,0,.55));
-      margin: 0;
-      line-height: 1.65;
-    }
-
-    /* 플로우 단계 */
-    .flow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
       align-items: center;
-      margin-top: .75rem;
     }
-    .flow-step {
-      background: #128A7F;
-      color: #fff;
-      border-radius: 8px;
-      padding: .35rem .85rem;
-      font-size: .85rem;
-      font-weight: 600;
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-visual .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .app-name-tag {
+      background: var(--teal-pale);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: .3rem .9rem;
+      font-size: .8rem;
+      font-weight: 800;
+      color: var(--teal-dark);
       white-space: nowrap;
     }
-    .flow-arrow {
-      color: var(--muted, rgba(0,0,0,.3));
-      font-size: 1.1rem;
+
+    /* ── 사용 흐름 ── */
+    .flow-card {
+      background: linear-gradient(135deg, var(--teal-pale) 0%, #fff 100%);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      border: 1px solid var(--line-soft);
+      margin-bottom: 1.25rem;
+    }
+    .flow-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: .9rem;
     }
 
-    /* 영역 태그 */
-    .domain-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-      margin-top: .625rem;
+    /* ── 신뢰 배너 ── */
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: .875rem;
+      margin-top: .875rem;
     }
-    .domain-tag {
-      background: var(--bg-soft, #f6faf9);
-      border: 1px solid rgba(0,0,0,.07);
-      border-radius: 20px;
-      padding: .25rem .75rem;
-      font-size: .82rem;
-      color: var(--ink, #0f172a);
+    .trust-item {
+      background: #fff;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.1rem;
+      text-align: center;
     }
+    .trust-item .t-emoji { font-size: 1.6rem; margin-bottom: .35rem; display: block; }
+    .trust-item h3 { font-size: .9rem; font-weight: 800; color: var(--ink); margin-bottom: .2rem; }
+    .trust-item p { font-size: .8rem; color: var(--muted); margin: 0; line-height: 1.55; }
 
-    /* 구분선 */
-    .divider {
-      border: none;
-      border-top: 1px solid rgba(0,0,0,.06);
-      margin: 1.25rem 0;
+    @media (max-width: 600px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-visual { flex-direction: row; justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
-<a href="/" class="sr-only" aria-label="홈으로">홈으로</a>
+<a href="#main" class="sr-only">본문 바로가기</a>
 
 <div class="container">
-  <nav aria-label="주요">
+  <nav aria-label="주요 메뉴">
     <a class="logo" href="/" aria-label="todayparent 홈">
-      <img src="/assets/logo.svg" width="140" height="28" alt="" decoding="async">
+      <img src="/assets/logo.svg" width="140" height="28" alt="todayparent 로고" decoding="async">
     </a>
-    <div class="links" role="menubar" aria-label="상단 메뉴">
+    <div class="nav-links" role="menubar">
       <a role="menuitem" href="/parents/" aria-current="page">걸음마</a>
       <a role="menuitem" href="/tiny/">TinySignal</a>
       <a role="menuitem" href="/about/">about</a>
@@ -166,46 +119,56 @@
 
   <!-- 히어로 -->
   <header class="hero" id="main">
-    <img src="/assets/app-icon.png" alt="걸음마 앱 아이콘" class="app-icon">
-    <p class="kicker">0~60개월 영유아 발달 앱</p>
-    <h1>비교 말고 이해,<br>오늘 바로 실천</h1>
-    <p>
-      아이가 지금 잘 자라고 있는지, 어떤 자극이 필요한지<br>
-      <b>K-TPI</b> 발달 평가와 <b>AI 상담</b>이 함께 알려드립니다.
-    </p>
+    <div class="hero-blob" aria-hidden="true"></div>
 
-    <div class="store-buttons">
-      <a class="store-btn" href="#" aria-label="구글 플레이 다운로드 (출시 예정)">
-        ▶&nbsp; 구글 플레이 &nbsp;<small style="font-weight:400;opacity:.7">(출시 예정)</small>
-      </a>
-      <a class="store-btn soon" aria-label="앱스토어 출시 예정">
-        🍎&nbsp; 앱스토어 &nbsp;<small>(출시 예정)</small>
-      </a>
-    </div>
+    <div class="hero-layout">
+      <div>
+        <p class="kicker">0~60개월 영유아 발달 앱</p>
+        <h1>비교 말고 이해,<br><em>오늘 바로 실천</em></h1>
+        <p>
+          아이가 지금 잘 자라고 있는지, 어떤 자극이 필요한지<br>
+          <b>K-TPI</b> 발달 평가와 <b>AI 상담</b>이 함께 알려드립니다.
+        </p>
 
-    <div class="badges">
-      <span class="badge">K-TPI 근거 기반</span>
-      <span class="badge">특허 출원 중: 10-2025-0061591</span>
-      <span class="badge">AI 맞춤 상담</span>
+        <div class="store-buttons">
+          <a class="store-btn" href="#" aria-label="구글 플레이 다운로드">
+            ▶&nbsp; 구글 플레이 &nbsp;<small style="font-weight:600;opacity:.65">(출시 예정)</small>
+          </a>
+          <a class="store-btn soon" aria-label="앱스토어 출시 예정">
+            🍎&nbsp; 앱스토어 &nbsp;<small>(출시 예정)</small>
+          </a>
+        </div>
+
+        <div class="badges" style="margin-top:1.25rem">
+          <span class="badge">K-TPI 근거 기반</span>
+          <span class="badge">특허 출원 중: 10-2025-0061591</span>
+          <span class="badge">AI 맞춤 상담</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="/assets/app-icon.png" alt="걸음마 앱 아이콘" class="app-icon">
+        <span class="app-name-tag">걸음마</span>
+      </div>
     </div>
   </header>
 
-  <!-- 한 눈에 보는 흐름 -->
+  <!-- 사용 흐름 -->
   <section aria-labelledby="s-flow">
-    <div class="card">
+    <div class="flow-card">
       <h2 id="s-flow">이렇게 사용해요</h2>
       <div class="flow">
-        <span class="flow-step">아이 등록</span>
+        <span class="flow-step">🧒 아이 등록</span>
         <span class="flow-arrow">→</span>
-        <span class="flow-step">발달 평가</span>
+        <span class="flow-step">📋 발달 평가</span>
         <span class="flow-arrow">→</span>
-        <span class="flow-step">리포트 확인</span>
+        <span class="flow-step">📊 리포트 확인</span>
         <span class="flow-arrow">→</span>
-        <span class="flow-step">AI 상담</span>
+        <span class="flow-step">🤖 AI 상담</span>
         <span class="flow-arrow">→</span>
-        <span class="flow-step">오늘의 미션</span>
+        <span class="flow-step">🌟 오늘의 미션</span>
       </div>
-      <p class="muted" style="margin-top:.875rem">
+      <p class="muted" style="margin-top:1rem;font-size:.88rem">
         평가는 월령(2개월 단위)에 맞는 문항으로 진행되며, 결과는 즉시 리포트로 제공됩니다.<br>
         AI가 아이의 성향과 발달 점수를 분석해 미션·놀이·외부활동을 재구성해 드립니다.
       </p>
@@ -217,54 +180,47 @@
     <div class="card">
       <h2 id="s-features">주요 기능</h2>
       <div class="feature-grid">
-
         <div class="feature-item">
           <span class="fi-emoji">📋</span>
           <h3>발달 평가 리포트</h3>
           <p>7개 영역을 스파이더·막대 그래프로 한눈에. 발달 지연 항목과 다음 행동 가이드를 함께 제공합니다.</p>
         </div>
-
         <div class="feature-item">
           <span class="fi-emoji">🤖</span>
           <h3>AI 맞춤 상담</h3>
           <p>아이 성향 + 발달 점수 기반 맞춤 미션·놀이·외부활동 재설명. 보호자 관찰 서술도 분석에 반영됩니다.</p>
         </div>
-
         <div class="feature-item">
           <span class="fi-emoji">👶</span>
           <h3>TinySignal 게임</h3>
           <p>아이의 작은 신호를 읽는 연습을 게임으로. 주간 시즌·랭킹·칭호 시스템으로 꾸준히 플레이합니다.</p>
         </div>
-
         <div class="feature-item">
           <span class="fi-emoji">🌟</span>
           <h3>일일 미션 스탬프</h3>
           <p>생후 6개월 이하 아기를 위한 주차별 발달 미션 3가지. 개근하면 AI 상담권과 평가권을 드립니다.</p>
         </div>
-
         <div class="feature-item">
           <span class="fi-emoji">🎁</span>
-          <h3>메일함 & 쿠폰</h3>
+          <h3>메일함 &amp; 쿠폰</h3>
           <p>랭킹 보상·이벤트 쿠폰이 앱 메일함으로 바로 도착. 탭 한 번으로 혜택을 적용합니다.</p>
         </div>
-
         <div class="feature-item">
           <span class="fi-emoji">💬</span>
           <h3>AI 채팅 상담</h3>
           <p>"놀이터에서 친구들과 놀지 않아요" 같은 고민을 입력하면 발달 분석과 실천 방법을 알려드립니다.</p>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- 평가 영역 + 보호자 서술 -->
   <section aria-labelledby="s-domain">
-    <div class="grid">
+    <div class="grid-2">
       <article class="card">
-        <h2 id="s-domain">평가 영역 7가지</h2>
-        <p class="muted">K-TPI는 2개월 단위로 문항과 가중치를 달리해 점수화합니다.</p>
-        <div class="domain-tags">
+        <h2 id="s-domain">평가 영역 <span class="accent">7가지</span></h2>
+        <p class="muted" style="font-size:.88rem">K-TPI는 2개월 단위로 문항과 가중치를 달리해 점수화합니다.</p>
+        <div class="domain-tags" style="margin-top:.875rem">
           <span class="domain-tag">🏃 대근육</span>
           <span class="domain-tag">✋ 소근육</span>
           <span class="domain-tag">💬 언어 이해</span>
@@ -274,22 +230,21 @@
           <span class="domain-tag">🍽 생활습관/자조</span>
         </div>
         <hr class="divider">
-        <p class="muted" style="font-size:.85rem">
+        <p class="muted" style="font-size:.82rem">
           ※ K-TPI 및 리포트 생성 로직은 <b>특허 출원 중</b> (출원번호: 10-2025-0061591)
         </p>
       </article>
 
       <article class="card">
         <h2>보호자 관찰 서술</h2>
-        <p class="muted">평가 마지막 단계에서 아이를 관찰하며 느낀 점을 직접 입력할 수 있습니다.</p>
-        <ul class="clean">
-          <li>장점 / 잘하는 점</li>
-          <li>걱정되는 점 / 어려워 보이는 점</li>
+        <p class="muted" style="font-size:.88rem">평가 마지막 단계에서 아이를 관찰하며 느낀 점을 직접 입력할 수 있습니다.</p>
+        <ul class="clean" style="margin-top:.875rem">
+          <li>✅ 장점 / 잘하는 점</li>
+          <li>⚠️ 걱정되는 점 / 어려워 보이는 점</li>
         </ul>
-        <p class="muted" style="font-size:.85rem">
-          입력하신 내용은 AI가 분석해 발달 점수에 반영하고,<br>
-          리포트 서술형 분석 섹션에 함께 표시됩니다.
-        </p>
+        <div class="info-strip">
+          입력하신 내용은 AI가 분석해 발달 점수에 반영하고, 리포트 서술형 분석 섹션에 함께 표시됩니다.
+        </div>
       </article>
     </div>
   </section>
@@ -298,26 +253,26 @@
   <section aria-labelledby="s-trust">
     <div class="card">
       <h2 id="s-trust">안심하고 사용하세요</h2>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <span class="fi-emoji">🔒</span>
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="t-emoji">🔒</span>
           <h3>아이 정보 최소 수집</h3>
           <p>이름 대신 별명 사용을 권장합니다. 회원 탈퇴 시 모든 데이터가 즉시 삭제됩니다.</p>
         </div>
-        <div class="feature-item">
-          <span class="fi-emoji">📖</span>
+        <div class="trust-item">
+          <span class="t-emoji">📖</span>
           <h3>근거 기반 설계</h3>
           <p>국내외 발달 연구와 한국 보육 환경을 반영한 K-TPI를 지속 보정합니다.</p>
         </div>
-        <div class="feature-item">
-          <span class="fi-emoji">⚕️</span>
+        <div class="trust-item">
+          <span class="t-emoji">⚕️</span>
           <h3>스크리닝 도구</h3>
           <p>본 평가는 참고용 스크리닝 도구이며, 정밀 진단은 전문 의료기관 방문을 권장합니다.</p>
         </div>
       </div>
       <hr class="divider">
-      <p style="font-size:.85rem">
-        <a href="/privacy/">개인정보처리방침</a> &nbsp;|&nbsp;
+      <p style="font-size:.84rem">
+        <a href="/privacy/">개인정보처리방침</a> &nbsp;·&nbsp;
         이용약관 · 환불규정은 앱 내 설정에서 확인하실 수 있습니다.
       </p>
     </div>
@@ -327,25 +282,33 @@
     <div class="card">
       <h2 id="s-contact">문의 및 제휴</h2>
       <p class="muted">유치원·어린이집·발달센터 제휴 및 데모 요청을 환영합니다.</p>
-      <p>이메일: <a href="mailto:ddingdong.parent@gmail.com" rel="noopener">ddingdong.parent@gmail.com</a></p>
-      <p><a class="btn" href="/contact/">문의 페이지로 이동</a></p>
+      <p style="margin-top:.75rem">이메일: <a href="mailto:ddingdong.parent@gmail.com">ddingdong.parent@gmail.com</a></p>
+      <div class="cta">
+        <a class="btn primary" href="/contact/">문의 페이지로 이동</a>
+      </div>
     </div>
   </section>
 </div>
 
 <footer class="footer">
   <div class="container">
-    <small>
-      © 띵동(ddingdong) · todayparent.com &nbsp;|&nbsp;
-      K-TPI 및 리포트 생성 로직 <b>특허 출원 중</b> (10-2025-0061591) &nbsp;|&nbsp;
-      사업자등록번호: 447-56-00943
-    </small>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/logo.svg" alt="todayparent 로고" width="120" height="24">
+        <p>© 띵동(ddingdong) · todayparent.com</p>
+        <p>K-TPI 및 리포트 생성 로직 <b>특허 출원 중</b> (10-2025-0061591)</p>
+        <p>사업자등록번호: 447-56-00943</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">홈</a>
+        <a href="/tiny/">TinySignal</a>
+        <a href="/about/">about</a>
+        <a href="/privacy/">개인정보처리방침</a>
+        <a href="/contact/">문의</a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<noscript><style>
-  body{font-family:system-ui,Arial,sans-serif;margin:0}
-  .container{max-width:1040px;margin:0 auto;padding:24px}
-</style></noscript>
 </body>
 </html>

@@ -6,19 +6,16 @@
   <title>about · todayparent</title>
   <meta name="description" content="걸음마(todayparent)는 0~60개월, 가장 가파르게 발달하는 시기를 월령 단위로 평가하고 맞춤 미션을 제안합니다.">
   <link rel="canonical" href="https://www.todayparent.com/about/">
-
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/icon-180.png">
   <link rel="preload" as="image" href="/assets/logo.svg">
-  <link rel="stylesheet" href="/css/style.css?v=8">
+  <link rel="stylesheet" href="/css/style.css?v=9">
   <meta name="theme-color" content="#128A7F">
-
   <meta property="og:title" content="about · todayparent">
   <meta property="og:description" content="0~60개월, 결정적 시기에 부모가 바로 실천하도록 돕는 서비스.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.todayparent.com/about/">
   <meta property="og:image" content="/assets/og.jpg">
-
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -31,94 +28,176 @@
   </script>
 
   <style>
-    /* 기존 스타일 */
-    .chart-shell{
-      border:1px dashed rgba(0,0,0,.12);
-      border-radius:16px;
-      padding:16px;
-      background:var(--bg-soft,#f6faf9);
-      margin-bottom:1.25rem;
+    /* ── 차트 셸 ── */
+    .chart-shell {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.25rem 1rem;
+      background: var(--teal-pale);
+      margin: 1rem 0 .875rem;
     }
-    .chart-shell small{
-      display:block;
-      margin-top:6px;
-      color:var(--muted,rgba(0,0,0,.5));
+    .chart-shell strong {
+      display: block;
+      font-size: .9rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: .3rem;
     }
-    table.dev-table{
-      width:100%;border-collapse:collapse;
-      margin-top:1rem;background:#fff;
-      border-radius:12px;overflow:hidden;
-    }
-    table.dev-table th,table.dev-table td{
-      border-bottom:1px solid rgba(0,0,0,.04);
-      padding:.55rem .4rem;vertical-align:top;
-      text-align:left;font-size:.9rem;line-height:1.5;
-    }
-    table.dev-table th{
-      white-space:nowrap;font-weight:700;
-      color:var(--ink,#0f172a);width:120px;
-    }
-    @media(max-width:720px){
-      table.dev-table th,table.dev-table td{display:block;width:100%}
-      table.dev-table tr{margin-bottom:10px;display:block;border-bottom:1px solid rgba(0,0,0,.03)}
+    .chart-shell small {
+      display: block;
+      margin-top: .6rem;
+      font-size: .78rem;
+      color: var(--muted);
+      font-style: italic;
     }
 
-    /* 신규: 근거 카드 */
-    .evidence-card{
-      background:var(--bg-soft,#f6faf9);
-      border-radius:14px;
-      padding:1.1rem 1.25rem;
-      margin-bottom:.875rem;
+    /* ── 근거 카드 ── */
+    .evidence-card {
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      margin: .875rem 0;
+      border: 1px solid var(--line-soft);
     }
-    .evidence-card h4{
-      font-size:.95rem;font-weight:700;
-      color:var(--ink,#0f172a);margin:0 0 .35rem;
+    .evidence-card h4 {
+      font-size: .95rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 .35rem;
     }
-    .evidence-card p{
-      font-size:.875rem;color:var(--muted,rgba(0,0,0,.6));
-      margin:0;line-height:1.65;
+    .evidence-card p {
+      font-size: .875rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.7;
     }
-    .evidence-source{
-      display:block;margin-top:.5rem;
-      font-size:.78rem;color:rgba(0,0,0,.35);
-      font-style:italic;
+    .evidence-source {
+      display: block;
+      margin-top: .55rem;
+      font-size: .78rem;
+      color: var(--muted-2);
+      font-style: italic;
+      line-height: 1.6;
     }
 
-    /* 신규: 막대 그래프 범례 */
-    .bar-legend{
-      display:flex;gap:1rem;flex-wrap:wrap;
-      margin-bottom:.625rem;font-size:.82rem;
+    /* ── 막대 범례 ── */
+    .bar-legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: .625rem;
+      font-size: .82rem;
+      color: var(--muted);
     }
-    .bar-legend span{display:flex;align-items:center;gap:.3rem;}
-    .legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+    .bar-legend span { display: flex; align-items: center; gap: .35rem; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
 
-    /* 신규: 평가도구 그리드 */
-    .tool-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:.75rem;margin-top:.875rem;
+    /* ── 발달 테이블 ── */
+    table.dev-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      font-size: .875rem;
     }
-    .tool-item{
-      background:#fff;border-radius:12px;
-      padding:1rem 1.1rem;
-      border:1px solid rgba(0,0,0,.07);
+    table.dev-table th,
+    table.dev-table td {
+      border-bottom: 1px solid var(--line-soft);
+      padding: .6rem .6rem;
+      vertical-align: top;
+      text-align: left;
+      line-height: 1.55;
     }
-    .tool-item h4{font-size:.9rem;font-weight:700;margin:0 0 .3rem;color:#128A7F;}
-    .tool-item p{font-size:.82rem;color:var(--muted,rgba(0,0,0,.55));margin:0;line-height:1.6;}
+    table.dev-table thead th {
+      background: var(--teal-pale);
+      font-weight: 800;
+      color: var(--teal-dark);
+      font-size: .82rem;
+      letter-spacing: .03em;
+    }
+    table.dev-table td:first-child {
+      font-weight: 800;
+      color: var(--ink);
+      white-space: nowrap;
+      width: 110px;
+    }
+    table.dev-table td:last-child { color: var(--muted); font-size: .8rem; }
 
-    .divider{border:none;border-top:1px solid rgba(0,0,0,.06);margin:1.25rem 0;}
-    .cite{font-size:.78rem;color:rgba(0,0,0,.35);line-height:1.6;margin-top:1rem;}
+    @media (max-width: 600px) {
+      table.dev-table thead { display: none; }
+      table.dev-table td { display: block; width: 100%; }
+      table.dev-table td:first-child { padding-bottom: .15rem; }
+      table.dev-table tr { display: block; margin-bottom: .875rem; border-bottom: 1px solid var(--line-soft); }
+    }
+
+    /* ── 평가 도구 그리드 ── */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .875rem;
+      margin-top: .875rem;
+    }
+    .tool-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.1rem;
+      border: 1px solid var(--line-soft);
+      transition: box-shadow .15s, transform .15s;
+    }
+    .tool-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .tool-item h4 {
+      font-size: .95rem;
+      font-weight: 800;
+      color: var(--teal);
+      margin: 0 0 .35rem;
+    }
+    .tool-item p {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ── 원칙 아이템 ── */
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: .875rem;
+    }
+    .principle-item {
+      background: var(--teal-pale);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.2rem;
+      border: 1px solid var(--line-soft);
+    }
+    .principle-item .pi-icon { font-size: 1.6rem; margin-bottom: .4rem; display: block; }
+    .principle-item h3 { font-size: .95rem; font-weight: 800; color: var(--teal-dark); margin: 0 0 .3rem; }
+    .principle-item p { font-size: .84rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    /* ── cite ── */
+    .cite {
+      font-size: .78rem;
+      color: var(--muted-2);
+      line-height: 1.65;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
-<a href="/" class="sr-only" aria-label="홈으로">홈으로</a>
+<a href="#main" class="sr-only">본문 바로가기</a>
 
 <div class="container">
-  <nav aria-label="주요">
+  <nav aria-label="주요 메뉴">
     <a class="logo" href="/" aria-label="todayparent 홈">
-      <img src="/assets/logo.svg" width="140" height="28" alt="" decoding="async">
+      <img src="/assets/logo.svg" width="140" height="28" alt="todayparent 로고" decoding="async">
     </a>
-    <div class="links" role="menubar" aria-label="상단 메뉴">
+    <div class="nav-links" role="menubar">
       <a role="menuitem" href="/parents/">걸음마</a>
       <a role="menuitem" href="/tiny/">TinySignal</a>
       <a role="menuitem" href="/about/" aria-current="page">about</a>
@@ -126,12 +205,13 @@
     </div>
   </nav>
 
+  <!-- 히어로 -->
   <header class="hero" id="main">
+    <div class="hero-blob" aria-hidden="true"></div>
     <p class="kicker">About ddingdong</p>
-    <h1>우리가 만드는 이유</h1>
+    <h1>우리가 만드는 <em>이유</em></h1>
     <p>
       아이의 발달은 <b>태어날 때부터 만 5세(60개월)</b>까지 가장 가파르게 진행됩니다.<br>
-      하지만 부모는 "지금 이 아이에게 맞는 게 뭔지"를 찾기 어렵습니다.<br>
       todayparent는 이 <b>결정적 시기</b>에 부모가 바로 실천할 수 있도록
       <b>발달 평가 → 맞춤 미션 → 놀이/외부활동</b>을 한 흐름으로 제공합니다.
     </p>
@@ -141,7 +221,7 @@
     </div>
   </header>
 
-  <!-- 취지 -->
+  <!-- 왜 걸음마인가 -->
   <section aria-labelledby="purpose">
     <div class="card">
       <h2 id="purpose">왜 '걸음마'인가</h2>
@@ -151,7 +231,9 @@
         <li><b>평가→실천 연결</b> — 월령(0~60개월) 단위로 현재를 읽고, 낮은 영역을 중심으로 <b>'오늘의 미션'</b>과 놀이/외부활동을 제안합니다.</li>
         <li><b>쉽고 빠른 도구</b> — 모바일에 최적화된 간단한 문항, 한눈에 보는 그래프, 1분 내 실천 가이드.</li>
       </ul>
-      <p class="muted">우리의 목표는 "비교가 아니라 이해, 그리고 오늘의 행동"입니다.</p>
+      <div class="info-strip" style="margin-top:1rem">
+        우리의 목표는 <b>"비교가 아니라 이해, 그리고 오늘의 행동"</b>입니다.
+      </div>
     </div>
   </section>
 
@@ -167,7 +249,7 @@
 
       <div class="chart-shell" aria-label="0~96개월 발달 속도 개념 그래프">
         <strong>발달 변화량 (개념)</strong>
-        <p class="muted">0~24개월 가장 가파르고, 36~60개월에 정교화, 이후엔 완만히 이어집니다.</p>
+        <p class="muted" style="font-size:.85rem;margin:.2rem 0 .5rem">0~24개월 가장 가파르고, 36~60개월에 정교화, 이후엔 완만히 이어집니다.</p>
         <canvas id="dev-chart" aria-label="0~96개월 발달 속도 선그래프" role="img"></canvas>
         <small>그래프는 개념적 시각화이며 실제 발달 시점은 아이마다 다릅니다.</small>
       </div>
@@ -181,26 +263,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td><b>0~2개월</b></td><td>생리적 안정, 시각·청각 자극 반응, 부모 목소리 인식</td><td>Papousek &amp; Papousek (1995)</td></tr>
-          <tr><td><b>3~4개월</b></td><td>머리 지지, 시선 맞추기, 미소로 상호작용 시작</td><td>Trevarthen (1998)</td></tr>
-          <tr><td><b>5~6개월</b></td><td>손-눈 협응, 옹알이, 낯가림 출현</td><td>Kuhl (2004)</td></tr>
-          <tr><td><b>7~9개월</b></td><td>기기/이동 시작, 탐색 행동, 정서 표현 확장</td><td>Campos et al. (2000)</td></tr>
-          <tr><td><b>10~12개월</b></td><td>첫걸음, 첫 단어, 사회적 모방 증가</td><td>Tomasello (2003)</td></tr>
-          <tr><td><b>13~18개월</b></td><td>자율성 발현, 간단한 지시 이해</td><td>Erikson (1959)</td></tr>
-          <tr><td><b>19~24개월</b></td><td>상징놀이, 감정 표현, 자기인식</td><td>Meltzoff (2007)</td></tr>
-          <tr><td><b>25~36개월</b></td><td>언어 폭발기, 규칙 이해, 또래 관심 증가</td><td>Vygotsky (1978)</td></tr>
-          <tr><td><b>37~48개월</b></td><td>협동놀이, 감정조절, 인과 개념</td><td>Denham et al. (2012)</td></tr>
-          <tr><td><b>49~60개월</b></td><td>자기조절, 문제해결, 문해기 초입</td><td>Diamond (2013)</td></tr>
+          <tr><td>0~2개월</td><td>생리적 안정, 시각·청각 자극 반응, 부모 목소리 인식</td><td>Papousek &amp; Papousek (1995)</td></tr>
+          <tr><td>3~4개월</td><td>머리 지지, 시선 맞추기, 미소로 상호작용 시작</td><td>Trevarthen (1998)</td></tr>
+          <tr><td>5~6개월</td><td>손-눈 협응, 옹알이, 낯가림 출현</td><td>Kuhl (2004)</td></tr>
+          <tr><td>7~9개월</td><td>기기/이동 시작, 탐색 행동, 정서 표현 확장</td><td>Campos et al. (2000)</td></tr>
+          <tr><td>10~12개월</td><td>첫걸음, 첫 단어, 사회적 모방 증가</td><td>Tomasello (2003)</td></tr>
+          <tr><td>13~18개월</td><td>자율성 발현, 간단한 지시 이해</td><td>Erikson (1959)</td></tr>
+          <tr><td>19~24개월</td><td>상징놀이, 감정 표현, 자기인식</td><td>Meltzoff (2007)</td></tr>
+          <tr><td>25~36개월</td><td>언어 폭발기, 규칙 이해, 또래 관심 증가</td><td>Vygotsky (1978)</td></tr>
+          <tr><td>37~48개월</td><td>협동놀이, 감정조절, 인과 개념</td><td>Denham et al. (2012)</td></tr>
+          <tr><td>49~60개월</td><td>자기조절, 문제해결, 문해기 초입</td><td>Diamond (2013)</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="margin-top:1rem">
+      <p class="muted" style="margin-top:.875rem;font-size:.84rem">
         ※ 위 연구들은 걸음마의 월령별 문항·리포트 설계 시 참고한 대표 자료이며,
         실제 서비스에서는 한국 영유아 표본 데이터와 현장 피드백으로 지속 보정됩니다.
       </p>
     </div>
   </section>
 
-  <!-- 신규: 부모 개입 언어 효과 -->
+  <!-- 부모 개입 언어 효과 -->
   <section aria-labelledby="s-lang">
     <div class="card">
       <h2 id="s-lang">부모 주도 언어 개입의 효과</h2>
@@ -238,7 +320,7 @@
     </div>
   </section>
 
-  <!-- 신규: 부모 놀이 참여 효과 -->
+  <!-- 부모 놀이 참여 효과 -->
   <section aria-labelledby="s-play">
     <div class="card">
       <h2 id="s-play">부모와 함께한 놀이의 힘</h2>
@@ -276,7 +358,7 @@
     </div>
   </section>
 
-  <!-- 신규: 평가 도구 근거 -->
+  <!-- 평가 도구 근거 -->
   <section aria-labelledby="s-tools">
     <div class="card">
       <h2 id="s-tools">검증된 평가 도구를 기반으로</h2>
@@ -307,8 +389,7 @@
       </div>
 
       <hr class="divider">
-
-      <p class="muted" style="font-size:.85rem">
+      <p class="muted" style="font-size:.84rem">
         ※ K-TPI 및 리포트 생성 로직은 <b>특허 출원 중</b> (출원번호: 10-2025-0061591)<br>
         ※ 본 평가는 스크리닝 목적이며, 정밀 진단은 소아과 전문의 또는 발달심리 전문가 상담을 권장합니다.
       </p>
@@ -319,187 +400,308 @@
   <section aria-labelledby="values">
     <div class="card">
       <h2 id="values">원칙</h2>
-      <ul class="clean">
-        <li><b>안정성</b> — 아동 데이터 최소 수집, 보호자 동의·보호 우선</li>
-        <li><b>증거 기반</b> — 한국 맥락을 반영한 K-TPI를 지속 개선</li>
-        <li><b>실천 중심</b> — 멋진 리포트보다 <b>오늘의 행동</b>을 돕는 설계</li>
-      </ul>
+      <div class="principle-grid">
+        <div class="principle-item">
+          <span class="pi-icon">🔒</span>
+          <h3>안정성</h3>
+          <p>아동 데이터 최소 수집, 보호자 동의·보호 우선.</p>
+        </div>
+        <div class="principle-item">
+          <span class="pi-icon">📖</span>
+          <h3>증거 기반</h3>
+          <p>한국 맥락을 반영한 K-TPI를 지속 개선합니다.</p>
+        </div>
+        <div class="principle-item">
+          <span class="pi-icon">🎯</span>
+          <h3>실천 중심</h3>
+          <p>멋진 리포트보다 <b>오늘의 행동</b>을 돕는 설계.</p>
+        </div>
+      </div>
     </div>
   </section>
+
 </div>
 
 <footer class="footer">
   <div class="container">
-    <small>© todayparent · 띵동(ddingdong) &nbsp;|&nbsp; 특허 출원 중 (10-2025-0061591)</small>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/logo.svg" alt="todayparent 로고" width="120" height="24">
+        <p>© todayparent · 띵동(ddingdong)</p>
+        <p>특허 출원 중 (10-2025-0061591)</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">홈</a>
+        <a href="/parents/">걸음마</a>
+        <a href="/tiny/">TinySignal</a>
+        <a href="/privacy/">개인정보처리방침</a>
+        <a href="/contact/">문의</a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<!-- 데이터 -->
+<!-- 차트 데이터 -->
 <script>
 window.__TP_DEV_DATA__ = [
-  {"month":0,"plasticity":30},{"month":6,"plasticity":75},
-  {"month":12,"plasticity":90},{"month":24,"plasticity":95},
-  {"month":36,"plasticity":85},{"month":48,"plasticity":70},
-  {"month":60,"plasticity":60},{"month":72,"plasticity":55},
-  {"month":96,"plasticity":50}
+  {month:0,plasticity:30},{month:6,plasticity:75},
+  {month:12,plasticity:90},{month:24,plasticity:95},
+  {month:36,plasticity:85},{month:48,plasticity:70},
+  {month:60,plasticity:60},{month:72,plasticity:55},
+  {month:96,plasticity:50}
 ];
 </script>
 
 <script>
+/* ── 공통 색상 ── */
+var TEAL     = '#128A7F';
+var TEAL2    = '#6B8F71';
+var TEAL_PAL = 'rgba(18,138,127,0.1)';
+var INK_30   = 'rgba(13,31,30,0.3)';
+var INK_50   = 'rgba(13,31,30,0.5)';
+var GRID     = 'rgba(18,138,127,0.12)';
+
 /* ── 1. 발달 속도 라인 차트 ── */
 (function(){
-  const data=window.__TP_DEV_DATA__||[];
-  const canvas=document.getElementById('dev-chart');
-  if(!canvas||!data.length)return;
-  const ctx=canvas.getContext('2d');
-  function draw(){
-    const p=canvas.parentElement,w=p.clientWidth,h=180;
-    canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
-    canvas.style.width=w+'px';canvas.style.height=h+'px';
-    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    const pad={top:10,right:12,bottom:20,left:32};
-    const iW=w-pad.left-pad.right,iH=h-pad.top-pad.bottom;
-    const maxM=96,maxV=Math.max(...data.map(d=>d.plasticity));
-    ctx.clearRect(0,0,w,h);
-    ctx.fillStyle='rgba(18,138,127,0.07)';
-    ctx.fillRect(pad.left,pad.top,iW*(60/maxM),iH);
-    ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=1;
-    for(let i=0;i<=3;i++){const y=pad.top+(iH/3)*i;ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();}
+  var data   = window.__TP_DEV_DATA__ || [];
+  var canvas = document.getElementById('dev-chart');
+  if (!canvas || !data.length) return;
+  var ctx = canvas.getContext('2d');
+
+  function draw() {
+    var p = canvas.parentElement;
+    var w = p.clientWidth, h = 180;
+    canvas.width  = w * devicePixelRatio;
+    canvas.height = h * devicePixelRatio;
+    canvas.style.width  = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+
+    var pad = {top:12, right:14, bottom:22, left:34};
+    var iW  = w - pad.left - pad.right;
+    var iH  = h - pad.top  - pad.bottom;
+    var maxM = 96;
+    var maxV = Math.max.apply(null, data.map(function(d){return d.plasticity;}));
+
+    ctx.clearRect(0, 0, w, h);
+
+    /* 0~60개월 하이라이트 영역 */
+    ctx.fillStyle = 'rgba(18,138,127,0.08)';
+    ctx.fillRect(pad.left, pad.top, iW * (60 / maxM), iH);
+
+    /* 그리드 라인 */
+    ctx.strokeStyle = GRID; ctx.lineWidth = 1;
+    for (var i = 0; i <= 3; i++) {
+      var y = pad.top + (iH / 3) * i;
+      ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+    }
+
+    /* 라인 */
     ctx.beginPath();
-    data.forEach((d,i)=>{
-      const x=pad.left+(d.month/maxM)*iW,y=pad.top+iH-(d.plasticity/maxV)*iH;
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    data.forEach(function(d, idx) {
+      var x = pad.left + (d.month / maxM) * iW;
+      var y = pad.top  + iH - (d.plasticity / maxV) * iH;
+      idx === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
-    ctx.strokeStyle='#128A7F';ctx.lineWidth=2;ctx.stroke();
-    data.forEach(d=>{
-      const x=pad.left+(d.month/maxM)*iW,y=pad.top+iH-(d.plasticity/maxV)*iH;
-      ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle='#128A7F';ctx.fill();
+    ctx.strokeStyle = TEAL; ctx.lineWidth = 2.5; ctx.stroke();
+
+    /* 닷 */
+    data.forEach(function(d) {
+      var x = pad.left + (d.month / maxM) * iW;
+      var y = pad.top  + iH - (d.plasticity / maxV) * iH;
+      ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = TEAL; ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
     });
-    const marks=[0,24,48,60,72,96];
-    ctx.fillStyle='rgba(0,0,0,0.35)';
-    ctx.font='11px system-ui,sans-serif';
-    marks.forEach(m=>{ctx.fillText(m+'m',pad.left+(m/maxM)*iW-10,h-4);});
-    ctx.fillStyle='rgba(0,0,0,0.3)';
-    ctx.fillText('높음',4,pad.top+4);ctx.fillText('낮음',4,h-pad.bottom);
+
+    /* X축 레이블 */
+    ctx.fillStyle = INK_30;
+    ctx.font = '11px system-ui, sans-serif';
+    [0, 24, 48, 60, 72, 96].forEach(function(m) {
+      ctx.fillText(m + 'm', pad.left + (m / maxM) * iW - 10, h - 4);
+    });
+
+    /* Y축 레이블 */
+    ctx.fillStyle = INK_30; ctx.font = '10px system-ui, sans-serif';
+    ctx.fillText('높음', 2, pad.top + 8);
+    ctx.fillText('낮음', 2, h - pad.bottom + 2);
   }
-  draw();window.addEventListener('resize',draw);
+
+  draw();
+  window.addEventListener('resize', draw);
 })();
 
 /* ── 2. 언어 개입 막대 차트 ── */
 (function(){
-  const canvas=document.getElementById('lang-chart');
-  if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  const labels=['표현언어','이해언어','대화 턴수','어휘 점수'];
-  const base=[50,50,50,50];
-  const inter=[79,64,67,66];
-  function draw(){
-    const p=canvas.parentElement,w=p.clientWidth,h=200;
-    canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
-    canvas.style.width=w+'px';canvas.style.height=h+'px';
-    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    const pad={top:16,right:16,bottom:32,left:36};
-    const iW=w-pad.left-pad.right,iH=h-pad.top-pad.bottom;
-    const maxV=100,n=labels.length;
-    const groupW=iW/n,barW=groupW*0.32,gap=groupW*0.06;
-    ctx.clearRect(0,0,w,h);
-    // 그리드
-    ctx.strokeStyle='rgba(0,0,0,0.06)';ctx.lineWidth=1;
-    [25,50,75,100].forEach(v=>{
-      const y=pad.top+iH-(v/maxV)*iH;
-      ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();
-      ctx.fillStyle='rgba(0,0,0,0.3)';ctx.font='10px system-ui,sans-serif';
-      ctx.fillText(v,2,y+4);
+  var canvas = document.getElementById('lang-chart');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var labels = ['표현언어', '이해언어', '대화 턴수', '어휘 점수'];
+  var base   = [50, 50, 50, 50];
+  var inter  = [79, 64, 67, 66];
+
+  function draw() {
+    var p = canvas.parentElement;
+    var w = p.clientWidth, h = 200;
+    canvas.width  = w * devicePixelRatio;
+    canvas.height = h * devicePixelRatio;
+    canvas.style.width  = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+
+    var pad = {top:16, right:16, bottom:32, left:38};
+    var iW = w - pad.left - pad.right;
+    var iH = h - pad.top  - pad.bottom;
+    var maxV = 100, n = labels.length;
+    var groupW = iW / n, barW = groupW * 0.32, gap = groupW * 0.06;
+
+    ctx.clearRect(0, 0, w, h);
+
+    /* 그리드 */
+    [25, 50, 75, 100].forEach(function(v) {
+      var y = pad.top + iH - (v / maxV) * iH;
+      ctx.strokeStyle = GRID; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+      ctx.fillStyle = INK_30; ctx.font = '10px system-ui, sans-serif';
+      ctx.fillText(v, 2, y + 4);
     });
-    labels.forEach((lbl,i)=>{
-      const cx=pad.left+groupW*i+groupW/2;
-      // 일반 그룹
-      const bh0=(base[i]/maxV)*iH;
-      ctx.fillStyle='#6B8F71';
-      ctx.fillRect(cx-barW-gap/2,pad.top+iH-bh0,barW,bh0);
-      // 개입 그룹
-      const bh1=(inter[i]/maxV)*iH;
-      ctx.fillStyle='#128A7F';
-      ctx.fillRect(cx+gap/2,pad.top+iH-bh1,barW,bh1);
-      // 값 표시
-      ctx.fillStyle='rgba(0,0,0,0.5)';ctx.font='11px system-ui,sans-serif';ctx.textAlign='center';
-      ctx.fillText(inter[i],cx+gap/2+barW/2,pad.top+iH-bh1-4);
-      // 라벨
-      ctx.fillStyle='rgba(0,0,0,0.5)';ctx.font='11px system-ui,sans-serif';ctx.textAlign='center';
-      ctx.fillText(lbl,cx,h-6);
+
+    labels.forEach(function(lbl, i) {
+      var cx = pad.left + groupW * i + groupW / 2;
+
+      /* 일반 그룹 */
+      var bh0 = (base[i] / maxV) * iH;
+      ctx.fillStyle = TEAL2;
+      ctx.beginPath();
+      roundRect(ctx, cx - barW - gap / 2, pad.top + iH - bh0, barW, bh0, [4, 4, 0, 0]);
+      ctx.fill();
+
+      /* 개입 그룹 */
+      var bh1 = (inter[i] / maxV) * iH;
+      ctx.fillStyle = TEAL;
+      ctx.beginPath();
+      roundRect(ctx, cx + gap / 2, pad.top + iH - bh1, barW, bh1, [4, 4, 0, 0]);
+      ctx.fill();
+
+      /* 값 레이블 */
+      ctx.fillStyle = INK_50; ctx.font = 'bold 11px system-ui, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(inter[i], cx + gap / 2 + barW / 2, pad.top + iH - bh1 - 5);
+
+      /* X 라벨 */
+      ctx.fillStyle = INK_50; ctx.font = '11px system-ui, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(lbl, cx, h - 6);
     });
-    ctx.textAlign='left';
+    ctx.textAlign = 'left';
   }
-  draw();window.addEventListener('resize',draw);
+
+  function roundRect(ctx, x, y, w, h, r) {
+    if (typeof r === 'number') r = [r, r, r, r];
+    ctx.moveTo(x + r[0], y);
+    ctx.lineTo(x + w - r[1], y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r[1]);
+    ctx.lineTo(x + w, y + h - r[2]);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r[2], y + h);
+    ctx.lineTo(x + r[3], y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r[3]);
+    ctx.lineTo(x, y + r[0]);
+    ctx.quadraticCurveTo(x, y, x + r[0], y);
+    ctx.closePath();
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
 })();
 
 /* ── 3. 놀이 효과 레이더 차트 ── */
 (function(){
-  const canvas=document.getElementById('play-chart');
-  if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  const labels=['인지/문제해결','어휘·언어 확장','사회·정서·자기조절'];
-  const base=[50,50,50];
-  const inter=[75,70,65];
-  function draw(){
-    const p=canvas.parentElement,w=Math.min(p.clientWidth,360),h=220;
-    canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;
-    canvas.style.width=w+'px';canvas.style.height=h+'px';
-    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    const cx=w/2,cy=h/2+10,r=Math.min(w,h)*0.35;
-    const n=labels.length;
-    const angles=labels.map((_,i)=>(-Math.PI/2)+(2*Math.PI/n)*i);
-    ctx.clearRect(0,0,w,h);
-    // 배경 망 (3단계)
-    [0.33,0.67,1].forEach(ratio=>{
+  var canvas = document.getElementById('play-chart');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var labels = ['인지/문제해결', '어휘·언어 확장', '사회·정서·자기조절'];
+  var base   = [50, 50, 50];
+  var inter  = [75, 70, 65];
+
+  function draw() {
+    var p  = canvas.parentElement;
+    var w  = Math.min(p.clientWidth, 380), h = 230;
+    canvas.width  = w * devicePixelRatio;
+    canvas.height = h * devicePixelRatio;
+    canvas.style.width  = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+
+    var cx = w / 2, cy = h / 2 + 8;
+    var r  = Math.min(w, h) * 0.34;
+    var n  = labels.length;
+    var angles = labels.map(function(_, i) {
+      return (-Math.PI / 2) + (2 * Math.PI / n) * i;
+    });
+
+    ctx.clearRect(0, 0, w, h);
+
+    /* 배경 망 */
+    [0.33, 0.67, 1].forEach(function(ratio) {
       ctx.beginPath();
-      angles.forEach((a,i)=>{
-        const x=cx+Math.cos(a)*r*ratio,y=cy+Math.sin(a)*r*ratio;
-        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      angles.forEach(function(a, i) {
+        var x = cx + Math.cos(a) * r * ratio;
+        var y = cy + Math.sin(a) * r * ratio;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       });
       ctx.closePath();
-      ctx.strokeStyle='rgba(0,0,0,0.08)';ctx.lineWidth=1;ctx.stroke();
+      ctx.strokeStyle = GRID; ctx.lineWidth = 1; ctx.stroke();
     });
-    // 축선
-    angles.forEach(a=>{
-      ctx.beginPath();ctx.moveTo(cx,cy);
-      ctx.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);
-      ctx.strokeStyle='rgba(0,0,0,0.08)';ctx.lineWidth=1;ctx.stroke();
+
+    /* 축선 */
+    angles.forEach(function(a) {
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+      ctx.strokeStyle = GRID; ctx.lineWidth = 1; ctx.stroke();
     });
-    // 일반 그룹
+
+    /* 일반 그룹 */
     ctx.beginPath();
-    angles.forEach((a,i)=>{
-      const ratio=base[i]/100;
-      const x=cx+Math.cos(a)*r*ratio,y=cy+Math.sin(a)*r*ratio;
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    angles.forEach(function(a, i) {
+      var ratio = base[i] / 100;
+      var x = cx + Math.cos(a) * r * ratio;
+      var y = cy + Math.sin(a) * r * ratio;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
-    ctx.closePath();ctx.fillStyle='rgba(107,143,113,0.2)';ctx.fill();
-    ctx.strokeStyle='#6B8F71';ctx.lineWidth=1.5;ctx.stroke();
-    // 개입 그룹
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(107,143,113,0.2)'; ctx.fill();
+    ctx.strokeStyle = TEAL2; ctx.lineWidth = 1.5; ctx.stroke();
+
+    /* 개입 그룹 */
     ctx.beginPath();
-    angles.forEach((a,i)=>{
-      const ratio=inter[i]/100;
-      const x=cx+Math.cos(a)*r*ratio,y=cy+Math.sin(a)*r*ratio;
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    angles.forEach(function(a, i) {
+      var ratio = inter[i] / 100;
+      var x = cx + Math.cos(a) * r * ratio;
+      var y = cy + Math.sin(a) * r * ratio;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
-    ctx.closePath();ctx.fillStyle='rgba(18,138,127,0.18)';ctx.fill();
-    ctx.strokeStyle='#128A7F';ctx.lineWidth=2;ctx.stroke();
-    // 라벨
-    ctx.fillStyle='rgba(0,0,0,0.55)';ctx.font='12px system-ui,sans-serif';ctx.textAlign='center';
-    angles.forEach((a,i)=>{
-      const offset=r+18;
-      const x=cx+Math.cos(a)*offset,y=cy+Math.sin(a)*offset+4;
-      ctx.fillText(labels[i],x,y);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(18,138,127,0.18)'; ctx.fill();
+    ctx.strokeStyle = TEAL; ctx.lineWidth = 2.5; ctx.stroke();
+
+    /* 라벨 */
+    ctx.fillStyle = INK_50; ctx.font = '12px system-ui, sans-serif'; ctx.textAlign = 'center';
+    angles.forEach(function(a, i) {
+      var offset = r + 20;
+      var x = cx + Math.cos(a) * offset;
+      var y = cy + Math.sin(a) * offset + 4;
+      ctx.fillText(labels[i], x, y);
     });
-    ctx.textAlign='left';
+    ctx.textAlign = 'left';
   }
-  draw();window.addEventListener('resize',draw);
+
+  draw();
+  window.addEventListener('resize', draw);
 })();
 </script>
 
 <noscript><style>
   body{font-family:system-ui,Arial,sans-serif;margin:0}
-  .container{max-width:1040px;margin:0 auto;padding:24px}
+  .container{max-width:1080px;margin:0 auto;padding:24px}
 </style></noscript>
 </body>
 </html>
