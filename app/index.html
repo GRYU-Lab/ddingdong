@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>걸음마 앱 다운로드</title>
+
+<script>
+window.onload = function () {
+    const ua = navigator.userAgent;
+
+    // Android
+    if (/android/i.test(ua)) {
+        location.replace("/android-test/");
+    }
+    // iPhone / iPad
+    else if (/iPhone|iPad|iPod/i.test(ua)) {
+        location.replace("https://apps.apple.com/kr/app/%EA%B1%B8%EC%9D%8C%EB%A7%88/id6775895780");
+    }
+    // PC 및 기타 기기
+    else {
+        location.replace("https://www.todayparent.com");
+    }
+};
+</script>
+
+</head>
+
+<body>
+<p style="text-align:center; margin-top:50px;">
+잠시만 기다려 주세요...
+</p>
+</body>
+</html>
