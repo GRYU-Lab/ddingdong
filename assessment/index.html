@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>발달 평가 · 걸음마</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --teal: #128A7F;
+    --teal-deep: #0D6B62;
+    --teal-light: #E8F5F3;
+    --orange: #E8472A;
+    --orange-light: #FFF0ED;
+    --green-card: #E8F5E8;
+    --ivory: #FFF8F0;
+    --ivory-dark: #FDF3E7;
+    --ink: #1A1A1A;
+    --ink-soft: #555;
+    --dust: #999;
+    --white: #FFFFFF;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--ivory);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,248,240,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(18,138,127,0.1);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--teal); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.875rem; color: var(--ink-soft); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: white !important; padding: 0.45rem 1.1rem; border-radius: 100px; font-size: 0.8rem !important; font-weight: 700 !important; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 5vw 4rem;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--orange);
+    margin-bottom: 1.25rem; letter-spacing: 0.02em;
+  }
+  .hero-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--orange); }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700; color: var(--ink);
+    line-height: 1.3; letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+  .hero-sub {
+    font-size: 1rem; color: var(--ink-soft);
+    line-height: 1.8; font-weight: 300;
+    margin-bottom: 2rem; max-width: 44ch;
+  }
+  .correction-block {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--orange);
+    margin-bottom: 2rem;
+  }
+  .correction-wrong {
+    font-size: 0.82rem; color: var(--dust);
+    text-decoration: line-through; margin-bottom: 0.3rem;
+  }
+  .correction-right {
+    font-size: 0.95rem; font-weight: 600; color: var(--ink);
+    line-height: 1.5;
+  }
+  .correction-right em { font-style: normal; color: var(--teal); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--teal); color: white;
+    padding: 0.85rem 1.8rem; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--teal-deep); transform: translateY(-1px); }
+
+  /* HERO VISUAL — 리포트 미리보기 */
+  .report-preview {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .report-header {
+    background: var(--ivory);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .report-title-text {
+    font-size: 1rem; font-weight: 700; color: var(--ink);
+    line-height: 1.4; margin-bottom: 0.4rem;
+  }
+  .report-meta { font-size: 0.72rem; color: var(--dust); }
+  .report-tags { display: flex; gap: 0.4rem; margin-top: 0.6rem; flex-wrap: wrap; }
+  .report-tag {
+    background: var(--ivory-dark); border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 100px; padding: 0.2rem 0.6rem;
+    font-size: 0.68rem; color: var(--ink-soft);
+  }
+  .report-body { padding: 1.5rem; }
+  .report-section-label {
+    font-size: 0.72rem; font-weight: 700; color: var(--orange);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .radar-container { display: flex; justify-content: center; margin-bottom: 1.25rem; }
+  .report-scores {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .score-chip {
+    background: var(--ivory);
+    border-radius: 10px; padding: 0.5rem 0.4rem;
+    text-align: center;
+  }
+  .score-chip-name { font-size: 0.6rem; color: var(--dust); margin-bottom: 0.2rem; }
+  .score-chip-val { font-size: 0.82rem; font-weight: 700; color: var(--teal); }
+  .score-chip-arrow { font-size: 0.6rem; color: var(--ink-soft); }
+
+  /* MISCONCEPTION SECTION */
+  .misconception {
+    background: var(--white);
+    padding: 5rem 5vw;
+  }
+  .misconception-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 600; color: var(--orange);
+    letter-spacing: 0.04em; margin-bottom: 0.75rem; display: block;
+  }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 700; color: var(--ink);
+    line-height: 1.35; letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 0.95rem; color: var(--ink-soft);
+    line-height: 1.8; font-weight: 300; max-width: 46ch;
+    margin-bottom: 3rem;
+  }
+  .vs-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .vs-card {
+    border-radius: 20px; padding: 2rem;
+  }
+  .vs-card.wrong { background: #FFF5F5; border: 1.5px solid #FFD5D0; }
+  .vs-card.right { background: var(--teal-light); border: 1.5px solid rgba(18,138,127,0.2); }
+  .vs-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+    margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .vs-card.wrong .vs-label { color: #C0392B; }
+  .vs-card.right .vs-label { color: var(--teal-deep); }
+  .vs-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    margin-bottom: 0.85rem;
+  }
+  .vs-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 0.45rem;
+  }
+  .vs-card.wrong .vs-dot { background: #E74C3C; }
+  .vs-card.right .vs-dot { background: var(--teal); }
+  .vs-text { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300; }
+
+  /* EVIDENCE SECTION */
+  .evidence { background: var(--ivory-dark); padding: 5rem 5vw; }
+  .evidence-inner { max-width: 1100px; margin: 0 auto; }
+  .evidence-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem; margin-top: 3rem;
+  }
+  .evidence-card {
+    background: var(--white); border-radius: 20px; padding: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .evidence-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--teal);
+  }
+  .evidence-num {
+    font-family: var(--serif);
+    font-size: 2rem; font-weight: 700; color: var(--teal);
+    opacity: 0.2; position: absolute; top: 1.25rem; right: 1.25rem;
+    line-height: 1;
+  }
+  .evidence-name {
+    font-size: 0.8rem; font-weight: 700; color: var(--orange);
+    margin-bottom: 0.5rem; letter-spacing: 0.02em;
+  }
+  .evidence-fullname {
+    font-family: var(--serif);
+    font-size: 1rem; font-weight: 600; color: var(--ink);
+    margin-bottom: 0.75rem; line-height: 1.35;
+  }
+  .evidence-desc {
+    font-size: 0.825rem; color: var(--ink-soft);
+    line-height: 1.7; font-weight: 300;
+  }
+  .evidence-badge {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 1rem; background: var(--green-card);
+    padding: 0.3rem 0.7rem; border-radius: 100px;
+    font-size: 0.68rem; font-weight: 600; color: var(--teal-deep);
+  }
+
+  /* HOW IT WORKS */
+  .how { background: var(--white); padding: 5rem 5vw; }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+  .how-flow {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 3rem; position: relative;
+  }
+  .how-flow::before {
+    content: ''; position: absolute;
+    top: 32px; left: 10%; right: 10%; height: 1px;
+    background: linear-gradient(to right, var(--teal-light), var(--teal), var(--teal-light));
+    z-index: 0;
+  }
+  .how-step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+  .how-step-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--teal); color: white;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-size: 1.25rem;
+    box-shadow: 0 0 0 8px var(--white), 0 0 0 9px rgba(18,138,127,0.15);
+  }
+  .how-step-title {
+    font-size: 0.9rem; font-weight: 700; color: var(--ink);
+    margin-bottom: 0.5rem; line-height: 1.35;
+  }
+  .how-step-desc {
+    font-size: 0.8rem; color: var(--ink-soft);
+    line-height: 1.65; font-weight: 300;
+  }
+
+  /* DOMAIN SECTION */
+  .domains { background: var(--ivory); padding: 5rem 5vw; }
+  .domains-inner { max-width: 1100px; margin: 0 auto; }
+  .domain-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; margin-top: 3rem;
+  }
+  .domain-card {
+    background: var(--white); border-radius: 16px;
+    padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .domain-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(18,138,127,0.1); }
+  .domain-icon {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--green-card);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .domain-name { font-size: 0.9rem; font-weight: 700; color: var(--ink); }
+  .domain-desc { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
+  .domain-example {
+    font-size: 0.72rem; color: var(--teal-deep);
+    background: var(--teal-light); border-radius: 8px;
+    padding: 0.4rem 0.65rem; line-height: 1.5;
+  }
+
+  /* AGE BAND */
+  .age-band { background: var(--ivory-dark); padding: 5rem 5vw; }
+  .age-band-inner { max-width: 1100px; margin: 0 auto; }
+  .age-visual {
+    margin-top: 3rem; position: relative;
+    background: var(--white); border-radius: 20px; padding: 2rem;
+  }
+  .age-track {
+    height: 12px; background: var(--ivory-dark);
+    border-radius: 100px; position: relative; overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .age-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--teal-light), var(--teal));
+    border-radius: 100px; width: 100%;
+  }
+  .age-labels {
+    display: flex; justify-content: space-between;
+    font-size: 0.72rem; color: var(--dust); margin-bottom: 2rem;
+  }
+  .age-groups {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem;
+  }
+  .age-group {
+    background: var(--ivory); border-radius: 12px;
+    padding: 0.85rem; text-align: center;
+  }
+  .age-group-range {
+    font-size: 0.72rem; font-weight: 700; color: var(--teal);
+    margin-bottom: 0.25rem;
+  }
+  .age-group-label {
+    font-size: 0.68rem; color: var(--ink-soft); line-height: 1.4;
+  }
+  .age-note {
+    font-size: 0.78rem; color: var(--dust); margin-top: 1.25rem;
+    padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.06);
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--teal); padding: 5rem 5vw; text-align: center;
+  }
+  .cta-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem); color: white;
+    font-weight: 700; letter-spacing: -0.03em; line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .cta-section p {
+    color: rgba(255,255,255,0.75); font-size: 0.95rem;
+    line-height: 1.75; margin-bottom: 2rem; font-weight: 300;
+  }
+  .cta-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: white; color: var(--teal-deep);
+    padding: 0.85rem 1.8rem; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 700; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: white;
+    padding: 0.85rem 1.6rem; border-radius: 100px;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    font-size: 0.9rem; font-weight: 500; text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-outline-white:hover { border-color: white; }
+
+  /* FOOTER */
+  footer { background: #1A1A1A; padding: 3rem 5vw 2rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: white; text-decoration: none; }
+  .footer-tagline { font-size: 0.75rem; margin-top: 0.35rem; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; font-size: 0.7rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+
+  /* RESPONSIVE */
+
+  @media (max-width: 768px) {
+    .future-cap-grid { grid-template-columns: 1fr !important; }
+    .planner-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 5vw; gap: 2.5rem; }
+    .vs-grid { grid-template-columns: 1fr; }
+    .evidence-grid { grid-template-columns: 1fr; }
+    .how-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .how-flow::before { display: none; }
+    .domain-grid { grid-template-columns: 1fr 1fr; }
+    .age-groups { grid-template-columns: repeat(3, 1fr); }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .domain-grid { grid-template-columns: 1fr; }
+    .age-groups { grid-template-columns: 1fr 1fr; }
+    .how-flow { grid-template-columns: 1fr; }
+    .report-scores { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">걸음마</a>
+  <ul class="nav-links">
+    <li><a href="geoleumma_assessment.html" class="active">발달 평가</a></li>
+    <li><a href="geoleumma_tinysignal.html">TinySignal</a></li>
+    <li><a href="geoleumma_download.html">다운로드</a></li>
+    <li><a href="geoleumma_download.html" class="nav-cta">앱 받기</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="background: var(--ivory);">
+  <div class="hero">
+    <div>
+      <span class="hero-eyebrow">발달 평가</span>
+      <h1>지연이 아닌,<br>방향을 찾아드려요</h1>
+      <p class="hero-sub">발달 평가는 "우리 아이 괜찮은가요?"를 확인하는 검사가 아니에요. 이 시기 이 아이에게 맞는 성장 방향을 발견하는 도구입니다.</p>
+      <div class="correction-block">
+        <div class="correction-wrong">❌ 발달 평가 = 발달 지연 검사</div>
+        <div class="correction-right">✅ 발달 평가 = <em>성장 방향을 발견하는 탐색</em></div>
+      </div>
+      <a href="geoleumma_download.html" class="btn-primary">평가 시작하기</a>
+    </div>
+
+    <!-- 리포트 미리보기 -->
+    <div class="report-preview">
+      <div class="report-header">
+        <div class="report-title-text">몸을 움직이며 세상을 탐구하는<br>기미의 28개월차 이야기</div>
+        <div class="report-meta">28개월 기준 최신 평가 결과입니다.</div>
+        <div class="report-tags">
+          <span class="report-tag">혼합 기질</span>
+          <span class="report-tag">자연</span>
+          <span class="report-tag">음악</span>
+        </div>
+      </div>
+      <div class="report-body">
+        <div class="report-section-label">🕸 발달 종합 그래프</div>
+        <div class="radar-container">
+          <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" width="200">
+            <polygon points="110,28 167,60 167,124 110,156 53,124 53,60" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+            <polygon points="110,40 155,68 155,116 110,144 65,116 65,68" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+            <polygon points="110,52 143,76 143,108 110,132 77,108 77,76" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+            <polygon points="110,64 131,84 131,100 110,120 89,100 89,84" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+            <polygon points="110,76 119,92 119,92 110,108 101,92 101,92" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+            <line x1="110" y1="28" x2="110" y2="156" stroke="#E0E0E0" stroke-width="0.8"/>
+            <line x1="53" y1="60" x2="167" y2="124" stroke="#E0E0E0" stroke-width="0.8"/>
+            <line x1="167" y1="60" x2="53" y2="124" stroke="#E0E0E0" stroke-width="0.8"/>
+            <line x1="53" y1="60" x2="167" y2="60" stroke="#E0E0E0" stroke-width="0.8"/>
+            <line x1="53" y1="124" x2="167" y2="124" stroke="#E0E0E0" stroke-width="0.8"/>
+            <!-- 표준 3.5 점선 -->
+            <polygon points="110,40.8 154,67.2 154,116.8 110,143.2 66,116.8 66,67.2" fill="none" stroke="#E8472A" stroke-width="1" stroke-dasharray="4,2" opacity="0.5"/>
+            <!-- 데이터 (대근육3.8, 소근육3.0, 언어2.8, 사회성3.4, 감각3.4, 인지4.0) -->
+            <polygon points="110,32.4 161.4,63.6 160.8,119.2 110,148.4 67.8,118.4 58.0,63.6"
+              fill="rgba(18,138,127,0.15)" stroke="#128A7F" stroke-width="2"/>
+            <circle cx="110" cy="32.4" r="3.5" fill="#128A7F"/>
+            <circle cx="161.4" cy="63.6" r="3.5" fill="#128A7F"/>
+            <circle cx="160.8" cy="119.2" r="3.5" fill="#128A7F"/>
+            <circle cx="110" cy="148.4" r="3.5" fill="#128A7F"/>
+            <circle cx="67.8" cy="118.4" r="3.5" fill="#128A7F"/>
+            <circle cx="58.0" cy="63.6" r="3.5" fill="#128A7F"/>
+            <!-- 레이블 -->
+            <text x="110" y="20" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" font-weight="600">대근육</text>
+            <text x="176" y="64" text-anchor="start" font-size="9" fill="#555" font-family="sans-serif">소근육</text>
+            <text x="176" y="124" text-anchor="start" font-size="9" fill="#555" font-family="sans-serif">언어</text>
+            <text x="110" y="172" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif">사회성·정서</text>
+            <text x="44" y="124" text-anchor="end" font-size="9" fill="#555" font-family="sans-serif">감각</text>
+            <text x="44" y="64" text-anchor="end" font-size="9" fill="#555" font-family="sans-serif">인지</text>
+            <!-- 범례 -->
+            <line x1="28" y1="188" x2="46" y2="188" stroke="#128A7F" stroke-width="2"/>
+            <text x="50" y="191" font-size="8" fill="#888" font-family="sans-serif">발달 점수</text>
+            <line x1="110" y1="188" x2="128" y2="188" stroke="#E8472A" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <text x="132" y="191" font-size="8" fill="#888" font-family="sans-serif">표준 3.5</text>
+          </svg>
+        </div>
+        <div class="report-scores">
+          <div class="score-chip"><div class="score-chip-name">대근육</div><div class="score-chip-val">3.8</div><div class="score-chip-arrow">→ 3.8</div></div>
+          <div class="score-chip"><div class="score-chip-name">소근육</div><div class="score-chip-val">3.0</div><div class="score-chip-arrow">→ 3.8</div></div>
+          <div class="score-chip"><div class="score-chip-name">언어</div><div class="score-chip-val">2.8</div><div class="score-chip-arrow">→ 3.6</div></div>
+          <div class="score-chip"><div class="score-chip-name">사회성</div><div class="score-chip-val">3.4</div><div class="score-chip-arrow">→ 4.2</div></div>
+          <div class="score-chip"><div class="score-chip-name">감각</div><div class="score-chip-val">3.4</div><div class="score-chip-arrow">→ 4.2</div></div>
+          <div class="score-chip"><div class="score-chip-name">인지</div><div class="score-chip-val">4.0</div><div class="score-chip-arrow">→ 4.2</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 오해 vs 사실 -->
+<section class="misconception">
+  <div class="misconception-inner">
+    <span class="section-eyebrow">발달 평가, 다시 보기</span>
+    <h2 class="section-heading">많은 분들이 오해하고 있어요</h2>
+    <p class="section-sub">걱정 때문에 열어봤다가, 오히려 방향이 생겼다는 분들이 많아요.</p>
+    <div class="vs-grid">
+      <div class="vs-card wrong">
+        <div class="vs-label">❌ 흔한 오해</div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">평균보다 낮게 나오면 이상한 거 아닐까?</div></div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">발달 검사는 병원에서 해야 제대로인 것 아닌가?</div></div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">결과가 나쁘면 더 불안해질 것 같아서 안 하는 게 낫겠다</div></div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">아이마다 다른 건데 평가가 의미가 있나?</div></div>
+      </div>
+      <div class="vs-card right">
+        <div class="vs-label">✅ 걸음마의 방식</div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">평균이 아닌 이 아이만의 강점과 보완 방향을 보여드려요</div></div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">국내외 검증된 발달 연구 기반의 K-TPI 질문지를 사용해요</div></div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">걱정 대신 "오늘 이렇게 해보세요"라는 방향을 드려요</div></div>
+        <div class="vs-item"><div class="vs-dot"></div><div class="vs-text">기질·성향·관심사를 함께 반영한 완전 개인화 결과예요</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 근거 -->
+<section class="evidence">
+  <div class="evidence-inner">
+    <span class="section-eyebrow">질문지 설계 근거</span>
+    <h2 class="section-heading">국내외 검증된 발달 연구를<br>기반으로 만들었어요</h2>
+    <p class="section-sub">각기 다른 강점을 가진 발달 연구들을 참고해, 한국 아이의 생활 문화에 맞는 질문을 직접 설계했습니다.</p>
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="evidence-num">1</div>
+        <div class="evidence-name">ASQ-3</div>
+        <div class="evidence-fullname">Ages & Stages Questionnaires</div>
+        <p class="evidence-desc">부모 보고 방식으로 가정에서도 신뢰성 있게 측정할 수 있는 글로벌 표준. 간결한 문항 구조가 일상 속 관찰로 이어질 수 있게 해줘요.</p>
+        <span class="evidence-badge">✓ 문항 구조</span>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-num">2</div>
+        <div class="evidence-name">Denver II 참고</div>
+        <div class="evidence-fullname">Denver Developmental Screening Test</div>
+        <p class="evidence-desc">각 발달 영역이 어느 월령 구간에 나타나는지(발달 창)를 구획한 연구 자료를 참고해 0~60개월을 2개월 단위로 세분화했어요.</p>
+        <span class="evidence-badge">✓ 월령별 발달 창 기준</span>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-num">3</div>
+        <div class="evidence-name">KICCE 발달 연구 참고</div>
+        <div class="evidence-fullname">한국아동패널 및 국내 발달 연구</div>
+        <p class="evidence-desc">한국 영유아의 실제 발달 양상을 추적한 국내 연구 자료를 바탕으로, 젓가락질·신발 정리·또래 놀이 등 한국 생활에 맞는 항목을 별도로 설계했어요.</p>
+        <span class="evidence-badge">✓ 한국 아동 문화 반영</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 어떻게 진행되나 -->
+<section class="how">
+  <div class="how-inner">
+    <span class="section-eyebrow">평가 진행 방식</span>
+    <h2 class="section-heading">딱 10분, 오늘 바로<br>결과를 받을 수 있어요</h2>
+    <p class="section-sub">복잡한 절차 없이, 지금 아이를 관찰한 것만으로도 충분해요.</p>
+    <div class="how-flow">
+      <div class="how-step">
+        <div class="how-step-circle">👶</div>
+        <div class="how-step-title">아이 정보 입력</div>
+        <div class="how-step-desc">이름, 생년월일, 기질·성향, 관심사를 입력해요. 평가가 아이에게 맞춰집니다.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">📋</div>
+        <div class="how-step-title">질문지 응답</div>
+        <div class="how-step-desc">현재 월령에 맞는 7개 영역 질문에 답해요. 평소 아이 모습을 떠올리면서요.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">🕸</div>
+        <div class="how-step-title">발달 리포트</div>
+        <div class="how-step-desc">레이더 차트 + 미래 역량 분석 + 영역별 미션이 자동으로 생성돼요.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">✨</div>
+        <div class="how-step-title">AI 맞춤 가이드</div>
+        <div class="how-step-desc">오늘 바로 해볼 수 있는 놀이·미션·외부활동을 AI가 추천해드려요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7개 발달 영역 -->
+<section class="domains">
+  <div class="domains-inner">
+    <span class="section-eyebrow">평가 영역</span>
+    <h2 class="section-heading">7개 영역으로<br>아이를 입체적으로 봐요</h2>
+    <p class="section-sub">단순 점수가 아니라, 각 영역이 어떻게 연결되는지를 함께 알려드려요.</p>
+    <div class="domain-grid">
+      <div class="domain-card">
+        <div class="domain-icon">🦵</div>
+        <div class="domain-name">대근육 운동</div>
+        <div class="domain-desc">걷기, 뛰기, 계단 오르기 등 큰 움직임 발달</div>
+        <div class="domain-example">예: 장애물 통과, 한 발 서기, 공 차기</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon">✋</div>
+        <div class="domain-name">소근육 운동</div>
+        <div class="domain-desc">손가락 조작, 쥐기, 그리기 등 세밀한 운동</div>
+        <div class="domain-example">예: 스티커 붙이기, 블록 쌓기, 선 긋기</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon">💬</div>
+        <div class="domain-name">언어 이해</div>
+        <div class="domain-desc">듣고 이해하는 수용 언어와 표현 언어 발달</div>
+        <div class="domain-example">예: 두 단어 문장, 질문 이해, 이름 말하기</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon">🤝</div>
+        <div class="domain-name">사회성·정서</div>
+        <div class="domain-desc">또래 상호작용, 감정 표현, 분리 불안 조절</div>
+        <div class="domain-example">예: 역할 놀이, 공동 주의, 도움 요청하기</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon">🌿</div>
+        <div class="domain-name">감각·돌발</div>
+        <div class="domain-desc">시각·청각·촉각 반응과 새로운 자극 수용력</div>
+        <div class="domain-example">예: 모래놀이, 음악 반응, 새로운 음식 탐색</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon">🧠</div>
+        <div class="domain-name">인지</div>
+        <div class="domain-desc">문제 해결, 인과 관계 이해, 기억 및 분류</div>
+        <div class="domain-example">예: 퍼즐, 색깔 분류, 인과 관계 실험</div>
+      </div>
+      <div class="domain-card" style="grid-column: span 1;">
+        <div class="domain-icon">🏠</div>
+        <div class="domain-name">생활습관·자조</div>
+        <div class="domain-desc">식사, 옷 입기, 수면 등 일상 자립 능력</div>
+        <div class="domain-example">예: 숟가락 사용, 신발 신기, 손 씻기</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 월령 -->
+<section class="age-band">
+  <div class="age-band-inner">
+    <span class="section-eyebrow">촘촘한 월령 구조</span>
+    <h2 class="section-heading">0개월부터 60개월까지<br>2개월 단위로 맞춰요</h2>
+    <p class="section-sub">뭉뚱그린 "0~12개월"이 아니에요. 아이가 지금 어느 발달 창 안에 있는지 정확하게 잡아드려요.</p>
+    <div class="age-visual">
+      <div class="age-track"><div class="age-fill"></div></div>
+      <div class="age-labels"><span>0개월</span><span>12개월</span><span>24개월</span><span>36개월</span><span>48개월</span><span>60개월</span></div>
+      <div class="age-groups">
+        <div class="age-group"><div class="age-group-range">0~6개월</div><div class="age-group-label">신생아기<br>감각·반응</div></div>
+        <div class="age-group"><div class="age-group-range">7~18개월</div><div class="age-group-label">영아기<br>이동·언어 시작</div></div>
+        <div class="age-group"><div class="age-group-range">19~30개월</div><div class="age-group-label">걸음마기<br>자아·언어 폭발</div></div>
+        <div class="age-group"><div class="age-group-range">31~42개월</div><div class="age-group-label">유아전기<br>사회성·상상</div></div>
+        <div class="age-group"><div class="age-group-range">43~60개월</div><div class="age-group-label">유아기<br>자기조절·인지</div></div>
+      </div>
+      <div class="age-note">※ 생활습관·자조 영역은 34개월부터 평가됩니다. 특허 출원 중 (10-2025-0061591, 10-2026-0106048)</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 미래역량 분석 -->
+<section style="background: var(--white); padding: 5rem 5vw;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <span class="section-eyebrow">미래역량 분석</span>
+    <h2 class="section-heading">오늘의 발달이<br>미래 역량으로 이어져요</h2>
+    <p class="section-sub">발달 점수를 기반으로, 6가지 미래 역량의 현재 기초 상태를 보여드려요. 진단이 아닌 방향이에요.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-top:3rem;">
+
+      <!-- 자기주도학습 -->
+      <div style="background:var(--teal-light); border-radius:20px; padding:1.5rem; border:1.5px solid rgba(18,138,127,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.95rem; font-weight:700; color:var(--ink);">자기주도 학습 능력</span>
+          <span style="background:white; border:1px solid #10B981; color:#10B981; font-size:0.65rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px;">안정 궤적</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.75rem;">인지·소근육·언어 영역이 기초가 돼요. 스스로 탐색하고 시도하는 힘의 발달 기초를 보여줘요.</p>
+        <span style="background:white; border-radius:100px; border:1px solid #E2E8F0; padding:0.25rem 0.65rem; font-size:0.68rem; color:#475569; display:inline-block;">📈 지난번보다 좋아지고 있어요</span>
+        <p style="font-size:0.72rem; color:#334155; margin-top:0.65rem; line-height:1.5;">✅ 중요한 발달 영역들이 잘 자라고 있어요!</p>
+      </div>
+
+      <!-- 자기조절 -->
+      <div style="background:var(--teal-light); border-radius:20px; padding:1.5rem; border:1.5px solid rgba(18,138,127,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.95rem; font-weight:700; color:var(--ink);">자기조절 능력</span>
+          <span style="background:white; border:1px solid #10B981; color:#10B981; font-size:0.65rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px;">형성 중</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.75rem;">사회성·정서·감각 영역이 기초가 돼요. 감정 인식과 충동 조절 능력의 기반이 쌓이는 중이에요.</p>
+        <span style="background:white; border-radius:100px; border:1px solid #E2E8F0; padding:0.25rem 0.65rem; font-size:0.68rem; color:#475569; display:inline-block;">➡️ 지난번과 비슷한 수준이에요</span>
+        <p style="font-size:0.72rem; color:#334155; margin-top:0.65rem; line-height:1.5;">✅ 중요한 발달 영역들이 잘 자라고 있어요!</p>
+      </div>
+
+      <!-- 인간관계 -->
+      <div style="background:#FFF0ED; border-radius:20px; padding:1.5rem; border:1.5px solid rgba(232,71,42,0.12);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.95rem; font-weight:700; color:var(--ink);">인간관계 및 사회성</span>
+          <span style="background:white; border:1px solid #F59E0B; color:#B45309; font-size:0.65rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px;">보완 필요</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.75rem;">사회성·언어·인지 영역이 기초가 돼요. 또래 관계와 협동의 기반이 되는 영역이에요.</p>
+        <span style="background:white; border-radius:100px; border:1px solid #E2E8F0; padding:0.25rem 0.65rem; font-size:0.68rem; color:#475569; display:inline-block;">📊 이전 기록이 없어 변화를 비교할 수 없어요</span>
+        <p style="font-size:0.72rem; color:#BE123C; margin-top:0.65rem; line-height:1.5;">💛 지금 더 관심이 필요해요 — 언어(2.8점) 영역을 조금 더 신경 써주세요</p>
+      </div>
+
+      <!-- 의사소통 -->
+      <div style="background:var(--teal-light); border-radius:20px; padding:1.5rem; border:1.5px solid rgba(18,138,127,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.95rem; font-weight:700; color:var(--ink);">의사소통 및 표현력</span>
+          <span style="background:white; border:1px solid #10B981; color:#10B981; font-size:0.65rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px;">형성 중</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.75rem;">언어·인지·사회성 영역이 기초가 돼요. 자신의 생각과 감정을 말과 행동으로 표현하는 능력이에요.</p>
+        <span style="background:white; border-radius:100px; border:1px solid #E2E8F0; padding:0.25rem 0.65rem; font-size:0.68rem; color:#475569; display:inline-block;">📊 이전 기록이 없어 변화를 비교할 수 없어요</span>
+        <p style="font-size:0.72rem; color:#334155; margin-top:0.65rem; line-height:1.5;">✅ 중요한 발달 영역들이 잘 자라고 있어요!</p>
+      </div>
+
+      <!-- 창의적 탐색 -->
+      <div style="background:var(--teal-light); border-radius:20px; padding:1.5rem; border:1.5px solid rgba(18,138,127,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.95rem; font-weight:700; color:var(--ink);">창의적 탐색 능력</span>
+          <span style="background:white; border:1px solid #10B981; color:#10B981; font-size:0.65rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px;">안정 궤적</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.75rem;">감각·인지·소근육 영역이 기초가 돼요. 새로운 것을 발견하고 탐구하려는 자발적 동기예요.</p>
+        <span style="background:white; border-radius:100px; border:1px solid #E2E8F0; padding:0.25rem 0.65rem; font-size:0.68rem; color:#475569; display:inline-block;">📈 지난번보다 좋아지고 있어요</span>
+        <p style="font-size:0.72rem; color:#334155; margin-top:0.65rem; line-height:1.5;">✅ 중요한 발달 영역들이 잘 자라고 있어요!</p>
+      </div>
+
+      <!-- 학습 준비도 -->
+      <div style="background:var(--teal-light); border-radius:20px; padding:1.5rem; border:1.5px solid rgba(18,138,127,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.95rem; font-weight:700; color:var(--ink);">학습 준비도</span>
+          <span style="background:white; border:1px solid #10B981; color:#10B981; font-size:0.65rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px;">안정 궤적</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.75rem;">인지·언어·소근육·사회성 영역이 기초가 돼요. 체계적 학습 환경에 적응하는 기반 능력이에요.</p>
+        <span style="background:white; border-radius:100px; border:1px solid #E2E8F0; padding:0.25rem 0.65rem; font-size:0.68rem; color:#475569; display:inline-block;">📈 지난번보다 좋아지고 있어요</span>
+        <p style="font-size:0.72rem; color:#334155; margin-top:0.65rem; line-height:1.5;">✅ 중요한 발달 영역들이 잘 자라고 있어요!</p>
+      </div>
+
+    </div>
+    <p style="font-size:0.75rem; color:var(--dust); margin-top:1.5rem; line-height:1.7;">※ 미래역량 분석은 현재 발달 기초가 얼마나 안정적인지를 보여주는 참고 지표예요. 아이의 미래를 확정하는 것이 아닙니다.</p>
+  </div>
+</section>
+
+<!-- AI 학습 플래너 -->
+<section style="background: var(--ivory-dark); padding: 5rem 5vw;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <span class="section-eyebrow">AI 학습 플래너</span>
+    <h2 class="section-heading">어디에 투자할지<br>AI가 찾아드려요</h2>
+    <p class="section-sub" style="margin-bottom:3rem;">만 3세(36개월)부터는 사교육 고민이 시작되죠. 월 예산과 아이의 발달 점수·기질·관심사를 함께 분석해 이 아이에게 맞는 활동을 추천해드립니다.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+
+      <!-- 플래너 UI 미리보기 -->
+      <div style="background:var(--white); border-radius:24px; overflow:hidden; box-shadow:0 24px 56px rgba(0,0,0,0.08);">
+        <!-- 헤더 -->
+        <div style="background:var(--ivory); padding:1.25rem 1.5rem; border-bottom:1px solid rgba(0,0,0,0.06);">
+          <div style="font-size:0.72rem; color:var(--orange); font-weight:700; margin-bottom:0.3rem;">🌳 개월과 수준에 맞는 외부 활동 추천</div>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--ink);">기미 · 28개월 · 월 예산 20~35만원</div>
+        </div>
+        <!-- 추천 카드 1 -->
+        <div style="padding:1.25rem 1.5rem; border-bottom:1px solid rgba(0,0,0,0.05);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+            <span style="font-size:0.9rem; font-weight:700; color:var(--ink);">🎵 음악 수업</span>
+            <span style="background:var(--green-card); color:var(--teal-deep); font-size:0.65rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:100px;">난이도: 낮음</span>
+          </div>
+          <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6; margin-bottom:0.6rem;">기미의 음악 관심사와 언어 발달 보완을 동시에 연결해요. 이 기질 아이는 구조화된 음악 활동에서 자발적 참여가 높아요.</p>
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            <span style="background:var(--ivory); border:1px solid rgba(0,0,0,0.08); border-radius:100px; padding:0.18rem 0.5rem; font-size:0.62rem; color:var(--ink-soft);">언어 이해</span>
+            <span style="background:var(--ivory); border:1px solid rgba(0,0,0,0.08); border-radius:100px; padding:0.18rem 0.5rem; font-size:0.62rem; color:var(--ink-soft);">사회성·정서</span>
+            <span style="background:var(--ivory); border:1px solid rgba(0,0,0,0.08); border-radius:100px; padding:0.18rem 0.5rem; font-size:0.62rem; color:var(--ink-soft);">🏠 홈 대안 있음</span>
+          </div>
+        </div>
+        <!-- 추천 카드 2 -->
+        <div style="padding:1.25rem 1.5rem; background:var(--ivory);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+            <span style="font-size:0.9rem; font-weight:700; color:var(--ink);">🌿 자연 탐험 프로그램</span>
+            <span style="background:var(--green-card); color:var(--teal-deep); font-size:0.65rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:100px;">난이도: 보통</span>
+          </div>
+          <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.6;">자연 관심사와 감각·대근육 발달을 연결한 추천이에요. 공공 도서관 자연 프로그램도 좋은 대안이에요.</p>
+        </div>
+      </div>
+
+      <!-- 설명 -->
+      <div>
+        <div style="display:flex; flex-direction:column; gap:1.25rem;">
+          <div style="display:flex; align-items:flex-start; gap:1rem;">
+            <div style="width:40px; height:40px; border-radius:12px; background:var(--green-card); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">💰</div>
+            <div>
+              <div style="font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.25rem;">월 예산 5단계로 맞춤 설계</div>
+              <div style="font-size:0.82rem; color:var(--ink-soft); line-height:1.65; font-weight:300;">10만원 이하부터 55만원 이상까지. 예산이 적을수록 홈 활동·공공시설 대안을 함께 제안해드려요.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:1rem;">
+            <div style="width:40px; height:40px; border-radius:12px; background:var(--green-card); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">🧬</div>
+            <div>
+              <div style="font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.25rem;">발달 점수 + 기질 + 관심사 교차 분석</div>
+              <div style="font-size:0.82rem; color:var(--ink-soft); line-height:1.65; font-weight:300;">단순 연령 추천이 아니에요. K-TPI 발달 점수의 강점·보완 영역과 기질·관심사를 교차해 이 아이에게만 맞는 활동을 찾아드려요.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:1rem;">
+            <div style="width:40px; height:40px; border-radius:12px; background:var(--green-card); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">⚠️</div>
+            <div>
+              <div style="font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.25rem;">과투자 경고도 솔직하게</div>
+              <div style="font-size:0.82rem; color:var(--ink-soft); line-height:1.65; font-weight:300;">주 4회 이상 학원이 추천될 경우 아이 발달 관점에서 경고를 함께 드려요. 더 적게, 더 맞게.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:1rem;">
+            <div style="width:40px; height:40px; border-radius:12px; background:var(--green-card); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">📅</div>
+            <div>
+              <div style="font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:0.25rem;">36개월 이상 아이를 위한 기능</div>
+              <div style="font-size:0.82rem; color:var(--ink-soft); line-height:1.65; font-weight:300;">사교육 고민이 본격 시작되는 만 3세(36개월)부터 이용할 수 있어요. 이 시기에 딱 맞는 카테고리를 중심으로 AI가 구성해줘요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 전문가 신뢰 -->
+<section style="background:var(--white); padding:4rem 5vw;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:2.5rem;">
+      <div style="height:1px; flex:1; background:rgba(0,0,0,0.08);"></div>
+      <span style="font-size:0.72rem; font-weight:600; color:var(--dust); letter-spacing:0.06em; white-space:nowrap;">이 앱을 먼저 써본 전문가들</span>
+      <div style="height:1px; flex:1; background:rgba(0,0,0,0.08);"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+      <div style="background:var(--ivory); border-radius:20px; padding:1.75rem; border-left:3px solid var(--teal);">
+        <div style="font-size:0.9rem; color:var(--ink); line-height:1.75; margin-bottom:1.25rem;">"발달센터 다닐까 고민하거나 다니는 중인 아이들한테 엄청 유용할 것 같아요. 가정에서 할 수 있는 예시가 많다는 게 엄청 장점이에요."</div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:36px; height:36px; border-radius:50%; background:var(--teal-light); display:flex; align-items:center; justify-content:center;">🩺</div>
+          <div><div style="font-size:0.78rem; font-weight:700; color:var(--ink);">햇살아이의원 원장님</div><div style="font-size:0.68rem; color:var(--dust);">소아과전문의 · MOU 파트너</div></div>
+        </div>
+      </div>
+      <div style="background:var(--ivory); border-radius:20px; padding:1.75rem; border-left:3px solid var(--orange);">
+        <div style="font-size:0.9rem; color:var(--ink); line-height:1.75; margin-bottom:1.25rem;">"부모가 좋아하겠어요. 간단히 점검하고 아주 다양한 방법 제안에 넘쳐요. 발달심리검사 임상 선생님께도 피드백 받아볼 만해요."</div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:36px; height:36px; border-radius:50%; background:var(--orange-light); display:flex; align-items:center; justify-content:center;">🧠</div>
+          <div><div style="font-size:0.78rem; font-weight:700; color:var(--ink);">발달심리학 박사</div><div style="font-size:0.68rem; color:var(--dust);">사진치료전문가 · 클로즈테스트 자문</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>지금 아이의 방향을<br>찾아볼까요?</h2>
+  <p>10분이면 충분해요. 비교 말고 이해, 걱정 말고 방향.<br>걸음마가 오늘 바로 해볼 것을 찾아드립니다.</p>
+  <div class="cta-buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.gryulab.geoleumma_app" class="btn-white">▶ 구글 플레이</a>
+    <a href="https://apps.apple.com/kr/app/%EA%B1%B8%EC%9D%8C%EB%A7%88/id6775895780" class="btn-outline-white">🍎 앱스토어</a>
+  </div>
+  <p style="color:rgba(255,255,255,0.45); font-size:0.72rem; margin-top:1.25rem;">소아과전문의 MOU · 발달심리학 박사 자문 · K-TPI 특허 출원 중</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="/" class="footer-logo">걸음마 · todayparent</a>
+        <div class="footer-tagline">0~60개월 영유아 발달 앱, by 띵동</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#">문의</a></li>
+        <li><a href="#">about</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 띵동(ddingdong) · todayparent.com<br>
+      K-TPI 및 리포트 생성 로직 특허 출원 중 (10-2025-0061591, 10-2026-0106048)<br>
+      사업자등록번호: 447-56-00943 | 통신판매업: 제2025-화성동탄-2249호
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

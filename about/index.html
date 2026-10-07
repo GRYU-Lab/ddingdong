@@ -1,271 +1,338 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>about · todayparent</title>
-  <meta name="description" content="걸음마(todayparent)는 0~60개월, 가장 가파르게 발달하는 시기를 월령 단위로 평가하고 맞춤 미션을 제안합니다.">
-  <link rel="canonical" href="https://www.todayparent.com/about/">
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-  <link rel="apple-touch-icon" href="/assets/icon-180.png">
-  <link rel="preload" as="image" href="/assets/logo.svg">
-  <link rel="stylesheet" href="/css/style.css?v=9">
-  <meta name="theme-color" content="#128A7F">
-  <meta property="og:title" content="about · todayparent">
-  <meta property="og:description" content="0~60개월, 결정적 시기에 부모가 바로 실천하도록 돕는 서비스.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.todayparent.com/about/">
-  <meta property="og:image" content="/assets/og.jpg">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"AboutPage",
-    "name":"about",
-    "url":"https://www.todayparent.com/about/",
-    "isPartOf":{"@type":"WebSite","name":"todayparent"},
-    "publisher":{"@type":"Organization","name":"ddingdong"}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>about · 걸음마 · todayparent</title>
+<meta name="description" content="걸음마(todayparent)는 0~60개월, 가장 가파르게 발달하는 시기를 월령 단위로 평가하고 맞춤 미션을 제안합니다.">
+<link rel="canonical" href="https://www.todayparent.com/about/">
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta name="theme-color" content="#128A7F">
+<meta property="og:title" content="about · 걸음마 · todayparent">
+<meta property="og:description" content="0~60개월, 결정적 시기에 부모가 바로 실천하도록 돕는 서비스.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.todayparent.com/about/">
+<meta property="og:image" content="/assets/og.jpg">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"AboutPage",
+  "name":"about · 걸음마",
+  "url":"https://www.todayparent.com/about/",
+  "isPartOf":{"@type":"WebSite","name":"todayparent"},
+  "publisher":{"@type":"Organization","name":"ddingdong"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --teal: #128A7F;
+    --teal-deep: #0D6B62;
+    --teal-light: #E8F5F3;
+    --orange: #E8472A;
+    --orange-light: #FFF0ED;
+    --green-card: #E8F5E8;
+    --ivory: #FFF8F0;
+    --ivory-dark: #FDF3E7;
+    --ink: #1A1A1A;
+    --ink-soft: #555;
+    --dust: #999;
+    --white: #FFFFFF;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
   }
-  </script>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--ivory); -webkit-font-smoothing: antialiased; }
 
-  <style>
-    /* ── 차트 셸 ── */
-    .chart-shell {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.25rem 1rem;
-      background: var(--teal-pale);
-      margin: 1rem 0 .875rem;
-    }
-    .chart-shell strong {
-      display: block;
-      font-size: .9rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: .3rem;
-    }
-    .chart-shell small {
-      display: block;
-      margin-top: .6rem;
-      font-size: .78rem;
-      color: var(--muted);
-      font-style: italic;
-    }
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,248,240,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(18,138,127,0.1);
+    padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 60px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--teal); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.875rem; color: var(--ink-soft); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: white !important; padding: 0.45rem 1.1rem; border-radius: 100px; font-size: 0.8rem !important; font-weight: 700 !important; }
 
-    /* ── 근거 카드 ── */
-    .evidence-card {
-      background: var(--bg);
-      border-radius: var(--radius-md);
-      padding: 1.1rem 1.25rem;
-      margin: .875rem 0;
-      border: 1px solid var(--line-soft);
-    }
-    .evidence-card h4 {
-      font-size: .95rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin: 0 0 .35rem;
-    }
-    .evidence-card p {
-      font-size: .875rem;
-      color: var(--muted);
-      margin: 0;
-      line-height: 1.7;
-    }
-    .evidence-source {
-      display: block;
-      margin-top: .55rem;
-      font-size: .78rem;
-      color: var(--muted-2);
-      font-style: italic;
-      line-height: 1.6;
-    }
+  /* HERO */
+  .hero {
+    background: var(--ivory);
+    padding: 5rem 5vw 4rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 600; color: var(--orange);
+    letter-spacing: 0.06em; display: block; margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; color: var(--ink);
+    line-height: 1.3; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+  }
+  .hero-sub {
+    font-size: 1rem; color: var(--ink-soft);
+    line-height: 1.8; font-weight: 300; max-width: 52ch;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .hero-badge {
+    background: var(--teal-light); color: var(--teal-deep);
+    font-size: 0.72rem; font-weight: 600;
+    padding: 0.3rem 0.8rem; border-radius: 100px;
+    border: 1px solid rgba(18,138,127,0.2);
+  }
 
-    /* ── 막대 범례 ── */
-    .bar-legend {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: .625rem;
-      font-size: .82rem;
-      color: var(--muted);
-    }
-    .bar-legend span { display: flex; align-items: center; gap: .35rem; }
-    .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  /* SECTION BASE */
+  .section { padding: 4rem 5vw; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.72rem; font-weight: 600; color: var(--orange); letter-spacing: 0.06em; display: block; margin-bottom: 0.6rem; }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700; color: var(--ink);
+    line-height: 1.35; letter-spacing: -0.03em; margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; max-width: 52ch; }
 
-    /* ── 발달 테이블 ── */
-    table.dev-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      background: var(--bg-card);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      font-size: .875rem;
-    }
-    table.dev-table th,
-    table.dev-table td {
-      border-bottom: 1px solid var(--line-soft);
-      padding: .6rem .6rem;
-      vertical-align: top;
-      text-align: left;
-      line-height: 1.55;
-    }
-    table.dev-table thead th {
-      background: var(--teal-pale);
-      font-weight: 800;
-      color: var(--teal-dark);
-      font-size: .82rem;
-      letter-spacing: .03em;
-    }
-    table.dev-table td:first-child {
-      font-weight: 800;
-      color: var(--ink);
-      white-space: nowrap;
-      width: 110px;
-    }
-    table.dev-table td:last-child { color: var(--muted); font-size: .8rem; }
+  /* 왜 걸음마 */
+  .why-section { background: var(--white); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .why-card {
+    background: var(--ivory); border-radius: 16px; padding: 1.5rem;
+    border-left: 3px solid var(--teal);
+  }
+  .why-card-title { font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .why-card-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300; }
+  .info-strip {
+    background: var(--teal); color: white;
+    border-radius: 12px; padding: 1rem 1.25rem;
+    font-size: 0.88rem; line-height: 1.6; margin-top: 1.5rem;
+    font-weight: 500;
+  }
 
-    @media (max-width: 600px) {
-      table.dev-table thead { display: none; }
-      table.dev-table td { display: block; width: 100%; }
-      table.dev-table td:first-child { padding-bottom: .15rem; }
-      table.dev-table tr { display: block; margin-bottom: .875rem; border-bottom: 1px solid var(--line-soft); }
-    }
+  /* 발달 차트 */
+  .chart-section { background: var(--ivory-dark); }
+  .chart-shell {
+    background: var(--white); border-radius: 16px;
+    padding: 1.5rem; margin: 1.5rem 0;
+    border: 1px solid rgba(18,138,127,0.1);
+  }
+  .chart-title { font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
+  .chart-desc { font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 0.75rem; font-weight: 300; }
+  .chart-note { font-size: 0.72rem; color: var(--dust); margin-top: 0.75rem; font-style: italic; }
+  .bar-legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; font-size: 0.78rem; color: var(--ink-soft); }
+  .bar-legend span { display: flex; align-items: center; gap: 0.35rem; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
 
-    /* ── 평가 도구 그리드 ── */
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: .875rem;
-      margin-top: .875rem;
-    }
-    .tool-item {
-      background: var(--bg-card);
-      border-radius: var(--radius-md);
-      padding: 1.1rem 1.1rem;
-      border: 1px solid var(--line-soft);
-      transition: box-shadow .15s, transform .15s;
-    }
-    .tool-item:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    .tool-item h4 {
-      font-size: .95rem;
-      font-weight: 800;
-      color: var(--teal);
-      margin: 0 0 .35rem;
-    }
-    .tool-item p {
-      font-size: .82rem;
-      color: var(--muted);
-      margin: 0;
-      line-height: 1.65;
-    }
+  /* 발달 테이블 */
+  .dev-table-wrap { margin-top: 1.5rem; overflow-x: auto; border-radius: 16px; }
+  table.dev-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--white); font-size: 0.855rem;
+    border-radius: 16px; overflow: hidden;
+  }
+  table.dev-table th {
+    background: var(--teal-light); color: var(--teal-deep);
+    font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+    padding: 0.65rem 0.85rem; text-align: left;
+  }
+  table.dev-table td {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 0.65rem 0.85rem; vertical-align: top;
+    line-height: 1.55;
+  }
+  table.dev-table td:first-child { font-weight: 700; color: var(--teal-deep); white-space: nowrap; }
+  table.dev-table td:last-child { font-size: 0.78rem; color: var(--dust); }
+  table.dev-table tr:last-child td { border-bottom: none; }
+  @media (max-width: 600px) {
+    table.dev-table thead { display: none; }
+    table.dev-table td { display: block; }
+    table.dev-table tr { display: block; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  }
 
-    /* ── 원칙 아이템 ── */
-    .principle-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: .875rem;
-    }
-    .principle-item {
-      background: var(--teal-pale);
-      border-radius: var(--radius-md);
-      padding: 1.2rem 1.2rem;
-      border: 1px solid var(--line-soft);
-    }
-    .principle-item .pi-icon { font-size: 1.6rem; margin-bottom: .4rem; display: block; }
-    .principle-item h3 { font-size: .95rem; font-weight: 800; color: var(--teal-dark); margin: 0 0 .3rem; }
-    .principle-item p { font-size: .84rem; color: var(--muted); margin: 0; line-height: 1.6; }
+  /* 평가 도구 */
+  .tools-section { background: var(--white); }
+  .tool-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1.5rem; }
+  .tool-card {
+    background: var(--ivory); border-radius: 16px; padding: 1.5rem;
+    border-top: 3px solid var(--teal);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(18,138,127,0.1); }
+  .tool-name { font-size: 0.95rem; font-weight: 700; color: var(--teal); margin-bottom: 0.5rem; }
+  .tool-fullname { font-size: 0.72rem; color: var(--dust); margin-bottom: 0.5rem; }
+  .tool-desc { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300; }
+  .tool-badge {
+    display: inline-block; margin-top: 0.75rem;
+    background: var(--green-card); color: var(--teal-deep);
+    font-size: 0.65rem; font-weight: 700;
+    padding: 0.2rem 0.6rem; border-radius: 100px;
+  }
+  .tool-note {
+    background: var(--ivory-dark); border-radius: 12px;
+    padding: 1rem 1.25rem; margin-top: 1.5rem;
+    font-size: 0.8rem; color: var(--ink-soft); line-height: 1.7;
+    border-left: 3px solid var(--dust);
+  }
 
-    /* ── cite ── */
-    .cite {
-      font-size: .78rem;
-      color: var(--muted-2);
-      line-height: 1.65;
-      margin-top: 1rem;
-    }
-  </style>
+  /* 전문가 자문단 */
+  .expert-section { background: var(--ivory-dark); }
+  .expert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+  .expert-card {
+    background: var(--white); border-radius: 20px; padding: 1.75rem;
+    border-left: 3px solid var(--teal);
+  }
+  .expert-card.orange { border-left-color: var(--orange); }
+  .expert-quote {
+    font-size: 0.9rem; color: var(--ink); line-height: 1.75;
+    margin-bottom: 1.25rem; font-weight: 400;
+  }
+  .expert-info { display: flex; align-items: center; gap: 0.75rem; }
+  .expert-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1rem;
+  }
+  .expert-name { font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+  .expert-role { font-size: 0.68rem; color: var(--dust); margin-top: 0.1rem; }
+
+  /* 원칙 */
+  .principles-section { background: var(--white); }
+  .principle-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1.5rem; }
+  .principle-card {
+    background: var(--teal-light); border-radius: 16px; padding: 1.5rem;
+    border: 1px solid rgba(18,138,127,0.15);
+  }
+  .principle-icon { font-size: 1.5rem; margin-bottom: 0.6rem; display: block; }
+  .principle-title { font-size: 0.95rem; font-weight: 700; color: var(--teal-deep); margin-bottom: 0.35rem; }
+  .principle-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
+
+  /* 증거 카드 */
+  .evidence-card {
+    background: var(--ivory); border-radius: 12px;
+    padding: 1.1rem 1.25rem; margin-top: 1.25rem;
+    border-left: 3px solid var(--teal);
+  }
+  .evidence-title { font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .evidence-body { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.7; }
+  .evidence-source { display: block; margin-top: 0.5rem; font-size: 0.72rem; color: var(--dust); font-style: italic; line-height: 1.6; }
+
+  /* FOOTER */
+  footer { background: #1A1A1A; padding: 3rem 5vw 2rem; }
+  .footer-inner { max-width: 900px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: white; text-decoration: none; }
+  .footer-tagline { font-size: 0.75rem; margin-top: 0.35rem; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; font-size: 0.7rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+
+  @media (max-width: 768px) {
+    .why-grid, .expert-grid { grid-template-columns: 1fr; }
+    .tool-grid { grid-template-columns: 1fr; }
+    .principle-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 480px) {
+    .principle-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-<a href="#main" class="sr-only">본문 바로가기</a>
 
-<div class="container">
-  <nav aria-label="주요 메뉴">
-    <a class="logo" href="/" aria-label="todayparent 홈">
-      <img src="/assets/logo.svg" width="140" height="28" alt="todayparent 로고" decoding="async">
-    </a>
-    <div class="nav-links" role="menubar">
-      <a role="menuitem" href="/parents/">걸음마</a>
-      <a role="menuitem" href="/tiny/">TinySignal</a>
-      <a role="menuitem" href="/about/" aria-current="page">about</a>
-      <a role="menuitem" href="/contact/">문의</a>
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">걸음마</a>
+  <ul class="nav-links">
+    <li><a href="/assessment/">발달 평가</a></li>
+    <li><a href="/tinysignal/">TinySignal</a></li>
+    <li><a href="/about/" class="active">about</a></li>
+    <li><a href="/contact/">문의</a></li>
+    <li><a href="/download/" class="nav-cta">앱 받기</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="background:var(--ivory);">
+  <div class="hero">
+    <span class="hero-eyebrow">About ddingdong</span>
+    <h1>우리가 만드는 이유</h1>
+    <p class="hero-sub">아이의 발달은 태어날 때부터 만 5세(60개월)까지 가장 가파르게 진행됩니다. 걸음마는 이 결정적 시기에 부모가 바로 실천할 수 있도록 발달 평가 → 맞춤 미션 → 놀이·외부활동을 한 흐름으로 제공합니다.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">근거 기반 발달 구조</span>
+      <span class="hero-badge">K-TPI 특허 출원 중</span>
+      <span class="hero-badge">소아과전문의 MOU</span>
+      <span class="hero-badge">발달심리학 박사 자문</span>
     </div>
-  </nav>
+  </div>
+</div>
 
-  <!-- 히어로 -->
-  <header class="hero" id="main">    
-    <p class="kicker">About ddingdong</p>
-    <h1>우리가 만드는 <em>이유</em></h1>
-    <p>
-      아이의 발달은 <b>태어날 때부터 만 5세(60개월)</b>까지 가장 가파르게 진행됩니다.<br>
-      todayparent는 이 <b>결정적 시기</b>에 부모가 바로 실천할 수 있도록
-      <b>발달 평가 → 맞춤 미션 → 놀이/외부활동</b>을 한 흐름으로 제공합니다.
-    </p>
-    <div class="badges">
-      <span class="badge">근거 기반 발달 구조</span>
-      <span class="badge">K-TPI · 특허 출원 중: 10-2025-0061591, 10-2026-0106048</span>
-    </div>
-  </header>
-
-  <!-- 왜 걸음마인가 -->
-  <section aria-labelledby="purpose">
-    <div class="card">
-      <h2 id="purpose">왜 '걸음마'인가</h2>
-      <ul class="clean">
-        <li><b>핵심 창(Window)</b> — 생후 0–60개월은 감각·운동·언어·정서의 토대가 형성되는 시기입니다. 하루의 상호작용이 곧 학습입니다.</li>
-        <li><b>정보는 많은데 행동은 어렵다</b> — 부모는 모순된 정보에 압도됩니다. "오늘 무엇을 하면 될지"가 가장 중요합니다.</li>
-        <li><b>평가→실천 연결</b> — 월령(0~60개월) 단위로 현재를 읽고, 낮은 영역을 중심으로 <b>'오늘의 미션'</b>과 놀이/외부활동을 제안합니다.</li>
-        <li><b>쉽고 빠른 도구</b> — 모바일에 최적화된 간단한 문항, 한눈에 보는 그래프, 1분 내 실천 가이드.</li>
-      </ul>
-      <div class="info-strip" style="margin-top:1rem">
-        우리의 목표는 <b>"비교가 아니라 이해, 그리고 오늘의 행동"</b>입니다.
+<!-- 왜 걸음마인가 -->
+<section class="section why-section">
+  <div class="section-inner">
+    <span class="section-eyebrow">왜 걸음마인가</span>
+    <h2 class="section-heading">비교 말고 이해,<br>걱정 말고 방향</h2>
+    <p class="section-sub">부모는 모순된 정보에 압도됩니다. "오늘 무엇을 하면 될지"가 가장 중요합니다.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card-title">핵심 창(Window)</div>
+        <div class="why-card-desc">생후 0~60개월은 감각·운동·언어·정서의 토대가 형성되는 시기입니다. 하루의 상호작용이 곧 학습입니다.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-title">정보는 많은데 행동은 어렵다</div>
+        <div class="why-card-desc">검색하면 불안해지고, 책은 두껍고, 유튜브는 모순됩니다. 걸음마는 오늘 바로 할 수 있는 것 하나를 찾아드려요.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-title">평가 → 실천 연결</div>
+        <div class="why-card-desc">월령(0~60개월) 단위로 현재를 읽고, 낮은 영역을 중심으로 오늘의 미션과 놀이·외부활동을 제안합니다.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-title">쉽고 빠른 도구</div>
+        <div class="why-card-desc">모바일에 최적화된 간단한 문항, 한눈에 보는 레이더 차트, 10분 이내 실천 가이드 생성.</div>
       </div>
     </div>
-  </section>
+    <div class="info-strip">"비교가 아니라 이해, 그리고 오늘의 행동" — 걸음마의 목표입니다.</div>
+  </div>
+</section>
 
-  <!-- 0~60개월 발달 근거 -->
-  <section aria-labelledby="dev-basis">
-    <div class="card">
-      <h2 id="dev-basis">0~60개월을 기준으로 삼는 근거</h2>
-      <p>
-        걸음마의 발달 평가는 <b>생후 0개월부터 60개월까지</b>를 세밀하게 나누어,
-        국내외 영유아 발달 연구와 한국 보육·유아교육 환경을 함께 반영해 설계했습니다.
-        이 시기는 <b>신경가소성</b>이 높아 경험의 효과가 크게 나타나는 시기이기 때문입니다.
-      </p>
+<!-- 발달 근거 -->
+<section class="section chart-section">
+  <div class="section-inner">
+    <span class="section-eyebrow">0~60개월을 기준으로 삼는 근거</span>
+    <h2 class="section-heading">결정적 시기의 과학</h2>
+    <p class="section-sub">걸음마의 발달 평가는 신경가소성이 가장 높은 이 시기를 국내외 발달 연구를 기반으로 세밀하게 설계했습니다.</p>
 
-      <div class="chart-shell" aria-label="0~96개월 발달 속도 개념 그래프">
-        <strong>발달 변화량 (개념)</strong>
-        <p class="muted" style="font-size:.85rem;margin:.2rem 0 .5rem">0~24개월 가장 가파르고, 36~60개월에 정교화, 이후엔 완만히 이어집니다.</p>
-        <canvas id="dev-chart" aria-label="0~96개월 발달 속도 선그래프" role="img"></canvas>
-        <small>그래프는 개념적 시각화이며 실제 발달 시점은 아이마다 다릅니다.</small>
-      </div>
+    <div class="chart-shell">
+      <div class="chart-title">발달 변화량 (개념)</div>
+      <div class="chart-desc">0~24개월 가장 가파르고, 36~60개월에 정교화, 이후엔 완만히 이어집니다.</div>
+      <canvas id="dev-chart" role="img" aria-label="0~96개월 발달 속도 선그래프" style="width:100%;display:block;"></canvas>
+      <div class="chart-note">그래프는 개념적 시각화이며 실제 발달 시점은 아이마다 다릅니다.</div>
+    </div>
 
+    <div class="dev-table-wrap">
       <table class="dev-table" aria-label="월령 구간별 주요 발달과 참고 연구">
         <thead>
           <tr>
-            <th scope="col">구간</th>
-            <th scope="col">주요 발달</th>
-            <th scope="col">주요 참고</th>
+            <th>구간</th>
+            <th>주요 발달</th>
+            <th>주요 참고</th>
           </tr>
         </thead>
         <tbody>
           <tr><td>0~2개월</td><td>생리적 안정, 시각·청각 자극 반응, 부모 목소리 인식</td><td>Papousek &amp; Papousek (1995)</td></tr>
           <tr><td>3~4개월</td><td>머리 지지, 시선 맞추기, 미소로 상호작용 시작</td><td>Trevarthen (1998)</td></tr>
           <tr><td>5~6개월</td><td>손-눈 협응, 옹알이, 낯가림 출현</td><td>Kuhl (2004)</td></tr>
-          <tr><td>7~9개월</td><td>기기/이동 시작, 탐색 행동, 정서 표현 확장</td><td>Campos et al. (2000)</td></tr>
+          <tr><td>7~9개월</td><td>기기·이동 시작, 탐색 행동, 정서 표현 확장</td><td>Campos et al. (2000)</td></tr>
           <tr><td>10~12개월</td><td>첫걸음, 첫 단어, 사회적 모방 증가</td><td>Tomasello (2003)</td></tr>
           <tr><td>13~18개월</td><td>자율성 발현, 간단한 지시 이해</td><td>Erikson (1959)</td></tr>
           <tr><td>19~24개월</td><td>상징놀이, 감정 표현, 자기인식</td><td>Meltzoff (2007)</td></tr>
@@ -274,168 +341,179 @@
           <tr><td>49~60개월</td><td>자기조절, 문제해결, 문해기 초입</td><td>Diamond (2013)</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="margin-top:.875rem;font-size:.84rem">
-        ※ 위 연구들은 걸음마의 월령별 문항·리포트 설계 시 참고한 대표 자료이며,
-        실제 서비스에서는 한국 영유아 표본 데이터와 현장 피드백으로 지속 보정됩니다.
-      </p>
     </div>
-  </section>
+    <p style="font-size:0.78rem; color:var(--dust); margin-top:1rem; line-height:1.7;">※ 위 연구들은 걸음마의 월령별 문항·리포트 설계 시 참고한 대표 자료이며, 실제 서비스에서는 한국 영유아 현장 피드백으로 지속 보정됩니다.</p>
+  </div>
+</section>
 
-  <!-- 부모 개입 언어 효과 -->
-  <section aria-labelledby="s-lang">
-    <div class="card">
-      <h2 id="s-lang">부모 주도 언어 개입의 효과</h2>
-      <p>
-        부모가 아이와 자주, 따뜻하게 대화할수록 언어 이해력·표현력이 함께 자랍니다.
-        단어 수 뿐 아니라 <b>사고력과 공감 능력</b>까지 확장됩니다.
-      </p>
+<!-- 부모 언어 개입 효과 -->
+<section class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <span class="section-eyebrow">부모 주도 언어 개입의 효과</span>
+    <h2 class="section-heading">자주, 따뜻하게,<br>반복적으로</h2>
+    <p class="section-sub">부모가 아이와 자주 대화할수록 언어 이해력·표현력이 함께 자랍니다. 단어 수뿐 아니라 사고력과 공감 능력까지 확장됩니다.</p>
 
-      <div class="chart-shell">
-        <strong>부모 개입 그룹 vs 일반 그룹 비교 (백분위)</strong>
-        <div class="bar-legend">
-          <span><span class="legend-dot" style="background:#6B8F71"></span>일반 그룹 (50백분위)</span>
-          <span><span class="legend-dot" style="background:#128A7F"></span>부모 개입 그룹</span>
-        </div>
-        <canvas id="lang-chart" role="img" aria-label="부모 주도 언어 개입 효과 막대 그래프"></canvas>
-        <small>Ramírez et al. (2020) PNAS 117(38) / Roberts &amp; Kaiser (2011) Am. J. Speech-Language Pathology 20(3)</small>
+    <div class="chart-shell">
+      <div class="chart-title">부모 개입 그룹 vs 일반 그룹 비교 (백분위)</div>
+      <div class="bar-legend">
+        <span><span class="legend-dot" style="background:#6B8F71;"></span>일반 그룹 (50백분위)</span>
+        <span><span class="legend-dot" style="background:#128A7F;"></span>부모 개입 그룹</span>
       </div>
-
-      <div class="evidence-card">
-        <h4>💬 핵심 인사이트</h4>
-        <p>
-          부모의 대화는 아이의 뇌 속 언어 회로를 직접 단련시킵니다.
-          <b>"자주, 따뜻하게, 반복적으로"</b>가 가장 강력한 발달 개입입니다.
-        </p>
-        <span class="evidence-source">
-          Roberts, M. Y., &amp; Kaiser, A. P. (2011). Am. J. Speech-Language Pathology, 20(3), 180–199.<br>
-          Ramírez, N. F., Lytle, S. R., &amp; Kuhl, P. K. (2020). PNAS, 117(38), 23202–23211.
-        </span>
-      </div>
-
-      <p class="muted" style="font-size:.85rem">
-        걸음마의 <b>AI 채팅 상담</b>과 <b>일일 미션</b>은 이 원리를 기반으로 설계됐습니다.
-        부모가 오늘 아이에게 어떻게 말 걸면 좋을지 구체적인 방법을 제안합니다.
-      </p>
+      <canvas id="lang-chart" role="img" aria-label="부모 주도 언어 개입 효과 막대 그래프" style="width:100%;display:block;"></canvas>
+      <div class="chart-note">Ramírez et al. (2020) PNAS 117(38) / Roberts &amp; Kaiser (2011) Am. J. Speech-Language Pathology 20(3)</div>
     </div>
-  </section>
 
-  <!-- 부모 놀이 참여 효과 -->
-  <section aria-labelledby="s-play">
-    <div class="card">
-      <h2 id="s-play">부모와 함께한 놀이의 힘</h2>
-      <p>
-        놀이에 참여하는 부모는 단순히 시간을 보내는 게 아니라,
-        아이의 세상을 함께 여는 <b>동반자</b>입니다.
-        부모의 놀이 참여는 인지적 자극, 언어 확장, 정서 안정까지
-        아이의 <b>전인적 발달</b>을 이끕니다.
-      </p>
-
-      <div class="chart-shell">
-        <strong>부모 놀이 참여 효과 (스파이더 차트 개념)</strong>
-        <canvas id="play-chart" role="img" aria-label="부모 놀이 참여 효과 레이더 차트"></canvas>
-        <small>Yogman et al. (2018). Pediatrics, 142(3), e20182058.</small>
-      </div>
-
-      <div class="evidence-card">
-        <h4>🎯 3가지 발달 영역에서 동시 효과</h4>
-        <p>
-          부모 개입 그룹은 일반 그룹 대비<br>
-          • <b>인지/문제해결력</b>: 약 25~30% 향상<br>
-          • <b>어휘·언어 확장</b>: 약 20~25% 향상<br>
-          • <b>사회·정서·자기조절</b>: 약 15~20% 향상
-        </p>
-        <span class="evidence-source">
-          Yogman, M., Garner, A., Hutchinson, J., Hirsh-Pasek, K., &amp; Golinkoff, R. (2018).
-          The Power of Play. Pediatrics, 142(3), e20182058.
-        </span>
-      </div>
-
-      <p class="muted" style="font-size:.85rem">
-        걸음마의 <b>추천 놀이</b>와 <b>외부활동</b>은 발달 점수가 낮은 영역을 중심으로
-        AI가 아이 성향에 맞게 재설명합니다.
-      </p>
+    <div class="evidence-card">
+      <div class="evidence-title">💬 핵심 인사이트</div>
+      <div class="evidence-body">부모의 대화는 아이의 뇌 속 언어 회로를 직접 단련시킵니다. <strong>"자주, 따뜻하게, 반복적으로"</strong>가 가장 강력한 발달 개입입니다.</div>
+      <span class="evidence-source">Roberts, M. Y., &amp; Kaiser, A. P. (2011). Am. J. Speech-Language Pathology, 20(3), 180–199.<br>Ramírez, N. F., Lytle, S. R., &amp; Kuhl, P. K. (2020). PNAS, 117(38), 23202–23211.</span>
     </div>
-  </section>
+    <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:1rem; line-height:1.7; font-weight:300;">걸음마의 AI 채팅 상담과 일일 미션은 이 원리를 기반으로 설계됐습니다.</p>
+  </div>
+</section>
 
-  <!-- 평가 도구 근거 -->
-  <section aria-labelledby="s-tools">
-    <div class="card">
-      <h2 id="s-tools">검증된 평가 도구를 기반으로</h2>
-      <p>
-        걸음마의 발달 질문지는 국제 표준 검사 구조를 기본으로 하고,
-        한국 아동의 실제 생활 맥락을 반영한 독자적 평가 체계 <b>K-TPI</b>로 완성했습니다.
-      </p>
+<!-- 부모 놀이 참여 효과 -->
+<section class="section" style="background:var(--ivory-dark);">
+  <div class="section-inner">
+    <span class="section-eyebrow">부모와 함께한 놀이의 힘</span>
+    <h2 class="section-heading">놀이는 가장 강력한<br>발달 개입입니다</h2>
+    <p class="section-sub">부모의 놀이 참여는 인지적 자극, 언어 확장, 정서 안정까지 아이의 전인적 발달을 이끕니다.</p>
 
-      <div class="tool-grid">
-        <div class="tool-item">
-          <h4>ASQ-3</h4>
-          <p>Ages &amp; Stages Questionnaires<br>
-          부모 보고식 · 2개월 단위 평가 구조<br>
-          가정에서도 활용 가능한 스크리닝 도구</p>
-        </div>
-        <div class="tool-item">
-          <h4>Denver II</h4>
-          <p>Developmental Screening Test<br>
-          발달 창(window) 개념 도입<br>
-          "보통 몇 개월에 나타나는 행동" 반영</p>
-        </div>
-        <div class="tool-item">
-          <h4>K-CDI</h4>
-          <p>한국 아동 발달 검사<br>
-          보건복지부·육아정책연구소 자료 기반<br>
-          한국 문화·생활습관(젓가락질, 신발 정리 등) 반영</p>
+    <div class="chart-shell">
+      <div class="chart-title">부모 놀이 참여 효과 (개념)</div>
+      <div class="bar-legend">
+        <span><span class="legend-dot" style="background:#6B8F71;"></span>일반 그룹</span>
+        <span><span class="legend-dot" style="background:#128A7F;"></span>부모 개입 그룹</span>
+      </div>
+      <canvas id="play-chart" role="img" aria-label="부모 놀이 참여 효과 레이더 차트" style="max-width:380px;display:block;margin:0 auto;"></canvas>
+      <div class="chart-note">Yogman et al. (2018). Pediatrics, 142(3), e20182058.</div>
+    </div>
+
+    <div class="evidence-card">
+      <div class="evidence-title">🎯 3가지 발달 영역에서 동시 효과</div>
+      <div class="evidence-body">
+        부모 개입 그룹은 일반 그룹 대비<br>
+        • <strong>인지·문제해결력</strong>: 약 25~30% 향상<br>
+        • <strong>어휘·언어 확장</strong>: 약 20~25% 향상<br>
+        • <strong>사회·정서·자기조절</strong>: 약 15~20% 향상
+      </div>
+      <span class="evidence-source">Yogman, M., Garner, A., Hutchinson, J., Hirsh-Pasek, K., &amp; Golinkoff, R. (2018). The Power of Play. Pediatrics, 142(3), e20182058.</span>
+    </div>
+    <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:1rem; line-height:1.7; font-weight:300;">걸음마의 추천 놀이와 외부활동은 발달 점수가 낮은 영역을 중심으로 AI가 아이 성향에 맞게 제안합니다.</p>
+  </div>
+</section>
+
+<!-- 평가 도구 -->
+<section class="section tools-section">
+  <div class="section-inner">
+    <span class="section-eyebrow">질문지 설계 근거</span>
+    <h2 class="section-heading">검증된 연구를 참고해<br>독자적으로 설계했어요</h2>
+    <p class="section-sub">국내외 발달 연구 구조를 참고하고, 한국 아동의 생활 문화를 반영한 독자적 평가 체계 K-TPI로 완성했습니다.</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-name">ASQ-3 참고</div>
+        <div class="tool-fullname">Ages &amp; Stages Questionnaires</div>
+        <div class="tool-desc">부모 보고식으로 가정에서도 신뢰성 있게 응답할 수 있는 문항 구조를 참고했어요.</div>
+        <span class="tool-badge">✓ 부모 보고형 문항 구조</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Denver II 참고</div>
+        <div class="tool-fullname">Developmental Screening Test</div>
+        <div class="tool-desc">각 발달 영역이 어느 월령 구간에 나타나는지(발달 창)를 참고해 0~60개월을 2개월 단위로 세분화했어요.</div>
+        <span class="tool-badge">✓ 월령별 발달 창 기준</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">KICCE 발달 연구 참고</div>
+        <div class="tool-fullname">한국아동패널 및 국내 발달 연구</div>
+        <div class="tool-desc">한국 영유아의 실제 발달 양상을 추적한 국내 연구 자료를 바탕으로, 한국 생활에 맞는 항목을 별도 설계했어요.</div>
+        <span class="tool-badge">✓ 한국 아동 문화 반영</span>
+      </div>
+    </div>
+    <div class="tool-note">
+      ※ K-TPI 및 리포트 생성 로직은 <strong>특허 출원 중</strong> (출원번호: 10-2025-0061591, 10-2026-0106048)<br>
+      ※ 본 평가는 스크리닝 목적이며, 정밀 진단은 소아과 전문의 또는 발달심리 전문가 상담을 권장합니다.
+    </div>
+  </div>
+</section>
+
+<!-- 전문가 자문단 -->
+<section class="section expert-section">
+  <div class="section-inner">
+    <span class="section-eyebrow">전문가 자문단</span>
+    <h2 class="section-heading">현장의 전문가들과<br>함께 만들고 있어요</h2>
+    <p class="section-sub">직접 써보고 피드백을 준 전문가들의 반응이 걸음마를 바꿉니다.</p>
+    <div class="expert-grid">
+      <div class="expert-card">
+        <div class="expert-quote">"가정에서 할 수 있는 예시가 많다는 게 엄청 장점인 것 같아요. 발달센터 다닐까 고민하거나 다니는 중인 아이들한테 엄청 유용할 것 같아요."</div>
+        <div class="expert-info">
+          <div class="expert-avatar" style="background:var(--teal-light);">🩺</div>
+          <div>
+            <div class="expert-name">햇살아이의원 원장님</div>
+            <div class="expert-role">소아과전문의 · MOU 파트너 · 강북구</div>
+          </div>
         </div>
       </div>
-
-      <hr class="divider">
-      <p class="muted" style="font-size:.84rem">
-        ※ K-TPI 및 리포트 생성 로직은 <b>특허 출원 중</b> (출원번호: 10-2025-0061591, 10-2026-0106048)<br>
-        ※ 본 평가는 스크리닝 목적이며, 정밀 진단은 소아과 전문의 또는 발달심리 전문가 상담을 권장합니다.
-      </p>
-    </div>
-  </section>
-
-  <!-- 원칙 -->
-  <section aria-labelledby="values">
-    <div class="card">
-      <h2 id="values">원칙</h2>
-      <div class="principle-grid">
-        <div class="principle-item">
-          <span class="pi-icon">🔒</span>
-          <h3>안정성</h3>
-          <p>아동 데이터 최소 수집, 보호자 동의·보호 우선.</p>
-        </div>
-        <div class="principle-item">
-          <span class="pi-icon">📖</span>
-          <h3>증거 기반</h3>
-          <p>한국 맥락을 반영한 K-TPI를 지속 개선합니다.</p>
-        </div>
-        <div class="principle-item">
-          <span class="pi-icon">🎯</span>
-          <h3>실천 중심</h3>
-          <p>멋진 리포트보다 <b>오늘의 행동</b>을 돕는 설계.</p>
+      <div class="expert-card orange">
+        <div class="expert-quote">"부모가 좋아하겠어요. 간단히 점검하고 아주 다양한 방법 제안에 넘치네요. AI 질문 답변도 좋은데요."</div>
+        <div class="expert-info">
+          <div class="expert-avatar" style="background:var(--orange-light);">🧠</div>
+          <div>
+            <div class="expert-name">발달심리학 박사</div>
+            <div class="expert-role">사진치료전문가 · 클로즈테스트 자문</div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+    <p style="font-size:0.78rem; color:var(--dust); margin-top:1.25rem; line-height:1.6;">※ 향후 발달심리검사 임상 전문가, 소아과·아동발달 전문의, 놀이치료사로 자문단을 확대할 예정입니다.</p>
+  </div>
+</section>
 
-</div>
+<!-- 원칙 -->
+<section class="section principles-section">
+  <div class="section-inner">
+    <span class="section-eyebrow">원칙</span>
+    <h2 class="section-heading">걸음마가 지키는 것들</h2>
+    <div class="principle-grid">
+      <div class="principle-card">
+        <span class="principle-icon">🔒</span>
+        <div class="principle-title">안정성</div>
+        <div class="principle-desc">아동 데이터 최소 수집, 보호자 동의·보호 우선. 아이의 정보는 절대 광고에 쓰이지 않아요.</div>
+      </div>
+      <div class="principle-card">
+        <span class="principle-icon">📖</span>
+        <div class="principle-title">증거 기반</div>
+        <div class="principle-desc">한국 맥락을 반영한 K-TPI를 현장 피드백으로 지속 개선합니다. 전문가 자문으로 신뢰도를 높여가요.</div>
+      </div>
+      <div class="principle-card">
+        <span class="principle-icon">🎯</span>
+        <div class="principle-title">실천 중심</div>
+        <div class="principle-desc">멋진 리포트보다 오늘의 행동을 돕는 설계. 결과를 보고 불안해지는 게 아니라 방향을 찾을 수 있도록.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="/assets/logo.svg" alt="todayparent 로고" width="120" height="24">
-        <p>© todayparent · 띵동(ddingdong)</p>
-        <p>특허 출원 중 (10-2025-0061591, 10-2026-0106048)</p>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="/" class="footer-logo">걸음마 · todayparent</a>
+        <div class="footer-tagline">0~60개월 영유아 발달 앱, by 띵동</div>
       </div>
-      <div class="footer-links">
-        <a href="/">홈</a>
-        <a href="/parents/">걸음마</a>
-        <a href="/tiny/">TinySignal</a>
-        <a href="/privacy/">개인정보처리방침</a>
-        <a href="/contact/">문의</a>
-      </div>
+      <ul class="footer-links">
+        <li><a href="/assessment/">발달 평가</a></li>
+        <li><a href="/tinysignal/">TinySignal</a></li>
+        <li><a href="/download/">앱 다운로드</a></li>
+        <li><a href="/contact/">문의</a></li>
+        <li><a href="/privacy/">개인정보처리방침</a></li>
+        <li><a href="/terms/">이용약관</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 띵동(ddingdong) · todayparent.com<br>
+      K-TPI 및 리포트 생성 로직 특허 출원 중 (10-2025-0061591, 10-2026-0106048)<br>
+      사업자등록번호: 447-56-00943 | 통신판매업: 제2025-화성동탄-2249호
     </div>
   </div>
 </footer>
@@ -450,23 +528,19 @@ window.__TP_DEV_DATA__ = [
   {month:96,plasticity:50}
 ];
 </script>
-
 <script>
-/* ── 공통 색상 ── */
 var TEAL     = '#128A7F';
 var TEAL2    = '#6B8F71';
-var TEAL_PAL = 'rgba(18,138,127,0.1)';
+var GRID     = 'rgba(18,138,127,0.12)';
 var INK_30   = 'rgba(13,31,30,0.3)';
 var INK_50   = 'rgba(13,31,30,0.5)';
-var GRID     = 'rgba(18,138,127,0.12)';
 
-/* ── 1. 발달 속도 라인 차트 ── */
+/* 1. 발달 속도 라인 차트 */
 (function(){
   var data   = window.__TP_DEV_DATA__ || [];
   var canvas = document.getElementById('dev-chart');
   if (!canvas || !data.length) return;
   var ctx = canvas.getContext('2d');
-
   function draw() {
     var p = canvas.parentElement;
     var w = p.clientWidth, h = 180;
@@ -475,26 +549,21 @@ var GRID     = 'rgba(18,138,127,0.12)';
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';
     ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-
     var pad = {top:12, right:14, bottom:22, left:34};
     var iW  = w - pad.left - pad.right;
     var iH  = h - pad.top  - pad.bottom;
     var maxM = 96;
     var maxV = Math.max.apply(null, data.map(function(d){return d.plasticity;}));
-
     ctx.clearRect(0, 0, w, h);
-
-    /* 0~60개월 하이라이트 영역 */
+    /* 0~60개월 하이라이트 */
     ctx.fillStyle = 'rgba(18,138,127,0.08)';
     ctx.fillRect(pad.left, pad.top, iW * (60 / maxM), iH);
-
-    /* 그리드 라인 */
+    /* 그리드 */
     ctx.strokeStyle = GRID; ctx.lineWidth = 1;
     for (var i = 0; i <= 3; i++) {
       var y = pad.top + (iH / 3) * i;
       ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
     }
-
     /* 라인 */
     ctx.beginPath();
     data.forEach(function(d, idx) {
@@ -503,8 +572,7 @@ var GRID     = 'rgba(18,138,127,0.12)';
       idx === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
     ctx.strokeStyle = TEAL; ctx.lineWidth = 2.5; ctx.stroke();
-
-    /* 닷 */
+    /* 점 */
     data.forEach(function(d) {
       var x = pad.left + (d.month / maxM) * iW;
       var y = pad.top  + iH - (d.plasticity / maxV) * iH;
@@ -512,25 +580,21 @@ var GRID     = 'rgba(18,138,127,0.12)';
       ctx.fillStyle = TEAL; ctx.fill();
       ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
     });
-
-    /* X축 레이블 */
-    ctx.fillStyle = INK_30;
-    ctx.font = '11px system-ui, sans-serif';
+    /* X축 */
+    ctx.fillStyle = INK_30; ctx.font = '11px Pretendard, system-ui, sans-serif';
     [0, 24, 48, 60, 72, 96].forEach(function(m) {
       ctx.fillText(m + 'm', pad.left + (m / maxM) * iW - 10, h - 4);
     });
-
-    /* Y축 레이블 */
-    ctx.fillStyle = INK_30; ctx.font = '10px system-ui, sans-serif';
+    /* Y축 */
+    ctx.fillStyle = INK_30; ctx.font = '10px Pretendard, system-ui, sans-serif';
     ctx.fillText('높음', 2, pad.top + 8);
     ctx.fillText('낮음', 2, h - pad.bottom + 2);
   }
-
   draw();
   window.addEventListener('resize', draw);
 })();
 
-/* ── 2. 언어 개입 막대 차트 ── */
+/* 2. 언어 개입 막대 차트 */
 (function(){
   var canvas = document.getElementById('lang-chart');
   if (!canvas) return;
@@ -538,7 +602,6 @@ var GRID     = 'rgba(18,138,127,0.12)';
   var labels = ['표현언어', '이해언어', '대화 턴수', '어휘 점수'];
   var base   = [50, 50, 50, 50];
   var inter  = [79, 64, 67, 66];
-
   function draw() {
     var p = canvas.parentElement;
     var w = p.clientWidth, h = 200;
@@ -547,71 +610,50 @@ var GRID     = 'rgba(18,138,127,0.12)';
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';
     ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-
     var pad = {top:16, right:16, bottom:32, left:38};
     var iW = w - pad.left - pad.right;
     var iH = h - pad.top  - pad.bottom;
     var maxV = 100, n = labels.length;
     var groupW = iW / n, barW = groupW * 0.32, gap = groupW * 0.06;
-
     ctx.clearRect(0, 0, w, h);
-
-    /* 그리드 */
     [25, 50, 75, 100].forEach(function(v) {
       var y = pad.top + iH - (v / maxV) * iH;
       ctx.strokeStyle = GRID; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
-      ctx.fillStyle = INK_30; ctx.font = '10px system-ui, sans-serif';
+      ctx.fillStyle = INK_30; ctx.font = '10px Pretendard, system-ui';
       ctx.fillText(v, 2, y + 4);
     });
-
     labels.forEach(function(lbl, i) {
       var cx = pad.left + groupW * i + groupW / 2;
-
-      /* 일반 그룹 */
       var bh0 = (base[i] / maxV) * iH;
       ctx.fillStyle = TEAL2;
       ctx.beginPath();
-      roundRect(ctx, cx - barW - gap / 2, pad.top + iH - bh0, barW, bh0, [4, 4, 0, 0]);
+      rr(ctx, cx - barW - gap/2, pad.top + iH - bh0, barW, bh0, [4,4,0,0]);
       ctx.fill();
-
-      /* 개입 그룹 */
       var bh1 = (inter[i] / maxV) * iH;
       ctx.fillStyle = TEAL;
       ctx.beginPath();
-      roundRect(ctx, cx + gap / 2, pad.top + iH - bh1, barW, bh1, [4, 4, 0, 0]);
+      rr(ctx, cx + gap/2, pad.top + iH - bh1, barW, bh1, [4,4,0,0]);
       ctx.fill();
-
-      /* 값 레이블 */
-      ctx.fillStyle = INK_50; ctx.font = 'bold 11px system-ui, sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText(inter[i], cx + gap / 2 + barW / 2, pad.top + iH - bh1 - 5);
-
-      /* X 라벨 */
-      ctx.fillStyle = INK_50; ctx.font = '11px system-ui, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillStyle = INK_50; ctx.font = 'bold 11px Pretendard, system-ui'; ctx.textAlign = 'center';
+      ctx.fillText(inter[i], cx + gap/2 + barW/2, pad.top + iH - bh1 - 5);
+      ctx.fillStyle = INK_50; ctx.font = '11px Pretendard, system-ui'; ctx.textAlign = 'center';
       ctx.fillText(lbl, cx, h - 6);
     });
     ctx.textAlign = 'left';
   }
-
-  function roundRect(ctx, x, y, w, h, r) {
-    if (typeof r === 'number') r = [r, r, r, r];
-    ctx.moveTo(x + r[0], y);
-    ctx.lineTo(x + w - r[1], y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r[1]);
-    ctx.lineTo(x + w, y + h - r[2]);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r[2], y + h);
-    ctx.lineTo(x + r[3], y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r[3]);
-    ctx.lineTo(x, y + r[0]);
-    ctx.quadraticCurveTo(x, y, x + r[0], y);
-    ctx.closePath();
+  function rr(ctx, x, y, w, h, r) {
+    ctx.moveTo(x + r[0], y); ctx.lineTo(x + w - r[1], y);
+    ctx.quadraticCurveTo(x+w, y, x+w, y+r[1]); ctx.lineTo(x+w, y+h-r[2]);
+    ctx.quadraticCurveTo(x+w, y+h, x+w-r[2], y+h); ctx.lineTo(x+r[3], y+h);
+    ctx.quadraticCurveTo(x, y+h, x, y+h-r[3]); ctx.lineTo(x, y+r[0]);
+    ctx.quadraticCurveTo(x, y, x+r[0], y); ctx.closePath();
   }
-
   draw();
   window.addEventListener('resize', draw);
 })();
 
-/* ── 3. 놀이 효과 레이더 차트 ── */
+/* 3. 놀이 효과 레이더 차트 */
 (function(){
   var canvas = document.getElementById('play-chart');
   if (!canvas) return;
@@ -619,7 +661,6 @@ var GRID     = 'rgba(18,138,127,0.12)';
   var labels = ['인지/문제해결', '어휘·언어 확장', '사회·정서·자기조절'];
   var base   = [50, 50, 50];
   var inter  = [75, 70, 65];
-
   function draw() {
     var p  = canvas.parentElement;
     var w  = Math.min(p.clientWidth, 380), h = 230;
@@ -628,79 +669,46 @@ var GRID     = 'rgba(18,138,127,0.12)';
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';
     ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-
-    var cx = w / 2, cy = h / 2 + 8;
-    var r  = Math.min(w, h) * 0.34;
-    var n  = labels.length;
-    var angles = labels.map(function(_, i) {
-      return (-Math.PI / 2) + (2 * Math.PI / n) * i;
-    });
-
+    var cx = w/2, cy = h/2 + 8, r = Math.min(w,h)*0.34, n = labels.length;
+    var angles = labels.map(function(_,i){ return (-Math.PI/2) + (2*Math.PI/n)*i; });
     ctx.clearRect(0, 0, w, h);
-
-    /* 배경 망 */
     [0.33, 0.67, 1].forEach(function(ratio) {
       ctx.beginPath();
       angles.forEach(function(a, i) {
-        var x = cx + Math.cos(a) * r * ratio;
-        var y = cy + Math.sin(a) * r * ratio;
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        var x = cx + Math.cos(a)*r*ratio, y = cy + Math.sin(a)*r*ratio;
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
       });
-      ctx.closePath();
-      ctx.strokeStyle = GRID; ctx.lineWidth = 1; ctx.stroke();
+      ctx.closePath(); ctx.strokeStyle = GRID; ctx.lineWidth = 1; ctx.stroke();
     });
-
-    /* 축선 */
     angles.forEach(function(a) {
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+      ctx.beginPath(); ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+Math.cos(a)*r, cy+Math.sin(a)*r);
       ctx.strokeStyle = GRID; ctx.lineWidth = 1; ctx.stroke();
     });
-
-    /* 일반 그룹 */
     ctx.beginPath();
-    angles.forEach(function(a, i) {
-      var ratio = base[i] / 100;
-      var x = cx + Math.cos(a) * r * ratio;
-      var y = cy + Math.sin(a) * r * ratio;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    angles.forEach(function(a,i) {
+      var ratio=base[i]/100, x=cx+Math.cos(a)*r*ratio, y=cy+Math.sin(a)*r*ratio;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
     });
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(107,143,113,0.2)'; ctx.fill();
-    ctx.strokeStyle = TEAL2; ctx.lineWidth = 1.5; ctx.stroke();
-
-    /* 개입 그룹 */
+    ctx.closePath(); ctx.fillStyle='rgba(107,143,113,0.2)'; ctx.fill();
+    ctx.strokeStyle=TEAL2; ctx.lineWidth=1.5; ctx.stroke();
     ctx.beginPath();
-    angles.forEach(function(a, i) {
-      var ratio = inter[i] / 100;
-      var x = cx + Math.cos(a) * r * ratio;
-      var y = cy + Math.sin(a) * r * ratio;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    angles.forEach(function(a,i) {
+      var ratio=inter[i]/100, x=cx+Math.cos(a)*r*ratio, y=cy+Math.sin(a)*r*ratio;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
     });
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(18,138,127,0.18)'; ctx.fill();
-    ctx.strokeStyle = TEAL; ctx.lineWidth = 2.5; ctx.stroke();
-
-    /* 라벨 */
-    ctx.fillStyle = INK_50; ctx.font = '12px system-ui, sans-serif'; ctx.textAlign = 'center';
-    angles.forEach(function(a, i) {
-      var offset = r + 20;
-      var x = cx + Math.cos(a) * offset;
-      var y = cy + Math.sin(a) * offset + 4;
+    ctx.closePath(); ctx.fillStyle='rgba(18,138,127,0.18)'; ctx.fill();
+    ctx.strokeStyle=TEAL; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.fillStyle=INK_50; ctx.font='12px Pretendard, system-ui'; ctx.textAlign='center';
+    angles.forEach(function(a,i) {
+      var offset=r+22, x=cx+Math.cos(a)*offset, y=cy+Math.sin(a)*offset+4;
       ctx.fillText(labels[i], x, y);
     });
-    ctx.textAlign = 'left';
+    ctx.textAlign='left';
   }
-
   draw();
   window.addEventListener('resize', draw);
 })();
 </script>
-
-<noscript><style>
-  body{font-family:system-ui,Arial,sans-serif;margin:0}
-  .container{max-width:1080px;margin:0 auto;padding:24px}
-</style></noscript>
 </body>
 </html>

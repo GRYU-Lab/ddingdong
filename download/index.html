@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>앱 다운로드 · 걸음마</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --teal: #128A7F;
+    --teal-deep: #0D6B62;
+    --teal-light: #E8F5F3;
+    --orange: #E8472A;
+    --orange-light: #FFF0ED;
+    --green-card: #E8F5E8;
+    --ivory: #FFF8F0;
+    --ivory-dark: #FDF3E7;
+    --ink: #1A1A1A;
+    --ink-soft: #555;
+    --dust: #999;
+    --white: #FFFFFF;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--ivory); -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,248,240,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(18,138,127,0.1);
+    padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 60px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--teal); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.875rem; color: var(--ink-soft); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: white !important; padding: 0.45rem 1.1rem; border-radius: 100px; font-size: 0.8rem !important; font-weight: 700 !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--teal);
+    padding: 5rem 5vw 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 20%, rgba(255,255,255,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 500;
+    padding: 0.35rem 0.85rem; border-radius: 100px; margin-bottom: 1.75rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: white; font-weight: 700;
+    line-height: 1.25; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.7);
+    line-height: 1.8; font-weight: 300; margin-bottom: 2.5rem;
+  }
+  .download-btns {
+    display: flex; gap: 0.75rem; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .btn-store {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--ink); color: white;
+    padding: 0.85rem 1.75rem; border-radius: 14px;
+    text-decoration: none; transition: transform 0.15s, opacity 0.2s;
+    min-width: 180px;
+  }
+  .btn-store:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-store-icon { font-size: 1.4rem; line-height: 1; }
+  .btn-store-text { text-align: left; }
+  .btn-store-sub { font-size: 0.65rem; color: rgba(255,255,255,0.5); display: block; line-height: 1; margin-bottom: 0.15rem; }
+  .btn-store-name { font-size: 0.95rem; font-weight: 700; display: block; line-height: 1; }
+  .hero-trust { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-bottom: 3rem; }
+  /* 폰 목업 3개 */
+  .phones-wrap {
+    display: flex; justify-content: center; align-items: flex-end;
+    gap: -20px; position: relative; height: 380px;
+  }
+  .phone-mock {
+    width: 200px; flex-shrink: 0;
+    background: #1A1A1A; border-radius: 28px; padding: 8px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.3);
+    position: absolute;
+  }
+  .phone-mock.center { z-index: 3; left: 50%; transform: translateX(-50%); bottom: 0; }
+  .phone-mock.left { z-index: 2; left: calc(50% - 185px); transform: rotate(-6deg); bottom: -20px; opacity: 0.85; }
+  .phone-mock.right { z-index: 2; left: calc(50% + -15px); transform: rotate(6deg); bottom: -20px; opacity: 0.85; }
+  .phone-screen {
+    background: var(--ivory); border-radius: 22px; overflow: hidden;
+    height: 360px; display: flex; flex-direction: column;
+  }
+  .phone-bar {
+    background: var(--teal); height: 36px;
+    display: flex; align-items: center; padding: 0 0.85rem;
+    font-size: 0.65rem; font-weight: 700; color: white;
+    font-family: var(--serif);
+  }
+  .phone-body { flex: 1; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; }
+
+  /* 화면1: 홈 */
+  .sc-greeting { background: white; border-radius: 10px; padding: 0.65rem; }
+  .sc-g-label { font-size: 0.52rem; color: var(--dust); margin-bottom: 0.2rem; }
+  .sc-g-text { font-size: 0.65rem; font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .sc-g-text span { color: var(--teal); }
+  .sc-radar { background: white; border-radius: 10px; padding: 0.65rem; display:flex; flex-direction:column; align-items:center; gap:0.3rem; }
+  .sc-r-label { font-size: 0.5rem; color: var(--dust); align-self:flex-start; }
+  .sc-mission { background: white; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.55rem; color: var(--ink-soft); display:flex; align-items:center; gap:0.35rem; }
+  .sc-dot { width:6px; height:6px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+
+  /* 화면2: 리포트 */
+  .sc-report-head { text-align:center; background:white; border-radius:10px; padding:0.65rem; }
+  .sc-report-title { font-size:0.6rem; font-weight:700; color:var(--ink); line-height:1.3; margin-bottom:0.25rem; }
+  .sc-report-sub { font-size:0.5rem; color:var(--dust); }
+  .sc-scores { display:grid; grid-template-columns:repeat(3,1fr); gap:0.3rem; }
+  .sc-score { background:white; border-radius:8px; padding:0.4rem; text-align:center; }
+  .sc-score-n { font-size:0.5rem; color:var(--dust); }
+  .sc-score-v { font-size:0.7rem; font-weight:700; color:var(--teal); }
+
+  /* 화면3: TinySignal */
+  .sc-ts-card { background:#1A2E2C; border-radius:10px; padding:0.65rem; }
+  .sc-ts-tag { font-size:0.5rem; color:#7DD4CD; margin-bottom:0.3rem; }
+  .sc-ts-q { font-size:0.6rem; color:white; line-height:1.35; font-weight:500; }
+  .sc-ts-opts { display:flex; flex-direction:column; gap:0.3rem; margin-top:0.4rem; }
+  .sc-ts-opt { background:rgba(255,255,255,0.08); border-radius:6px; padding:0.35rem 0.5rem; font-size:0.52rem; color:rgba(255,255,255,0.65); }
+  .sc-ts-opt.sel { background:rgba(18,138,127,0.3); color:#7DD4CD; }
+  .sc-ts-rank { display:flex; justify-content:space-between; align-items:center; padding:0.4rem 0 0; }
+  .sc-ts-rank-l { font-size:0.5rem; color:rgba(255,255,255,0.35); }
+  .sc-ts-rank-v { font-size:0.75rem; font-weight:700; color:white; font-family:var(--serif); }
+
+  /* FEATURES QUICK */
+  .features-quick { background: var(--white); padding: 5rem 5vw; }
+  .features-quick-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.75rem; font-weight: 600; color: var(--orange); letter-spacing: 0.04em; margin-bottom: 0.75rem; display: block; }
+  .section-heading { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; color: var(--ink); line-height: 1.35; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .section-sub { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.8; font-weight: 300; max-width: 46ch; margin-bottom: 3rem; }
+  .feature-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .feature-row {
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    background: var(--ivory); border-radius: 16px; padding: 1.25rem 1.5rem;
+    transition: transform 0.2s;
+  }
+  .feature-row:hover { transform: translateX(4px); }
+  .feature-row-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green-card); display: flex; align-items: center;
+    justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .feature-row-text { }
+  .feature-row-title { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+  .feature-row-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300; }
+
+  /* REVIEW */
+  .reviews { background: var(--ivory-dark); padding: 5rem 5vw; }
+  .reviews-inner { max-width: 1100px; margin: 0 auto; }
+  .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .review-card { background: var(--white); border-radius: 20px; padding: 1.5rem; }
+  .review-stars { font-size: 0.85rem; margin-bottom: 0.75rem; color: #F4C542; }
+  .review-text { font-size: 0.875rem; color: var(--ink); line-height: 1.7; font-weight: 400; margin-bottom: 1rem; }
+  .review-author { font-size: 0.75rem; color: var(--dust); }
+  .review-author span { color: var(--ink-soft); font-weight: 500; }
+
+  /* PARTNER */
+  .partner { background: var(--white); padding: 4rem 5vw; border-top: 1px solid rgba(0,0,0,0.06); }
+  .partner-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .partner-label { font-size: 0.75rem; color: var(--dust); letter-spacing: 0.06em; margin-bottom: 1.5rem; }
+  .partner-logos { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
+  .partner-chip {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--ivory); border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 100px; padding: 0.5rem 1.1rem;
+    font-size: 0.82rem; font-weight: 600; color: var(--ink-soft);
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--ivory); padding: 6rem 5vw;
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--ink); font-weight: 700;
+    letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 1rem;
+  }
+  .final-cta h2 em { font-style: normal; color: var(--teal); }
+  .final-cta p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+  .final-download { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .final-note { font-size: 0.75rem; color: var(--dust); }
+
+  /* FOOTER */
+  footer { background: #1A1A1A; padding: 3rem 5vw 2rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: white; text-decoration: none; }
+  .footer-tagline { font-size: 0.75rem; margin-top: 0.35rem; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; font-size: 0.7rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .phones-wrap { height: 280px; }
+    .phone-mock.center { width: 160px; }
+    .phone-mock.left, .phone-mock.right { display: none; }
+    .phone-screen { height: 260px; }
+    .review-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .partner-logos { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">걸음마</a>
+  <ul class="nav-links">
+    <li><a href="geoleumma_assessment.html">발달 평가</a></li>
+    <li><a href="geoleumma_tinysignal.html">TinySignal</a></li>
+    <li><a href="geoleumma_download.html" class="active">다운로드</a></li>
+    <li><a href="geoleumma_download.html" class="nav-cta">앱 받기</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">🌱 무료로 시작할 수 있어요</span>
+    <h1>오늘, 아이를<br>조금 더 이해해봐요</h1>
+    <p class="hero-sub">첫 발달 평가 + AI상담 각 1회 무료.<br>비교 말고 이해, 걱정 말고 방향.</p>
+    <div class="download-btns">
+      <a href="https://play.google.com/store/apps/details?id=com.gryulab.geoleumma_app" class="btn-store">
+        <div class="btn-store-icon">▶</div>
+        <div class="btn-store-text">
+          <span class="btn-store-sub">Google Play에서 받기</span>
+          <span class="btn-store-name">구글 플레이</span>
+        </div>
+      </a>
+      <a href="https://apps.apple.com/kr/app/%EA%B1%B8%EC%9D%8C%EB%A7%88/id6775895780" class="btn-store">
+        <div class="btn-store-icon">🍎</div>
+        <div class="btn-store-text">
+          <span class="btn-store-sub">App Store에서 받기</span>
+          <span class="btn-store-name">앱스토어</span>
+        </div>
+      </a>
+    </div>
+    <div class="hero-trust">iOS · Android 모두 지원 · 무료 다운로드</div>
+  </div>
+
+  <!-- 3 phone mockups -->
+  <div class="phones-wrap">
+    <!-- 왼쪽: TinySignal 화면 -->
+    <div class="phone-mock left">
+      <div class="phone-screen">
+        <div class="phone-bar">TinySignal</div>
+        <div class="phone-body" style="background:#1A2E2C;">
+          <div class="sc-ts-card" style="background:rgba(255,255,255,0.08);">
+            <div class="sc-ts-tag">상황 #14 · 36개월</div>
+            <div class="sc-ts-q">마트에서 장난감을 사달라고 바닥에 드러누웠어요.</div>
+            <div class="sc-ts-opts">
+              <div class="sc-ts-opt">"안 돼"를 단호하게</div>
+              <div class="sc-ts-opt sel">감정 먼저 알아주기</div>
+              <div class="sc-ts-opt">원하는 것을 들어주기</div>
+            </div>
+            <div class="sc-ts-rank">
+              <span class="sc-ts-rank-l">이번 주 랭킹</span>
+              <span class="sc-ts-rank-v">3위 🏆</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 가운데: 홈 화면 -->
+    <div class="phone-mock center">
+      <div class="phone-screen">
+        <div class="phone-bar">걸음마</div>
+        <div class="phone-body">
+          <div class="sc-greeting">
+            <div class="sc-g-label">오늘의 한마디</div>
+            <div class="sc-g-text"><span>기미</span>는 지금 언어가 폭발하는 시기예요 🌱</div>
+          </div>
+          <div class="sc-radar">
+            <div class="sc-r-label">7개 발달 영역 리포트</div>
+            <svg viewBox="0 0 90 80" width="80">
+              <polygon points="45,8 72,24 72,56 45,72 18,56 18,24" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+              <polygon points="45,18 63,30 63,50 45,62 27,50 27,30" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+              <polygon points="45,28 54,36 54,44 45,52 36,44 36,36" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+              <line x1="45" y1="8" x2="45" y2="72" stroke="#E0E0E0" stroke-width="0.5"/>
+              <line x1="18" y1="24" x2="72" y2="56" stroke="#E0E0E0" stroke-width="0.5"/>
+              <line x1="72" y1="24" x2="18" y2="56" stroke="#E0E0E0" stroke-width="0.5"/>
+              <polygon points="45,12 68,26 67,52 45,68 21,54 22,26" fill="rgba(18,138,127,0.18)" stroke="#128A7F" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="sc-mission"><div class="sc-dot"></div>오늘의 미션: 세 단어 문장 연습</div>
+          <div class="sc-mission"><div class="sc-dot" style="background:#C8C8C8;"></div>AI 상담 답변 도착</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 오른쪽: 발달 결과 화면 -->
+    <div class="phone-mock right">
+      <div class="phone-screen">
+        <div class="phone-bar">발달 결과 보기</div>
+        <div class="phone-body">
+          <div class="sc-report-head">
+            <div class="sc-report-title">기미의 28개월차 이야기</div>
+            <div class="sc-report-sub">28개월 기준 최신 결과</div>
+          </div>
+          <div class="sc-scores">
+            <div class="sc-score"><div class="sc-score-n">대근육</div><div class="sc-score-v">3.8</div></div>
+            <div class="sc-score"><div class="sc-score-n">소근육</div><div class="sc-score-v">3.0</div></div>
+            <div class="sc-score"><div class="sc-score-n">언어</div><div class="sc-score-v">2.8</div></div>
+            <div class="sc-score"><div class="sc-score-n">사회성</div><div class="sc-score-v">3.4</div></div>
+            <div class="sc-score"><div class="sc-score-n">감각</div><div class="sc-score-v">3.4</div></div>
+            <div class="sc-score"><div class="sc-score-n">인지</div><div class="sc-score-v">4.0</div></div>
+          </div>
+          <div style="background:#E8472A;border-radius:100px;padding:0.45rem 0.85rem;text-align:center;margin-top:auto;">
+            <span style="color:white;font-size:0.58rem;font-weight:700;">AI 발달 상담</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 기능 요약 -->
+<section class="features-quick">
+  <div class="features-quick-inner">
+    <span class="section-eyebrow">주요 기능</span>
+    <h2 class="section-heading">하나의 앱으로<br>육아가 달라져요</h2>
+    <p class="section-sub">발달 평가부터 AI 상담, TinySignal 게임까지 — 오늘 바로 시작할 수 있어요.</p>
+    <div class="feature-list">
+      <div class="feature-row">
+        <div class="feature-row-icon">🕸</div>
+        <div class="feature-row-text">
+          <div class="feature-row-title">K-TPI 발달 평가 리포트</div>
+          <div class="feature-row-desc">세계 3대 발달검사 기반 K-TPI 질문지로 7개 영역을 분석해요. 0~60개월, 2개월 단위로 촘촘하게 맞춰드립니다. 평균이 아닌, 이 아이만의 방향을 보여드려요.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-icon">🤖</div>
+        <div class="feature-row-text">
+          <div class="feature-row-title">AI 맞춤 육아 상담</div>
+          <div class="feature-row-desc">기질·성향·발달 점수를 모두 반영한 AI 상담. 오늘의 미션, 놀이 추천, 외부활동 제안까지. "이 시기엔 이래도 돼요"라는 답도 함께 드립니다.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-icon">🎮</div>
+        <div class="feature-row-text">
+          <div class="feature-row-title">TinySignal 육아 게임</div>
+          <div class="feature-row-desc">실제 육아 상황 26가지를 게임으로 풀어봐요. 즉각 피드백 + 주간 랭킹으로 꾸준히 플레이하다 보면, 순간 반응이 달라집니다.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-icon">💉</div>
+        <div class="feature-row-text">
+          <div class="feature-row-title">예방접종 일정 관리</div>
+          <div class="feature-row-desc">국가 필수 예방접종부터 구강검진, 건강검진까지. D-day 알림으로 한 번도 빠뜨리지 않을 수 있어요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 리뷰 -->
+<section class="reviews">
+  <div class="reviews-inner">
+    <span class="section-eyebrow">사용 후기</span>
+    <h2 class="section-heading">실제 엄마 아빠들의<br>이야기예요</h2>
+    <p class="section-sub">비교 앱이 아니라 방향을 주는 앱을 찾고 있었다면.</p>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"발달 지연 아닐까 걱정하며 열어봤는데, 결과지에 걱정 대신 오늘 해볼 것들이 나와있어서 오히려 마음이 편해졌어요. 진짜 다른 앱이에요."</div>
+        <div class="review-author"><span>기미맘</span> · 28개월 · 구글 플레이</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"TinySignal 처음엔 그냥 게임인 줄 알았는데, 오답 해설 읽으면서 내가 잘못 반응했던 순간들이 떠올라서 울었어요. 진짜 도움됩니다."</div>
+        <div class="review-author"><span>서아아빠</span> · 34개월 · 앱스토어</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"소아과에서 선생님이 직접 추천해주셨어요. 한국 기준으로 만들어진 발달 앱이라 더 믿음이 가고, 결과지도 부모 입장에서 이해하기 쉽게 나와요."</div>
+        <div class="review-author"><span>하음맘</span> · 22개월 · 앱스토어</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 전문가 신뢰 -->
+<section class="partner">
+  <div class="partner-inner">
+    <div class="partner-label">전문가들의 반응</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; text-align:left;">
+      <div style="background:var(--ivory); border-radius:16px; padding:1.25rem 1.5rem; border-left:3px solid var(--teal);">
+        <p style="font-size:0.82rem; color:var(--ink); line-height:1.7; margin-bottom:0.75rem;">"가정에서 할 수 있는 예시가 많다는 게 엄청 장점. 발달센터 고민하는 아이들한테 엄청 유용할 것 같아요."</p>
+        <div style="font-size:0.72rem; font-weight:700; color:var(--ink-soft);">🩺 햇살아이의원 원장님 <span style="font-weight:400; color:var(--dust);">— 소아과전문의 · MOU 파트너</span></div>
+      </div>
+      <div style="background:var(--ivory); border-radius:16px; padding:1.25rem 1.5rem; border-left:3px solid var(--orange);">
+        <p style="font-size:0.82rem; color:var(--ink); line-height:1.7; margin-bottom:0.75rem;">"부모가 좋아하겠어요. 간단히 점검하고 다양한 방법 제안에 넘쳐요. AI 답변도 좋아요."</p>
+        <div style="font-size:0.72rem; font-weight:700; color:var(--ink-soft);">🧠 발달심리학 박사 <span style="font-weight:400; color:var(--dust);">— 사진치료전문가 · 클로즈테스트 자문</span></div>
+      </div>
+    </div>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+      <div class="partner-chip">🏥 햇살아이의원 MOU</div>
+      <div class="partner-chip">🎓 K-TPI 특허 출원 중</div>
+      <div class="partner-chip">🧠 발달심리학 박사 자문</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>지금 <em>무료</em>로<br>시작해보세요</h2>
+  <p>첫 발달 평가 + AI상담 각 1회 무료.<br>10분이면 오늘 바로 해볼 것이 생겨요.</p>
+  <div class="final-download">
+    <a href="https://play.google.com/store/apps/details?id=com.gryulab.geoleumma_app" class="btn-store" style="background:var(--ink);">
+      <div class="btn-store-icon">▶</div>
+      <div class="btn-store-text">
+        <span class="btn-store-sub">Google Play에서 받기</span>
+        <span class="btn-store-name">구글 플레이</span>
+      </div>
+    </a>
+    <a href="https://apps.apple.com/kr/app/%EA%B1%B8%EC%9D%8C%EB%A7%88/id6775895780" class="btn-store" style="background:var(--ink);">
+      <div class="btn-store-icon">🍎</div>
+      <div class="btn-store-text">
+        <span class="btn-store-sub">App Store에서 받기</span>
+        <span class="btn-store-name">앱스토어</span>
+      </div>
+    </a>
+  </div>
+  <div class="final-note">iOS · Android 모두 지원 · 무료 다운로드</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="/" class="footer-logo">걸음마 · todayparent</a>
+        <div class="footer-tagline">0~60개월 영유아 발달 앱, by 띵동</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#">문의</a></li>
+        <li><a href="#">about</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 띵동(ddingdong) · todayparent.com<br>
+      K-TPI 및 리포트 생성 로직 특허 출원 중 (10-2025-0061591, 10-2026-0106048)<br>
+      사업자등록번호: 447-56-00943 | 통신판매업: 제2025-화성동탄-2249호
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
